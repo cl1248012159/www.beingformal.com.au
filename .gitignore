@@ -11,7 +11,8 @@ sitemap.xml
 node_modules/
 .sass-cache/
 .sass-cache/*
-
+Gruntfile.js
+package.json
 
 
 

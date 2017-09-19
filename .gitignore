@@ -1,12 +1,18 @@
 var/
 downloader/
 media/
+
+
 skin/frontend/beingformal/default/scss
 skin/frontend/beingformal/default/css/*.map
 
 
 app/etc/local.xml
 sitemap.xml
+
+
+
+
 
 node_modules/
 .sass-cache/

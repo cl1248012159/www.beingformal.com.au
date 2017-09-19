@@ -1,0 +1,65 @@
+
+<div class="header-container">
+
+    <div class="top_promotion">
+        <?php $top_promotion = Mage::getModel('ibanners/group')->loadByCode('top_promotion')->getBannerCollection();?>
+        <?php foreach($top_promotion as $promotion):?>
+            <div class="promotion_bg" style="background-image: url(<?php echo $promotion->getImageUrl();?>);">
+                <a href="<?php echo $promotion->getUrl();?>" alt="<?php echo $promotion->getAltText();?>" title="<?php echo $promotion->getTitle();?>">
+                    <img src="<?php echo $promotion->getImageUrl();?>">
+                </a>
+            </div>
+        <?php endforeach;?>
+    </div>
+
+    <div class="top">
+        <div class="top-content">
+            <?php echo $this->getChildHtml('top.currency') ?>
+
+            <?php $welcome_msgs = Mage::getModel('ibanners/group')->loadByCode('welcome_message')->getBannerCollection();?>
+            <?php foreach($welcome_msgs as $welcome_msg):?>
+                <div class="welcome-msg"><?php echo $welcome_msg->getHtml() ?></div>
+            <?php endforeach;?>
+
+            <div class="top-links">
+                <?php if(Mage::getSingleton('customer/session')->isLoggedIn()):?>
+                    <a rel="nofollow" href="<?php echo $this->getUrl('customer/account')?>">My Account</a>
+                    <a rel="nofollow" href="<?php echo $this->getUrl('customer/account/logout')?>">Log Out</a>
+                <?php else:?>
+                    <a rel="nofollow" href="<?php echo $this->getUrl('customer/account')?>"><img src="/skin/frontend/beingformal/default/images/account.png">Join/Sign in</a>
+                <?php endif;?>
+
+                <a rel="nofollow" href="">Mobile App</a>
+
+                <div class="CustomerService_a">Customer Service
+                    <div class="CustomerService">
+                        <p>
+                            <a rel="nofollow" href="mailto:<?php echo Mage::getModel('core/variable')->loadByCode('support-email')->getValue('text');?>">
+                                Email: <?php echo Mage::getModel('core/variable')->loadByCode('support-email')->getValue('text');?>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header">
+        <?php if ($this->getIsHomePage()):?>
+        <h1 class="logo"><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+        <?php else:?>
+        <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+        <?php endif?>
+
+
+        <div class="quick-access">
+            <?php echo $this->getChildHtml('topSearch') ?>
+            <?php echo $this->getChildHtml('top.cart') ?>
+        </div>
+    </div>
+
+    <?php echo $this->getChildHtml('topMenu') ?>
+
+</div>
+
+

@@ -1,0 +1,49 @@
+
+<div class="nav-container">
+    <div class="nav" id="nav_page">
+        <ul id="nav">
+            <li class="home"><a href="<?php echo $this->getUrl();?>">home</a></li>
+            <?php
+                $menu_tops = Mage::getModel('catalog/category')
+                    ->setStoreId(Mage::app()->getStore()->getId())
+                    ->load(2)
+                    ->getChildrenCategories();
+            ?>
+            <?php foreach($menu_tops as $menu):?>
+                <li>
+                    <a href="<?php echo $menu->getUrl();?>"><?php echo $menu->getName();?></a>
+                    <?php $level_content = $this->getLayout()->createBlock('cms/block')
+                            ->setBlockId($menu->getUrlKey())
+                            ->toHtml(); ?>
+                    <?php if($level_content):?>
+                        <div class="level2"><?php echo $level_content; ?></div>
+                    <?php endif;?>
+                </li>
+            <?php endforeach;?>
+        </ul>
+    </div>
+        
+</div>
+
+
+
+<script type="text/javascript">
+
+    //nav2端对齐
+    function navJustify(){
+        var li_list     = document.getElementById("nav").getElementsByTagName("li"),
+            nav_width   = document.getElementById("nav_page").offsetWidth,
+            navItems_width = document.getElementById("nav").offsetWidth,
+            li_length       = li_list.length,
+            padding_width   = (nav_width-navItems_width-1)/(li_length-1)/2;
+        for(var i=0;i<li_length;i++){
+            if( i > 0 ){
+                li_list[i].style.paddingLeft = padding_width+'px';
+            }
+            if( i!=(li_length-1) ){
+                li_list[i].style.paddingRight = padding_width+'px';
+            } 
+        }
+    }
+    navJustify();
+</script>

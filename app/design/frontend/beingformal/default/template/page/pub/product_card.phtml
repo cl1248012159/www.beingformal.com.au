@@ -1,0 +1,33 @@
+<?php 
+    $_product = $this->getProduct();
+?>
+
+<a href="<?php echo $_product->getProductUrl() ?>" class="product_card item">
+
+    <img class="product-image" alt="<?php echo $_product->getName()?>" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(300,400); ?>">
+
+    <?php if($this->getShowName() == 'show'):?>
+        <span class="product-name"><?php echo $_product->getName()?></span>
+    <?php endif;?>
+
+
+    <div class="product-price">
+        <?php if($this->getShowCurrencyCode() == 'show'):?>
+            <span class="currency-code"><?php echo Mage::app()->getStore()->getCurrentCurrency()->getCode();?></span>
+        <?php endif;?>
+
+        <?php echo $this->getPriceHtml($_product, true) ?>
+    </div>
+
+    <?php if($this->getCountdown() == 'show'):?>
+        <div class="countdown">
+            <div id="<?php echo $this->getCountdownModel();?>-countdown-<?php echo $_product->getId()?>"></div>
+        </div>
+        <script type="text/javascript">
+            jQuery(document).ready(function(){
+                countdown('<?php echo $this->getCountdownModel();?>-countdown-<?php echo $_product->getId()?>',2017,10,11,10,10,10);
+            });
+        </script>
+    <?php endif;?>
+
+</a>

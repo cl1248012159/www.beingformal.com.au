@@ -1,0 +1,140 @@
+<!-- 广告大图 -->
+<?php $home_top_banners = Mage::getModel('ibanners/group')->loadByCode('home_top_banners')->getBannerCollection();?>
+<?php if(count($home_top_banners)):?>
+    <div class="paddingtop">
+        <div id="home_top_banners" class="owl-carousel">
+            <?php foreach($home_top_banners as $banner):?>
+                <a class="item" href="<?php echo $banner->getUrl()?>"><img src="<?php echo $banner->getImageUrl()?>"></a>
+            <?php endforeach;?>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function($){
+            $('#home_top_banners').owlCarousel({
+                loop: true,
+                dots: true,
+                items: 1,
+                autoplay: true,
+                autoplayTimeout: 5000
+            });
+        });
+    </script>
+<?php endif;?>
+
+
+
+<!-- 热卖分类 -->
+<?php
+$category_ids    = Mage::getModel('core/variable')->loadByCode('hotsales_category')->getValue('text');
+$arr_category_ids = explode(",", $category_ids );
+?>
+<?php foreach ($arr_category_ids as $category_id) :?>
+
+    <?php $category = Mage::getModel('catalog/category')->load($category_id); ?>
+
+    <div class="hotsales_category">
+
+        <div class="home-title">
+            <?php echo $category->getName()?>
+            <a href="<?php echo $category->getMetaTitle()?>">MORE</a>    
+        </div>
+
+        <div class="hotsales_content">
+            <div class="left-links">
+                <img src="<?php echo $category->getImageUrl()?>">
+                <?php echo $category->getDescription()?>
+            </div>
+
+            <?php 
+                $Hot_Selling = $category->getProductCollection()
+                                        ->addAttributeToSelect('*')
+                                        ->addAttributeToFilter('status', 1)
+                                        ->addAttributeToFilter('visibility', 4);
+            ?>
+            <?php if($Hot_Selling->count()>0):?>
+            <div class="products" id="owlCarousel-<?php echo $category_id;?>">
+                <?php foreach($Hot_Selling as $_product):?>
+                    <?php echo $this->getLayout()->createBlock('catalog/product_list')
+                                    ->setProduct($_product)
+                                    ->setShowName('show')
+                                    ->setShowCurrencyCode('hide')
+                                    ->setTemplate('page/pub/product_card.phtml')->toHtml(); ?>
+                <?php endforeach;?>
+            </div>
+            <script type="text/javascript">
+                jQuery(document).ready(function($){
+                    $('#owlCarousel-<?php echo $category_id;?>').owlCarousel({
+                        loop: true,
+                        nav:true,
+                        items: 3
+                    });
+                });
+            </script>
+
+            <?php endif;?>
+        </div>
+    </div>
+    
+<?php endforeach;?>
+
+
+
+
+<!-- 四个广告版块 -->
+<?php $home_four_ads = Mage::getModel('ibanners/group')->loadByCode('home_four_ads')->getBannerCollection();?>
+<?php if(count($home_four_ads)):?>
+    <div class="home-title">MORE HOT CATEGORIES</div>
+    <div class="home_four_ads">
+        <?php foreach($home_four_ads as $ad):?>
+            <a href="<?php echo $ad->getUrl()?>"><img src="<?php echo $ad->getImageUrl()?>"></a>
+        <?php endforeach;?>
+    </div>
+<?php endif;?>
+
+
+
+
+
+
+<!-- flash sale -->
+<?php 
+    $flash_sale_category_id = Mage::getModel('core/variable')->loadByCode('flash_sale_category')->getValue('text');
+    $flash_sale = Mage::getModel('catalog/category')->load($flash_sale_category_id)
+                                                    ->getProductCollection()
+                                                    ->addAttributeToSelect('*')
+                                                    ->addAttributeToFilter('status', 1)
+                                                    ->addAttributeToFilter('visibility', 4);
+?>
+<?php if($flash_sale->count()>0):?>
+    <div class="flash_sale">
+        
+        <div class="title">
+            <span class="h1">FLASH SALE</span>
+            <span class="h2">Limited Time Specials Weekly.</span>
+            <span class="more">VIEW MORE FLASH SALE</span>
+        </div>
+
+        <div class="products" id="owlCarousel-<?php echo $flash_sale_category_id;?>">
+            <?php foreach($flash_sale as $_product):?>
+                <?php echo $this->getLayout()->createBlock('catalog/product_list')
+                                ->setProduct($_product)
+                                ->setShowName('hide')
+                                ->setShowCurrencyCode('show')
+                                ->setCountdown('show')
+                                ->setCountdownModel('flash_sale')
+                                ->setTemplate('page/pub/product_card.phtml')->toHtml(); ?>
+            <?php endforeach;?>
+        </div>
+                
+        <script type="text/javascript">
+            jQuery(document).ready(function($){
+                $('#owlCarousel-<?php echo $flash_sale_category_id;?>').owlCarousel({
+                    loop: true,
+                    nav:true,
+                    items: 5
+                });
+            });
+        </script>
+    </div>
+<?php endif;?>

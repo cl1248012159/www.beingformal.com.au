@@ -1,0 +1,14 @@
+<?php if($this->getCurrencyCount()>1): ?>
+    <div class="top_currency">
+        <div class="current_currency"><?php echo $this->getCurrentCurrencyCode();?></div>
+        <ul class="list_currency">
+            <?php foreach ($this->getCurrencies() as $_code => $_name): ?>
+                <?php if($_code != $this->getCurrentCurrencyCode()): ?>
+                <li data-name="<?php echo $_name ?>">
+                    <a href="<?php echo $this->getSwitchCurrencyUrl($_code) ?>"><?php echo $_code ?></a>
+                </li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif; ?>

@@ -1,5 +1,6 @@
 <script type="text/javascript" data-name="pub-js">
-    function countdown(id,theyear,themonth,theday,thehour,themin,thesec){
+    function countdown(text_day,id,theyear,themonth,theday,thehour,themin,thesec){
+        var textday = text_day;
         var id=id;
         var yr=theyear;
         var mo=themonth;
@@ -39,13 +40,13 @@
             var countdown_html = '';
             if(dday>0){
                 countdown_html = '<span class="dday">'+dday+'</span>';
-                countdown_html +='<span class="text_day">D</span>';
+                countdown_html +='<span class="text_day">'+textday+'</span>';
             }
             countdown_html  +=  '<span class="dhour">'+dhour+'</span>'+
                 '<span class="dmin">'+dmin+'</span>'+
                 '<span class="dsec">'+dsec+'</span>';
             document.getElementById(id).innerHTML = countdown_html;
-            setTimeout(function(){countdown(id,yr,mo,da,ho,mi,se);},1000);
+            setTimeout(function(){countdown(textday,id,yr,mo,da,ho,mi,se);},1000);
         }
     }
 </script>

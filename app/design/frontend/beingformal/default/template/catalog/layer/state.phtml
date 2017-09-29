@@ -1,0 +1,20 @@
+<?php $_filters = $this->getActiveFilters() ?>
+
+<?php if(!empty($_filters)): ?>
+
+    <div class="currently">
+        <h4>Filter by</h4>
+
+        <ol>
+
+            <?php foreach ($_filters as $_filter): ?>
+                <li>
+                    <span class="value"><?php echo $this->stripTags($_filter->getLabel()) ?></span>
+                    <a  class="btn-remove" href="<?php echo $_filter->getRemoveUrl() ?>"></a>
+                </li>
+            <?php endforeach; ?>
+
+        </ol>
+    </div>
+
+<?php endif; ?>

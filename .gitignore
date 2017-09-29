@@ -9,6 +9,7 @@ skin/frontend/beingformal/default/css/*.map
 
 app/etc/local.xml
 sitemap.xml
+robots.txt
 
 
 

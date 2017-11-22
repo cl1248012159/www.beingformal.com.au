@@ -32,3 +32,6 @@ package.json
 
 app/etc/modules/Magneto_Debug.xml
 skin/frontend/base/default/debug/
+app/code/community/Magneto/
+app/design/frontend/base/default/layout/debug.xml
+app/design/frontend/base/default/template/debug/

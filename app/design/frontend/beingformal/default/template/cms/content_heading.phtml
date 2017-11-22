@@ -1,0 +1,58 @@
+
+ 
+<?php $url_array = parse_url( Mage::helper('core/url')->getCurrentUrl() );?>
+<?php if(false !== stripos(   $url_array['path'] , 'helpcenter' )):?>
+    <style type="text/css">
+        .std{display: none;}
+    </style>
+
+    <?php $helpcenter_phtml = str_replace(array('/helpcenter/','.html'),array('','.phtml'),$url_array['path']);?>
+    <table class="helpcenter">
+        <tr>
+            <td class="help_left">
+                <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('cms/helpcenter/a_left.phtml')->toHtml(); ?>
+            </td>
+            <td class="help_right">
+                <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('cms/helpcenter/'.$helpcenter_phtml)->toHtml(); ?>
+            </td>
+        </tr>
+    </table>
+
+    <?php
+        $helpcenter_promotions =  Mage::getModel('catalog/category')->load(17)
+                                                ->getProductCollection()
+                                                ->addAttributeToSelect('*')
+                                                ->addAttributeToFilter('status', 1)
+                                                ->addAttributeToFilter('visibility', 4);
+    ?>
+    <?php if( $helpcenter_promotions->count() ):?>
+    <div class="promotion_area">
+        <div class="title">promotion area</div>
+        <div class="product_left_to_right">
+            <?php foreach($helpcenter_promotions as $_product):?>
+                <?php echo $this->getLayout()->createBlock('catalog/product_list')
+                                ->setProduct($_product)
+                                ->setShowName('show')
+                                ->setShowCurrencyCode('show')
+                                ->setTemplate('page/pub/product_card.phtml')->toHtml(); ?>
+            <?php endforeach;?>
+        </div>
+    </div>
+    <?php endif;?>
+    
+    
+
+
+<?php else:?>
+
+
+
+    <?php if($_heading = $this->getContentHeading()): ?>
+        <div class="page-title">
+            <h1><?php echo $_heading; ?></h1>
+        </div>
+    <?php endif; ?>
+
+
+
+<?php endif; ?>

@@ -406,6 +406,14 @@ class Mage_Checkout_Model_Cart extends Varien_Object implements Mage_Checkout_Mo
 
             $qty = isset($itemInfo['qty']) ? (float) $itemInfo['qty'] : false;
             if ($qty > 0) {
+                
+                if(isset($itemInfo['options'])){
+                    $options_data = $itemInfo;
+                    $options_data['id']         =   $itemId;
+                    $options_data['product']    =   $item->getProduct()->getId();
+                    $result_a = $this->updateItem($itemId, new Varien_Object($options_data));
+                }
+
                 $item->setQty($qty);
 
                 $itemInQuote = $this->getQuote()->getItemById($item->getId());

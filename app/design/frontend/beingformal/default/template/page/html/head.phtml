@@ -5,6 +5,9 @@
 <meta name="robots" content="<?php echo htmlspecialchars($this->getRobots()) ?>" />
 <link rel="icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
 <link rel="shortcut icon" href="<?php echo $this->getFaviconFile(); ?>" type="image/x-icon" />
+
+<link rel="stylesheet" type="text/css" href="/skin/frontend/beingformal/default/css/styles.css?<?php echo time()?>" media="all">
+
 <!--[if lt IE 7]>
 <script type="text/javascript">
 //<![CDATA[
@@ -15,6 +18,7 @@
 <![endif]-->
 <?php $this->addJs("dev/jquery-2.1.4.min.js"); ?>
 <?php $this->addJs("dev/owl.carousel.js"); ?>
+
 
 <?php echo $this->getCssJsHtml() ?>
 <?php echo $this->getChildHtml() ?>

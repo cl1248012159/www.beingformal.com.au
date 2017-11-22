@@ -1,0 +1,174 @@
+<?php
+    $productid = Mage::registry('current_product')->getId();
+    $customer = Mage::getSingleton('customer/session')->getCustomer();
+    $sku =  Mage::registry('current_product')->getSku();
+    $customerid = '';
+    $email = '';
+    $name = '';
+    if($customer){
+        $customerid = $customer->getId();
+        $email = $customer->getEmail();
+        $name = $customer->getName();
+    }
+    $storeid =  Mage::app()->getStore()->getStoreId();
+    $questions = $this->getQuestions(0);
+    $types = array();
+    foreach($questions as $q){
+        $type = $q->getType();
+        if(!in_array($type,$types)){
+            $types[] = $type;
+        }
+    }
+    sort($types);
+?>
+
+<a name="faq-form" id="faq-form"></a>
+
+
+<!-- ask questions 表单 -->
+<div class="form_product ask-questions">
+
+    <a class="to_ask_question" href="javascript:;">Ask For Questions</a>
+
+    <div class="ask-question-add hide">
+        <form id="product-askquestion" action="<?php echo $this->getUrl().'index.php/askquestions/index/add' ?>"  method="post" enctype="multipart/form-data">
+            <input type="hidden" name="productid" value="<?php echo $productid; ?>" />
+            <input type="hidden" name="sku" value="<?php echo $sku; ?>" />
+            <input type="hidden" name="customerid" value="<?php echo $customerid; ?>" />
+            <input type="hidden" name="storeid" value="<?php echo $storeid; ?>" />
+          <?php echo $this->getBlockHtml('formkey') ?>
+              <ul class="input_form">
+                <li>
+                  <label for="askquestionname">Your Name:</label>
+                  <div class="input-box"><input class="input-text required-entry" type="text" id="askquestionname" name="askquestionname" value="<?php echo $name;?>" /></div>
+                </li>
+                <li>
+                  <label for="askquestionemail">Your Email:</label>
+                  <div class="input-box"><input class="input-text validate-email required-entry" type="text" id="askquestionemail" name="askquestionemail" value="<?php echo $email;?>" /></div>
+                </li>
+                <li>
+                  <label><em>*</em> What would you like to ask about?: </label>
+                  <div class="askquestion-type">
+                    <label ><input class="validate-one-required-by-name" type="radio" name="askquestiontype[]" value="1" />Product Description</label>
+                    <label ><input class="validate-one-required-by-name" type="radio" name="askquestiontype[]" value="2" />Shipping or Payment</label>
+                    <label ><input class="validate-one-required-by-name" type="radio" name="askquestiontype[]" value="3" />Processing Time Consultation</label>
+                    <label ><input class="validate-one-required-by-name" type="radio" name="askquestiontype[]" value="4" />Others</label>
+                  </div>
+                </li>
+                <li>
+                  <label for="askquestiontitle">Question Title:</label>
+                  <div class="input-box"><input class="input-text required-entry" type="text" id="askquestiontitle" name="askquestiontitle" /></div>
+                </li>
+                <li>
+                  <label for="askquestioncontent">Question Details</label>
+                  <div class="input-box"><textarea class="required-entry" name="askquestioncontent" id="askquestioncontent" cols="78" rows="4"></textarea></div>
+                </li>
+                <li>
+                  <button type="submit" class="submit" onclick="addAskquestionForm.submit(this)"><span><span>Add Question</span></span></button>
+              </ul>
+        </form>
+    </div>
+
+    <script type="text/javascript" data-name="显示／隐藏－表单">
+        jQuery(document).ready(function($){
+            $(".to_ask_question").on('click',function(){
+                if($(".ask-question-add").hasClass('hide')){
+                    $(".ask-question-add").removeClass('hide');
+                }else{
+                     $(".ask-question-add").addClass('hide');
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript" data-name="提交表单">
+      //< ![CDATA[
+        var addAskquestionForm= new VarienForm('product-askquestion');
+        addAskquestionForm.submit = function(button, url) { 
+            if (this.validator.validate()) {
+                var form = this.form;
+                var oldUrl = form.action;
+
+                if (url) {
+                    form.action = url;
+                }
+                var e = null;
+                try {
+                    this.form.submit();
+                } catch (e) {
+                }
+                this.form.action = oldUrl;
+                if (e) {
+                    throw e;
+                }
+
+                if (button && button != 'undefined') {
+                    button.disabled = true;
+                }
+            }
+        }.bind(addAskquestionForm);
+        
+      //]]>
+    </script>
+</div>
+
+
+
+
+
+
+
+<!-- questions 列表 -->
+<?php if(count($questions)>0):?>
+    <div class="tab_list question_list">
+        <div class="title">
+            <span>Q & A</span>
+        </div>
+        <div class="askquestion-list">
+            <?php foreach($types as $j=>$type):?>
+                <dl>
+                    <dt>
+                      <?php if($type==1):?>
+                          Product Description
+                      <?php elseif($type==2):?>
+                          Shipping or Payment
+                      <?php elseif($type==3):?>
+                          Processing Time Consultation
+                      <?php elseif($type==4):?>
+                          Others
+                      <?php endif;?>
+                    </dt>
+                    <dd>
+                        <?php $typequestions = $this->getQuestions($type); ?>
+                        <?php if(count($typequestions)>0):?>
+                          <ul>
+                              <?php $k=0; foreach($typequestions as $typyquestion): $k++?>
+                              <li>
+                                  <p class="num"><?php echo $k?> .&nbsp;&nbsp;</p>
+                                  <p class="ques ask">
+                                      Q : <?php echo  $typyquestion->getContent() ;?>
+                                      <span>(<?php 
+                                          echo 'By '.$typyquestion->getName();
+                                          $time = $typyquestion->getCreatedAt();
+                                          echo ' , '.Mage::helper('core')->formatDate($time,'medium',false); 
+                                      ?>)</span>
+                                  </p>
+                                  <?php if($typyquestion->getReply()):?>
+                                      <p class="ques reply">
+                                          A : <?php echo $typyquestion->getReply(); ?>
+                                          <span>(<?php
+                                              echo 'By '.Mage::getModel('core/variable')->loadByCode('admin_name')->getValue('text');
+                                              $replytime = $typyquestion->getReplyAt();
+                                              echo ' , '.Mage::helper('core')->formatDate($replytime,'medium',false);
+                                          ?>)</span>
+                                      </p>
+                                  <?php endif; ?>
+                              </li>
+                              <?php endforeach;?>
+                          </ul>
+                        <?php endif; ?>
+                    </dd>
+                </dl>
+            <?php endforeach;?>
+        </div>
+    </div>
+<?php endif; ?>

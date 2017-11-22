@@ -12,7 +12,13 @@
     <div class="category-products">
 
         <div class="category-products-header">   
-            <p class="products-count">We found <span><?php echo $_productCollection->getSize();?></span> items of <?php echo Mage::registry('current_category')->getName()?> !</p>
+            <p class="products-count">We found <span><?php echo $_productCollection->getSize();?></span> items 
+                <?php $current_category = Mage::registry('current_category');?>
+                <?php if(isset($current_category)):?>
+                    of <?php echo $current_category->getName()?> !
+                <?php endif;?>
+            </p>
+                
             <?php echo $this->getLayout()->createBlock('catalog/product_list_toolbar')
                             ->setTemplate('catalog/product/list/sort.phtml')
                             ->setName('sort')

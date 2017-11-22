@@ -770,6 +770,24 @@ abstract class Mage_Core_Controller_Varien_Action
     }
 
     /**
+     * Set referer url for redirect in response
+     *
+     * @param   string $defaultUrl
+     * @return  Mage_Core_Controller_Varien_Action
+     */
+    protected function _redirectRefererAddAnchor($defaultUrl=null,$Anchor='')
+    {
+
+        $refererUrl = $this->_getRefererUrl();
+        if (empty($refererUrl)) {
+            $refererUrl = empty($defaultUrl) ? Mage::getBaseUrl() : $defaultUrl;
+        }
+
+        $this->getResponse()->setRedirect($refererUrl.$Anchor);
+        return $this;
+    }
+
+    /**
      * Identify referer url via all accepted methods (HTTP_REFERER, regular or base64-encoded request param)
      *
      * @return string

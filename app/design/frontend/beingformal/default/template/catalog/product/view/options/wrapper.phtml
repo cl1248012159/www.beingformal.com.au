@@ -1,0 +1,63 @@
+<div class="product-options" id="product-options-wrapper">
+    <?php echo $this->getChildHtml('', true, true);?>
+</div>
+
+<!-- 尺码对照表＋定制 -->
+<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('catalog/product/view/options/options_sizechart.phtml')->toHtml(); ?>
+<script type="text/javascript" data-name="custom_made">
+    jQuery(document).ready(function($){
+        //颜色选择
+        $('input[data-option="color"]').click(function(){
+            $(".color-select").removeClass('color-selected');
+            $(this).siblings(".color-select").addClass('color-selected');
+        });
+        //尺寸选择
+        $(".Size select").change(function(){
+            if($(this).val()){
+                if( $(this).val() == $('option[data-option="CUSTOMMADE"]').attr('value') ){
+                    $(".custom_made").show();
+                    $(".size_chart_table").html('');
+                }else{
+                    $(".custom_made").hide();
+                    var size_name = $('option[value="'+$(this).val()+'"]').data('option');
+                    var size_chart_cur = us_obj[size_name];
+                    var html_table = '<table>'+
+                                        '<tr>'+
+                                            '<th colspan="3">SIZE '+$('option[value="'+$(this).val()+'"]').data('text')+'</th>'+
+                                        '</tr>'+
+                                        '<tr class="th">'+
+                                            '<th>Unit</th>'+
+                                            '<th>inch</th>'+
+                                            '<th>cm</th>'+
+                                        '</tr>'+
+                                        '<tr>'+
+                                            '<th>Bust</th>'+
+                                            '<td>'+size_chart_cur['Bust']['inch']+'</td>'+
+                                            '<td>'+size_chart_cur['Bust']['cm']+'</td>'+
+                                        '</tr>'+
+                                        '<tr>'+
+                                            '<th>Waist</th>'+
+                                            '<td>'+size_chart_cur['Waist']['inch']+'</td>'+
+                                            '<td>'+size_chart_cur['Waist']['cm']+'</td>'+
+                                        '</tr>'+
+                                        '<tr>'+
+                                            '<th>Hips</th>'+
+                                            '<td>'+size_chart_cur['Hips']['inch']+'</td>'+
+                                            '<td>'+size_chart_cur['Hips']['cm']+'</td>'+
+                                        '</tr>'+
+                                        '<tr>'+
+                                            '<th>Hollow to Floor</th>'+
+                                            '<td>'+size_chart_cur['Hollow to Floor']['inch']+'</td>'+
+                                            '<td>'+size_chart_cur['Hollow to Floor']['cm']+'</td>'+
+                                        '</tr>'+
+                                    '</table>';
+                    $(".size_chart_table").html(html_table);
+                }
+            }else{
+                $(".custom_made").hide();
+                $(".size_chart_table").html('');
+            } 
+        });
+    });
+</script>
+<div class="size_chart_table"></div>

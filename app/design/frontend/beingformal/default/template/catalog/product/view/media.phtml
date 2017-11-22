@@ -1,0 +1,494 @@
+
+<script type="text/javascript" data-name="图片操作－依赖类">
+function popup(setting) {
+    var pp = this;
+    pp.params = jQuery.extend({
+        overlayOpacity : 0.4,
+        overlayBgColor : '#3F4C58',
+        width : Math.min(900, jQuery(window).width() - 100),
+        height : Math.max(600, jQuery(window).height() - 50),
+        btnSize : 18,
+        thumbSize : 0,
+        thumbWidth : 0,
+        thumbDim : {
+            width : 42,
+            height : 42
+        },
+        topSpace : 26,
+        html : '',
+        imageUrl : '',
+        thumblists : [],
+        images : [],
+        closeWhenClickingBg : true
+    }, setting);
+    
+    if(pp.params.popW > 0 && pp.params.popH > 0){
+        pp.params.width = Math.min(pp.params.popW, jQuery(window).width() - 100);
+        pp.params.height = Math.min(pp.params.popH, jQuery(window).height() - 50);
+    }
+    
+    pp.params.index = 0;
+    if (jQuery('#lovevoxOverlay').size() > 0) {
+        pp.layer = jQuery('#lovevoxOverlay');
+    } else {
+        pp.layer = jQuery(
+                '<div id="lovevoxOverlay"><div style="background:' + pp.params.overlayBgColor + ';"></div></div>').prependTo('body');
+        var html = [
+                '<div id="lovevox">',
+                '<div id="lb-borderBg"></div>',
+                '<div id="lb-wrapper">',
+                '<div id="lb-content">',
+                '<div id="contentHere" oncontextmenu="return false">',
+                '<img src="' + litb.resouceURL + 'base-images/transparent.gif">',
+                '</div>',
+                '<div id="lb-contentControls">',
+                '<a href="javascript:void(0)" id="lb-previous"></a>',
+                '<a href="javascript:void(0)" id="lb-next"></a>',
+                '</div>',
+                '</div>',
+                '<div id="lb-thumbnail">',
+                '<div id="lb-thumbnailContent"></div>',
+                '<div id="lb-tnControls">',
+                '<a href="javascript:void(0)" id="lb-tnPrevious" class="hasItem"><span></span></a>',
+                '<a href="javascript:void(0)" id="lb-tnNext" class="hasItem"><span></span></a>',
+                '</div>', '</div>', '<a href="" id="lb-close"></a>', '</div>',
+                '</div>' ];
+        pp.layer.after(html.join(''));
+    }
+    
+    pp.winbox = jQuery('#lovevox');
+    pp.main = jQuery('#lb-content');
+    pp.mainShow = jQuery('#contentHere').html(
+            '<img src="' + litb.resouceURL + 'tw_images/transparent.gif">');
+    pp.thumblist = jQuery('#lb-thumbnail');
+    pp.thumblistCon = jQuery('#lb-thumbnailContent');
+    pp.btnPre = jQuery('#lb-previous');
+    pp.btnNext = jQuery('#lb-next');
+    pp.ttnPre = jQuery('#lb-tnPrevious');
+    pp.ttnNext = jQuery('#lb-tnNext');
+    pp.btnPre.removeAttr('style');
+    pp.btnNext.removeAttr('style');
+    pp.ttnPre.removeAttr('style');
+    pp.ttnNext.removeAttr('style');
+    pp.winbox.removeAttr('style').removeClass('lb-thumbnaiRight');
+    pp.main.removeAttr('style');
+    pp.mainShow.removeAttr('style');
+    pp.thumblist.removeAttr('style').hide();
+    pp.thumblistCon.removeAttr('style');
+    jQuery('#lb-wrapper').removeAttr('style');
+    pp.layer.unbind();
+    pp.mainShow.unbind();
+    pp.btnPre.unbind();
+    pp.btnNext.unbind();
+    pp.ttnPre.unbind();
+    pp.ttnNext.unbind();
+    if (pp.params.imageUrl !== '') {
+        pp.params.index = jQuery.inArray(pp.params.imageUrl, pp.params.images);
+    }
+    
+    if (pp.params.closeWhenClickingBg)
+        pp.layer.bind('click', function() {
+            pp.hide();
+        });
+    jQuery('#lb-close').unbind().bind('click', function() {
+        pp.hide();
+        return false;
+    });
+    this.updateThumblistBtns = function() {
+        pp.thumblistCon.children('a.current').removeClass('current');
+        pp.thumblistCon.children('a').eq(pp.params.index).addClass('current')
+                .end().eq(pp.params.index + pp.params.images.length).addClass(
+                        'current');
+    };
+    this.getDefaultImgWidth = function() {
+        return gup('w', pp.params.images[pp.params.index]);
+    };
+    this.getDefaultImgHeight = function() {
+        return gup('h', pp.params.images[pp.params.index]);
+    };
+    this.imgLoaded = function() {
+    };
+    this.reloadImage = function() {
+        pp.params.index = (pp.params.index + pp.params.images.length) % pp.params.images.length;
+        pp.updateThumblistBtns();
+        pp.mainShow.removeAttr('style');
+        if (pp.params.html !== "") {
+            pp.mainShow.html(pp.params.html);
+        } else {
+            pp.mainShow.unbind('mousemove').children('img').preLoad({
+                w : pp.getDefaultImgWidth(),
+                h : pp.getDefaultImgHeight(),
+                src : pp.params.images[pp.params.index],
+                success : pp.imgLoaded
+            });
+        }
+    };
+    this.hide = function() {
+        pp.thumblist.hide();
+        pp.winbox.hide();
+        pp.layer.children('div').stop().fadeTo("fast", 0.1, function() {
+            pp.layer.hide();
+        });
+    };
+    this.show = function() {
+        if (pp.params.images.length > 1)
+            jQuery('#lb-contentControls>a').show();
+        if (/msie/.test(navigator.userAgent.toLowerCase()) && jQuery.browser.version < 7) {
+            jQuery('#lb-borderBg').hide();
+            pp.layer.css({
+                position : 'absolute',
+                height : jQuery(document).height()
+            });
+            pp.layer.append().ie6bgiframe();
+        }
+        
+        pp.layer.show().children('div').stop().fadeTo(0, 0.1).fadeTo("fast",
+                pp.params.overlayOpacity);
+        pp.center();
+        function hidePP(e) {
+            var unicode = e.keyCode ? e.keyCode : e.charCode;
+            if (unicode == 27) {
+                pp.hide();
+                jQuery(document).unbind('keydown', hidePP);
+            }
+        }
+        
+        jQuery(document).keydown(hidePP);
+        return this;
+    };
+    this.center = function() {
+        pp.winbox.show().css(
+                {
+                    "top" : Math.max(0, jQuery(window).scrollTop() + jQuery(window).height() / 2 - pp.winbox.height() / 2),
+                    "left" : Math.max(0, jQuery(window).scrollLeft() + jQuery(window).width() / 2 - pp.winbox.width() / 2)
+                });
+    };
+}
+
+function VerticalPopup(setting) {
+    var pp = this, 
+        scrolling = false;
+
+    popup.call(this, setting);
+    this.getDefaultImgWidth = function() {
+        return pp.params.width - pp.params.thumbSize;
+    };
+    this.getDefaultImgHeight = function() {
+        return pp.params.height;
+    };
+    function up() {
+        if (scrolling)
+            return;
+        scrolling = true;
+        var mt = pp.thumblistCon.css('marginTop').replace('px', '') - pp.params.thumbWidth;
+        pp.thumblistCon.animate({
+            marginTop : mt
+        }, 'fast', function() {
+            if (mt <= -pp.thumblistCon.children('a').size() / 2 * pp.params.thumbWidth)
+                pp.thumblistCon.css('marginTop', 0);
+            scrolling = false;
+        });
+    }
+    
+    function down() {
+        if (scrolling)
+            return;
+        scrolling = true;
+        var mt = pp.thumblistCon.css('marginTop').replace('px', '');
+        if (mt >= 0)
+            pp.thumblistCon.css('marginTop', -pp.thumblistCon.children('a').size() / 2 * pp.params.thumbWidth);
+        pp.thumblistCon.animate({
+            marginTop : parseInt(pp.thumblistCon.css('marginTop').replace('px','')) + pp.params.thumbWidth
+        }, 'fast', function() {
+            scrolling = false;
+        });
+    }
+    
+    this.imgLoaded = function(dim) {
+        var rw = dim.w, rh = dim.h;
+        pp.mainShow.css({
+            marginLeft : (pp.params.width - pp.params.thumbSize - rw) / 2,
+            marginTop : 0
+        }).children('img').attr({
+            width : rw,
+            height : rh
+        });
+        setTimeout(floatImg, 10);
+    };
+    function scrollHandler() {
+        offX = pp.main.offset().left - jQuery(window).scrollLeft();
+        offY = pp.main.offset().top - jQuery(window).scrollTop();
+    }
+    function floatImg(clickEvent) {
+        var myW = pp.main.width(), myH = pp.main.height();
+        jQuery(window).scroll(scrollHandler).trigger('scroll');
+        pp.mainShow.unbind('mousemove').mousemove(function(e) {
+            
+            pp.mainShow.css({
+                textAlign : 'left',
+                'margin-top' : (offY - e.clientY) * (pp.params.largeH - myH) / myH,
+                'margin-left' : (offX - e.clientX) * (pp.params.largeW - myW) / myW
+            });
+        });
+    }
+    
+    this.prepare = function() {
+        var showBtn = (pp.params.height - pp.params.btnSize * 2 - pp.params.topSpace) < pp.params.thumblists.length * pp.params.thumbWidth;
+        jQuery('#lb-wrapper').css({
+            "width" : pp.params.width,
+            "height" : pp.params.height
+        });
+        pp.main.css({
+            "width" : pp.params.width - pp.params.thumbSize,
+            "height" : pp.params.height,
+            "overflow" : 'hidden'
+        });
+        pp.main.hover(function() {
+            jQuery('#lb-contentControls').show();
+        }, function() {
+            jQuery('#lb-contentControls').hide();
+        });
+        pp.btnPre.bind('click', function() {
+            if (showBtn && scrolling)
+                return;
+            pp.params.index--;
+            pp.reloadImage();
+            if (showBtn)
+                down();
+            return false;
+        });
+        pp.btnNext.bind('click', function() {
+            if (showBtn && scrolling)
+                return;
+            pp.params.index++;
+            pp.reloadImage();
+            if (showBtn)
+                up();
+            return false;
+        });
+        pp.thumblist.show();
+        var ths = '';
+        jQuery(pp.params.thumblists).each(
+                function(a, b) {
+                    ths += '<a><img width="' + pp.params.thumbDim.width + '" height="' + pp.params.thumbDim.height + '" src="' + b + '" /></a>';
+                });
+        pp.thumblistCon.children('a').remove();
+        pp.thumblistCon.append(ths);
+        pp.winbox.addClass('lb-thumbnaiRight');
+        pp.thumblist.css({
+            width : pp.params.thumbSize,
+            height : pp.params.height - pp.params.btnSize * 2 - pp.params.topSpace
+        });
+        if (showBtn) {
+            pp.thumblistCon.append(pp.thumblistCon.html());
+            pp.thumblistCon.css({
+                position : 'relative',
+                height : pp.params.thumblists.length * 2 * pp.params.thumbWidth
+            });
+            pp.thumblistCon.css('marginTop', -pp.params.index * pp.params.thumbWidth);
+            pp.ttnPre.click(down);
+            pp.ttnNext.click(up);
+        } else {
+            pp.ttnPre.hide();
+            pp.ttnNext.hide();
+            pp.thumblistCon.css({
+                position : 'relative',
+                height : pp.params.thumblists.length * pp.params.thumbWidth
+            });
+        }
+        
+        pp.thumblistCon
+                .children('a')
+                .each(
+                        function(n) {
+                            jQuery(this)
+                                    .click(
+                                            function() {
+                                                if (pp.params.index == (n + pp.params.images.length) % pp.params.images.length)
+                                                    return;
+                                                pp.params.index = n;
+                                                pp.reloadImage();
+                                                if (showBtn)
+                                                    up();
+                                            });
+                        });
+        pp.updateThumblistBtns();
+    };
+    pp.prepare();
+    pp.reloadImage();
+}
+</script>
+
+<script type="text/javascript" data-name="图片操作">
+var litb = {
+    "baseURL":"<?php echo  $this->getUrl();?>",
+    "resouceURL":"<?php echo  $this->getUrl();?>skin/frontend/beingformal/default/images/",
+    "siteWater":"",
+    "imageURL":""
+};
+litb.preLoadImages = {};
+(function (jQuery) {
+    jQuery.fn.preLoad = function(setting) {
+        if (!setting.src)
+            return;
+        var el = jQuery(this), params = jQuery.extend({
+            success : function() {
+            },
+            failure : function() {
+            }
+        }, setting);
+        el.data('src', params.src);
+        if (litb.preLoadImages[params.src] && litb.preLoadImages[params.src].loaded) {
+            el.removeAttr("style");
+            el.attr({
+                'width' : litb.preLoadImages[params.src].img.width,
+                'height' : litb.preLoadImages[params.src].img.height,
+                'src' : params.src
+            });
+            params.success({
+                w : litb.preLoadImages[params.src].img.width,
+                h : litb.preLoadImages[params.src].img.height
+            });
+            return;
+        }
+        
+        var w = el.attr('width'), 
+            h = el.attr('height'); 
+        params = jQuery.extend({
+                            w : w,
+                            h : h
+                        }, params);
+        el.attr({
+            'src' : litb.resouceURL + 'tw_images/transparent.gif',
+            'width' : params.w,
+            'height' : params.h,
+            'style' : 'background:url("' + litb.resouceURL + 'tw_images/popup-loading.gif") no-repeat 50% 50%'
+        });
+        if (!litb.preLoadImages[params.src]) {
+            var img = new Image();
+            litb.preLoadImages[params.src] = {
+                img : img,
+                loaded : false
+            };
+            img.onload = function() {
+                litb.preLoadImages[params.src].loaded = true;
+                if (params.src != el.data('src'))
+                    return;
+                el.removeAttr("style");
+                el.attr({
+                    'width' : this.width,
+                    'height' : this.height,
+                    'src' : params.src
+                });
+                params.success({
+                    w : this.width,
+                    h : this.height
+                });
+            };
+            img.onerror = function() {
+                litb.preLoadImages[params.src] = null;
+                if (params.src != el.data('src'))
+                    return;
+                el.removeAttr("style");
+                el.attr('src', '');
+                params.failure();
+            };
+            img.src = params.src;
+        }
+    };
+})(jQuery);
+
+
+
+jQuery(document).ready(function($){
+    var thumbListHeight = jQuery('#prodthumbnails').height(), 
+        scrolling = false;
+    // init array before clone thumblists
+    var thumblists = [], 
+        images = [];
+    jQuery('#prodthumbnails input').each(function(){
+        images.push(jQuery(this).data('image'));
+        thumblists.push(jQuery(this).data('thumb'));
+    });
+
+    //点击缩略图
+    jQuery("#productImages a img").on('click', function(){
+
+        jQuery("#productImages ul li").removeClass('active');
+        jQuery(this).parent().parent().addClass('active');
+
+        var imgPath = jQuery(this).data('imgpath');
+
+        jQuery("#w-featurePics a").attr('href', imgPath);
+        jQuery("#w-featurePics img").attr('src', imgPath);
+
+    });
+
+    //缩略图左右滑动
+    var page = 1;
+    var i = 6;
+    var len = $(".thumbnails ul li").length;
+    var page_count = Math.ceil(len / i);
+    var none_unit_width = $(".thumbnails").width();
+    var $parent = $(".thumbnails ul");
+    if (len <= 6) {
+        $(".toright,.toleft").css("opacity", ".2");
+    }
+    $(".toright").on('click',function() {
+        if (!$parent.is(":animated")) {
+            if (page == page_count) {
+                $parent.animate({
+                    left: 0
+                }, 800);
+                page = 1;
+            } else {
+                $parent.animate({
+                    left: '-=' + none_unit_width
+                }, 800);
+                page++;
+            }
+        }
+    });
+    $(".toleft").on('click',function() {
+        if (!$parent.is(":animated")) {
+            if (page == 1) {
+                $parent.animate({
+                    left: '-=' + none_unit_width * (page_count - 1)
+                }, 800);
+                page = page_count;
+            } else {
+                $parent.animate({
+                    left: '+=' + none_unit_width
+                }, 800);
+                page--;
+            }
+        }
+    });
+
+    //点击大图
+    jQuery('#w-featurePics').on('click', function(){
+        var win = new VerticalPopup({
+                                        popW:600, 
+                                        popH:600, 
+                                        largeW:600, 
+                                        largeH:800, 
+                                        thumbSize:147, 
+                                        thumbWidth:147, 
+                                        thumbDim:{width:97, height:128}, 
+                                        imageUrl:jQuery(this).children('a').attr('href'),
+                                        thumblists:thumblists,
+                                        images:images
+                                    });
+        win.show();
+        return false;
+    });
+
+    
+
+});
+</script>
+
+
+
+
+

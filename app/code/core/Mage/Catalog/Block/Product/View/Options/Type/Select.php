@@ -43,6 +43,20 @@ class Mage_Catalog_Block_Product_View_Options_Type_Select
     public function getValuesHtml()
     {
         $_option = $this->getOption();
+
+        if($_option->getTitle()=='Color'){
+            $colors_str = Mage::getModel('core/variable')->loadByCode('colorRGB')->getValue('text');
+            $colors_str = str_replace(array("\r\n", "\r", "\n"), "", $colors_str);
+            $colors_str = trim($colors_str,",");
+            $colors_arr = explode(",", $colors_str);
+            $colors = array();
+            foreach($colors_arr as $color){
+                $tmp = explode("=>", $color);
+                $colors[trim($tmp[0],"'")] = trim($tmp[1],"'");
+            }
+        }
+
+        
         $configValue = $this->getProduct()->getPreconfiguredValues()->getData('options/' . $_option->getId());
         $store = $this->getProduct()->getStore();
 
@@ -70,7 +84,11 @@ class Mage_Catalog_Block_Product_View_Options_Type_Select
                 $select->addOption(
                     $_value->getOptionTypeId(),
                     $_value->getTitle() . ' ' . $priceStr . '',
-                    array('price' => $this->helper('core')->currencyByStore($_value->getPrice(true), $store, false))
+                    array(
+                        'price' => $this->helper('core')->currencyByStore($_value->getPrice(true), $store, false),
+                        'data-option'=> strtoupper(str_replace(" ","",$_value->getTitle())),
+                        'data-text'=>$_value->getTitle(),
+                    )
                 );
             }
             if ($_option->getType() == Mage_Catalog_Model_Product_Option::OPTION_TYPE_MULTIPLE) {
@@ -99,7 +117,7 @@ class Mage_Catalog_Block_Product_View_Options_Type_Select
                     $type = 'radio';
                     $class = 'radio';
                     if (!$_option->getIsRequire()) {
-                        $selectHtml .= '<li><input type="radio" id="options_' . $_option->getId() . '" class="'
+                        $selectHtml .= '<li><input data-test="1" type="radio" id="options_' . $_option->getId() . '" class="'
                             . $class . ' product-custom-option" name="options[' . $_option->getId() . ']"'
                             . ($this->getSkipJsReloadPrice() ? '' : ' onclick="opConfig.reloadPrice()"')
                             . ' value="" checked="checked" /><span class="label"><label for="options_'
@@ -128,20 +146,46 @@ class Mage_Catalog_Block_Product_View_Options_Type_Select
                     $checked = $configValue == $htmlValue ? 'checked' : '';
                 }
 
-                $selectHtml .= '<li>' . '<input type="' . $type . '" class="' . $class . ' ' . $require
-                    . ' product-custom-option"'
-                    . ($this->getSkipJsReloadPrice() ? '' : ' onclick="opConfig.reloadPrice()"')
-                    . ' name="options[' . $_option->getId() . ']' . $arraySign . '" id="options_' . $_option->getId()
-                    . '_' . $count . '" value="' . $htmlValue . '" ' . $checked . ' price="'
-                    . $this->helper('core')->currencyByStore($_value->getPrice(true), $store, false) . '" />'
-                    . '<span class="label"><label for="options_' . $_option->getId() . '_' . $count . '">'
-                    . $this->escapeHtml($_value->getTitle()) . ' ' . $priceStr . '</label></span>';
+
+                if($_option->getTitle()=='Color'){
+                    $selectHtml .= '<li class="li-color">' . 
+                        '<input data-test="2" data-option="color" type="' . $type . '" class="' . $class . ' ' . $require
+                        . ' product-custom-option"'
+                        . ($this->getSkipJsReloadPrice() ? '' : ' onclick="opConfig.reloadPrice()"')
+                        . ' name="options[' . $_option->getId() . ']' . $arraySign . '" id="options_' . $_option->getId()
+                        . '_' . $count . '" value="' . $htmlValue . '" ' . $checked . ' price="'
+                        . $this->helper('core')->currencyByStore($_value->getPrice(true), $store, false) . '" />';
+
+                    $color_name = str_replace(array(" ","　","\t","\n","\r"),'_',strtolower( $this->escapeHtml($_value->getTitle()) ));
+                    if( array_key_exists($color_name,$colors) ){
+                        $selectHtml .= '<div    class="color-select color-rgb"
+                                                title="'.strip_tags($this->escapeHtml($_value->getTitle()) . ' ' . $priceStr).'">
+                                                <div style="background:'.$colors[$color_name].'"></div>
+                                        </div>';
+                    }else{
+                        $selectHtml .= '<div class="color-select color-text">'.strip_tags($this->escapeHtml($_value->getTitle())).'</div>';
+                    }
+                    
+                }else{
+                    $selectHtml .= '<li>' . 
+                        '<input data-test="2" type="' . $type . '" class="' . $class . ' ' . $require
+                        . ' product-custom-option"'
+                        . ($this->getSkipJsReloadPrice() ? '' : ' onclick="opConfig.reloadPrice()"')
+                        . ' name="options[' . $_option->getId() . ']' . $arraySign . '" id="options_' . $_option->getId()
+                        . '_' . $count . '" value="' . $htmlValue . '" ' . $checked . ' price="'
+                        . $this->helper('core')->currencyByStore($_value->getPrice(true), $store, false) . '" />'
+
+                        . '<span class="label"><label for="options_' . $_option->getId() . '_' . $count . '">'
+                        . $this->escapeHtml($_value->getTitle()) . ' ' . $priceStr . '</label></span>';
+                }
+
                 if ($_option->getIsRequire()) {
                     $selectHtml .= '<script type="text/javascript">' . '$(\'options_' . $_option->getId() . '_'
                     . $count . '\').advaiceContainer = \'options-' . $_option->getId() . '-container\';'
                     . '$(\'options_' . $_option->getId() . '_' . $count
                     . '\').callbackFunction = \'validateOptionsCallback\';' . '</script>';
                 }
+                
                 $selectHtml .= '</li>';
             }
             $selectHtml .= '</ul>';

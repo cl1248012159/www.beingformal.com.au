@@ -1,0 +1,45 @@
+<?php
+$productId = (int) $this->getRequest()->getParam('id', false);
+$product = Mage::getModel('catalog/product')->load($productId);
+
+$categoryId = (int) $this->getRequest()->getParam('category', false);
+$categoryId = $categoryId ? $categoryId : $product->getCategoryId();
+if(!$categoryId){
+    $categoryIds = $product->getCategoryIds();
+    $categoryId = $categoryIds[0];
+}
+
+$_productCollection = Mage::getModel('catalog/product')->getCollection()->addUrlRewrite()
+    ->addStoreFilter(Mage::app()->getStore()->getId())
+    ->addAttributeToFilter('status', 1)
+    ->addAttributeToFilter('visibility', 4)
+    ->getSelect()
+    ->joinleft( array('cp'=> 'catalog_category_product'), 'cp.product_id = e.entity_id')
+    ->where("cp.category_id='".$categoryId."'")
+    ->order(new Zend_Db_Expr('RAND()'))
+    ->limit(6);
+ $results = Mage::getSingleton('core/resource')->getConnection('core_read')->fetchAll($_productCollection);
+?>
+
+<?php if( count($results) >0 ): ?>
+    <div class="parent_cat_related">
+        <div class="category_name_bottom">
+            <span>Related Products</span>
+        </div>
+        <div class="related_products">
+            <?php
+                foreach($results as $_sql_product):
+                $_product = Mage::getModel('catalog/product')->load($_sql_product['entity_id']);
+            ?>
+                    <dl class="item">
+                        <dt>
+                            <a href="<?php echo $_product->getProductUrl() ?>">
+                                <img alt="<?php echo $_product->getName()?>" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(240,320); ?>">
+                            </a>
+                        </dt>
+                        <dd><?php echo $this->getPriceHtml($_product, true) ?></dd>
+                    </dl>
+            <?php endforeach; ?>
+        </div>
+    </div>
+<?php endif ?>

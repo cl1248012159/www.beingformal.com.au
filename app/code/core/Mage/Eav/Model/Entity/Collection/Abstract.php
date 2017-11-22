@@ -689,6 +689,9 @@ abstract class Mage_Eav_Model_Entity_Collection_Abstract extends Varien_Data_Col
     {
         // validate alias
         if (isset($this->_joinFields[$alias])) {
+            if($alias == 'recommened'){
+                return $this;
+            }
             throw Mage::exception(
                 'Mage_Eav',
                 Mage::helper('eav')->__('Joined field with this alias is already declared')

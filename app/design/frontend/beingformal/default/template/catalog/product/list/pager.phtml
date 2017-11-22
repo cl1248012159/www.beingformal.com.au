@@ -8,12 +8,12 @@
         <div class="pagination">
             <ol>
                 <?php if (!$this->isFirstPage()): ?>
-                <li><a class="previous<?php if(!$this->getAnchorTextForPrevious()): ?> i-previous<?php endif;?>" href="<?php echo $this->getPreviousPageUrl() ?>"></a></li>
+                <li><a class="previous" href="<?php echo $this->getPreviousPageUrl() ?>">&nbsp;</a></li>
                 <?php endif;?>
 
                 <?php if ($p_request && $p_request>5 && $p_array[0]!=1): ?>
                 <li><a href="<?php echo $this->getFirstPageUrl() ?>">1</a></li>
-                <li><a href="<?php echo $this->getPageUrl($p_array[0]-1) ?>">...</a></li>
+                <li class="dian">...</li>
                 <?php endif?>
 
                 <?php foreach ($this->getFramePages() as $_page): ?>
@@ -25,13 +25,13 @@
                 <?php endforeach;?>
 
                 <?php if ($p_request && $p_request<$this->getLastPageNum()-3 && end($p_array)!=$this->getLastPageNum()): ?>
-                    <li>...</li>
+                    <li class="dian">...</li>
                     <li><a href="<?php echo $this->getLastPageUrl() ?>"><?php echo $this->getLastPageNum() ?></a></li>
                 <?php endif;?>
 
 
                 <?php if (!$this->isLastPage()): ?>
-                    <li><a class="next<?php if(!$this->getAnchorTextForNext()): ?> i-next<?php endif; ?>" href="<?php echo $this->getNextPageUrl() ?>"></a></li>
+                    <li><a class="next" href="<?php echo $this->getNextPageUrl() ?>">&nbsp;</a></li>
                 <?php endif;?>
             </ol>
         </div>

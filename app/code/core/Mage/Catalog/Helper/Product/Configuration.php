@@ -47,6 +47,7 @@ class Mage_Catalog_Helper_Product_Configuration extends Mage_Core_Helper_Abstrac
         $product = $item->getProduct();
         $options = array();
         $optionIds = $item->getOptionByCode('option_ids');
+
         if ($optionIds) {
             $options = array();
             foreach (explode(',', $optionIds->getValue()) as $optionId) {
@@ -74,6 +75,7 @@ class Mage_Catalog_Helper_Product_Configuration extends Mage_Core_Helper_Abstrac
 
                     $options[] = array(
                         'label' => $option->getTitle(),
+                        'value_id'=>$itemOption->getValue(),
                         'value' => $group->getFormattedOptionValue($itemOption->getValue()),
                         'print_value' => $group->getPrintableOptionValue($itemOption->getValue()),
                         'option_id' => $option->getId(),

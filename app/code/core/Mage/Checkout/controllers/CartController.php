@@ -357,7 +357,6 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
             if (!$quoteItem) {
                 Mage::throwException($this->__('Quote item is not found.'));
             }
-
             $item = $cart->updateItem($id, new Varien_Object($params));
             if (is_string($item)) {
                 Mage::throwException($item);
@@ -425,11 +424,17 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
             case 'empty_cart':
                 $this->_emptyShoppingCart();
                 break;
+            case 'proceed-to-checkout':
             case 'update_qty':
                 $this->_updateShoppingCart();
                 break;
             default:
                 $this->_updateShoppingCart();
+        }
+
+        if( $updateAction == 'proceed-to-checkout' ){
+            $this->_redirect('checkout/onepage');
+            return;
         }
 
         $this->_goBack();
@@ -440,6 +445,7 @@ class Mage_Checkout_CartController extends Mage_Core_Controller_Front_Action
      */
     protected function _updateShoppingCart()
     {
+
         try {
             $cartData = $this->getRequest()->getParam('cart');
             if (is_array($cartData)) {

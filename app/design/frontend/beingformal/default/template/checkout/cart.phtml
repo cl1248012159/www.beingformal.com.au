@@ -1,0 +1,140 @@
+
+<div class="cart">
+    <div class="step">
+        <span class="on">step1:my bag</span>
+        <span>step2:checkout</span>
+        <span>step3:payment</span>
+    </div>
+
+
+    <?php echo $this->getMessagesBlock()->toHtml() ?>
+
+
+
+
+
+
+    
+    <?php echo $this->getChildHtml('form_before') ?>
+    <form action="<?php echo $this->getFormActionUrl() ?>" method="post" class="update_form">
+        <?php echo $this->getBlockHtml('formkey'); ?>
+        <fieldset>
+            <table id="shopping-cart-table" class="cart-table">
+                <col width="11%" data-name="product-image"/>
+                <col width="40%" data-name="product-name"/>
+            <?php if ($this->helper('tax')->displayCartPriceExclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                <col width="1" data-name="product-tax1"/>
+            <?php endif; ?>
+            <?php if ($this->helper('tax')->displayCartPriceInclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                <col width="1" data-name="product-tax2"/>
+            <?php endif; ?>
+                <col width="1" data-name="product-tax3"/>
+            <?php if ($this->helper('tax')->displayCartPriceExclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                <col width="1" data-name="product-tax4"/>
+            <?php endif; ?>
+            <?php if ($this->helper('tax')->displayCartPriceInclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                <col width="1" data-name="product-tax5"/>
+            <?php endif; ?>
+                <col width="10%" data-name="product-action"/>
+
+            <?php $mergedCells = ($this->helper('tax')->displayCartBothPrices() ? 2 : 1); ?>
+                <thead>
+                    <tr>
+                        <th rowspan="<?php echo $mergedCells; ?>">bag item(s)</th>
+                        <th rowspan="<?php echo $mergedCells; ?>">&nbsp;</th>
+                        
+                        
+                       
+                        <th class="a-center" colspan="<?php echo $mergedCells; ?>">item price</th>
+                        <th rowspan="<?php echo $mergedCells; ?>" class="a-center">quantity</th>
+                        <th class="a-center" colspan="<?php echo $mergedCells; ?>">amount</th>
+                        <th rowspan="<?php echo $mergedCells; ?>" class="a-center">operation</th>
+                    </tr>
+                    <?php if ($this->helper('tax')->displayCartBothPrices()): ?>
+                    <tr>
+                        <th class="a-right"><?php echo $this->helper('tax')->getIncExcTaxLabel(false) ?></th>
+                        <th><?php echo $this->helper('tax')->getIncExcTaxLabel(true) ?></th>
+                        <th class="a-right"><?php echo $this->helper('tax')->getIncExcTaxLabel(false) ?></th>
+                        <th><?php echo $this->helper('tax')->getIncExcTaxLabel(true) ?></th>
+                    </tr>
+                    <?php endif; ?>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <td colspan="50">
+                            <div class="btn_list">
+                                <?php if($this->getContinueShoppingUrl()): ?>
+                                    <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Continue Shopping')) ?>" class="button btn-continue" onclick="setLocation('<?php echo Mage::helper('core')->quoteEscape($this->getContinueShoppingUrl()) ?>')"><span><span>&lt;&lt; Continue Shopping</span></span></button>
+                                <?php endif; ?>
+                                <button type="submit" name="update_cart_action"  value="update_qty" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Update Shopping Cart')); ?>" class="button btn-update"><span><span><?php echo $this->__('Update Shopping Cart'); ?></span></span></button>
+                            </div>
+                            <div class="totals">
+                                <?php echo $this->getChildHtml('totals'); ?>
+                                <?php if(!$this->hasError()): ?>
+                                <ul class="checkout-types">
+                                <?php foreach ($this->getMethods('methods') as $method): ?>
+                                    <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
+                                    <li><?php echo $methodHtml; ?></li>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                                </ul>
+                                <?php endif; ?>
+                            </div>
+                            <!--[if lt IE 8]>
+                            <input type="hidden" id="update_cart_action_container" />
+                            <script type="text/javascript">
+                            //<![CDATA[
+                                Event.observe(window, 'load', function()
+                                {
+                                    // Internet Explorer (lt 8) does not support value attribute in button elements
+                                    $emptyCartButton = $('empty_cart_button');
+                                    $cartActionContainer = $('update_cart_action_container');
+                                    if ($emptyCartButton && $cartActionContainer) {
+                                        Event.observe($emptyCartButton, 'click', function()
+                                        {
+                                            $emptyCartButton.setAttribute('name', 'update_cart_action_temp');
+                                            $cartActionContainer.setAttribute('name', 'update_cart_action');
+                                            $cartActionContainer.setValue('empty_cart');
+                                        });
+                                    }
+
+                                });
+                            //]]>
+                            </script>
+                            <![endif]-->
+                        </td>
+                    </tr>
+                </tfoot>
+                <tbody>
+                <?php foreach($this->getItems() as $_item): ?>
+                    <?php echo $this->getItemHtml($_item) ?>
+                <?php endforeach ?>
+                </tbody>
+            </table>
+            <script type="text/javascript" data-name="qty加减">
+                jQuery(document).ready(function($){
+                    $(".qty_op .jian").on('click',function(){
+                        var $qty = $(this).siblings('.qty').val();
+                        if($qty<1){
+                            $(this).siblings('.qty').val(1);
+                            $('button[value="update_qty"]').trigger('click');
+                        }else if($qty==1){
+
+                        }else{
+                            $(this).siblings('.qty').val($qty-1);
+                            $('button[value="update_qty"]').trigger('click');
+                        }
+                    });
+                    $(".qty_op .jia").on('click',function(){
+                        var $qty = $(this).siblings('.qty').val();
+                        $(this).siblings('.qty').val($qty-0+1);
+                        $('button[value="update_qty"]').trigger('click');
+                    });
+                });
+            </script>
+        </fieldset>
+    </form>
+
+
+
+</div>

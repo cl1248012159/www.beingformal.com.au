@@ -86,6 +86,33 @@ class Mage_Catalog_Block_Product_List extends Mage_Catalog_Block_Product_Abstrac
             }
             $this->_productCollection = $layer->getProductCollection();
 
+
+
+
+            if(  $this->getRequest()->getParam('order')=='recommened'  ){
+                $this->_productCollection->joinField(   'recommened',
+                                                        'review_entity_summary',
+                                                        'reviews_count',
+                                                        'entity_pk_value=entity_id',
+                                                        array(
+                                                            'entity_type'=>1,
+                                                            'store_id'=> Mage::app()->getStore()->getId()
+                                                        ),
+                                                        'left');
+            }
+            if($this->getRequest()->getParam('order')=='discount'){
+                $sql = $this->_productCollection->getSelectSql(true);
+                if(stripos($sql,'disocunt') === false){
+                    $this->_productCollection
+                        ->getSelect()
+                        ->columns(array('disocunt' => new Zend_Db_Expr('price_index.final_price/price_index.price')))
+                        ->order('disocunt DESC');
+                }
+            }
+
+
+
+
             $this->prepareSortableFieldsByCategory($layer->getCurrentCategory());
 
             if ($origCategory) {
@@ -159,9 +186,27 @@ class Mage_Catalog_Block_Product_List extends Mage_Catalog_Block_Product_Abstrac
         $toolbar->setCollection($collection);
 
         $this->setChild('toolbar', $toolbar);
-        Mage::dispatchEvent('catalog_block_product_list_collection', array(
-            'collection' => $this->_getProductCollection()
-        ));
+        if(  $this->getRequest()->getParam('order')=='recommened'  ){
+            Mage::dispatchEvent('catalog_block_product_list_collection', array(
+                'collection' => $this->_getProductCollection()
+                                     ->setOrder("price","ASC")
+            ));
+        }elseif($this->getRequest()->getParam('order')=='discount') {
+            $now_coll = $this->_getProductCollection();
+            $sql = $now_coll->getSelectSql(true);
+            if(stripos($sql,'`price_index`.`min_price` ASC') === false){
+                $now_coll = $now_coll->setOrder("price","ASC");
+            }
+            Mage::dispatchEvent('catalog_block_product_list_collection', array(
+                'collection' => $now_coll
+            ));
+        }else{
+            Mage::dispatchEvent('catalog_block_product_list_collection', array(
+                'collection' => $this->_getProductCollection()
+            ));
+        }
+        //Mage::log( $this->_productCollection->getSelectSql(true) );
+
 
         $this->_getProductCollection()->load();
 

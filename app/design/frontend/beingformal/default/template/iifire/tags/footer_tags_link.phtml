@@ -1,0 +1,10 @@
+<?php $helper = Mage::helper('itags'); ?>
+
+<ul class="tags-link">
+<li><a href="/Mostpopular" title="Popular Tags"><font style="margin-left: 10px;">Popular Tags:</font></a></li>
+<?php foreach($helper->getAlphabet() as $letter): ?>
+
+	<li><a title="<?php echo $letter; ?>" href="<?php echo $helper->getLetterUrl($letter); ?>"><?php echo $letter; ?></a></li>
+<?php endforeach; ?>
+</ul>
+<script type="text/javascript">decorateGeneric($$('ul.tags-link li'), ['first','last'])</script>

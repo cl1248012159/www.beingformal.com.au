@@ -1,0 +1,22 @@
+<?php
+$helper = Mage::helper('itags');
+$alphabet = $helper->getAlphabet(); 
+?>
+<style type="text/css">	
+	.itags-alphabet {border-bottom: 1px solid #ddd;padding: 5px;}
+	.itags-alphabet a{margin:0 4px 0 3px;}
+</style>
+
+<div class="itags-alphabet">
+	<?php $i = 0; ?>
+	<?php foreach($alphabet as $letter): ?>
+		<?php if($i!=0): ?>&nbsp;|&nbsp;<?php endif; ?>
+		<a title="<?php echo $letter; ?>" href="<?php echo $helper->getLetterUrl($letter); ?>"><?php echo $letter; ?></a>
+		<?php $i++; ?>
+	<?php endforeach; ?>
+</div>
+
+
+
+
+<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('cms/helpcenter/a_promotion_area.phtml')->toHtml(); ?>

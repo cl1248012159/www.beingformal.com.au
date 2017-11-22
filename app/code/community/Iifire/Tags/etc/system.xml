@@ -1,0 +1,342 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Joy <yanggaojiao@qq.com> (http://www.iifire.com)
+ * @copyright Copyright &copy; 2012, Iifire (http://demo.iifire.com)
+ * @support Hellokeykey (http://www.hellokeykey.com)
+ * @version 1.6.0
+ */
+ -->
+<config>
+    <sections>
+        <iifire_tags translate="label" module="itags">
+            <label>A-Z Tags Setting</label>
+            <tab>catalog</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>1</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <list translate="label">
+                    <label>Tags List Page Setting</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                    	<pagesize translate="label">
+                            <label>Tags List Page Size</label>
+                            <comment>E.g.60/100/200</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </pagesize>
+                        <title translate="label">
+                        	<label>Tags List Title</label>
+                            <comment>eg.Popular Products on MyDomain.com {page}</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <keywords translate="label">
+                        	<label>Tags List Keywords</label>
+                            <comment>eg.popular products</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </keywords>
+                        <description translate="label">
+                        	<label>Tags List Description</label>
+                            <comment>eg.This index page allows you to find all the popular products in MyDomain</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </description>
+                        <title_letter translate="label">
+                        	<label>Tags List Title(with letter)</label>
+                            <comment>eg.Tag List : {letter} - MyDomain.com {page}</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title_letter>
+                        <keywords_letter translate="label">
+                        	<label>Tags List Keywords(with letter)</label>
+                            <comment>eg.popular products {}</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>21</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </keywords_letter>
+                        <description_letter translate="label">
+                        	<label>Tags List Description(with letter)</label>
+                            <comment>eg.This index page allows you to find all the popular products begin with {} MyDomain</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>22</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </description_letter>
+					</fields>
+				</list>
+                <view translate="label">
+                    <label>Tags View Page Setting</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>3</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                    	<pagesize translate="label">
+                        	<label>Page Size</label>
+                        	<comment>E.g.4/8/12/24</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </pagesize>
+                        <title>
+                    		<label>SEO title</label>
+                    		<comment>{} On Sale! | mydomain.com</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                    	</title>
+                    	<keywords>
+                    		<label>SEO keywords</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>{}, Buy {}, Discount {}</comment>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                    	</keywords>
+                    	<description>
+                    		<label>SEO description</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>{} are free shipping with discounted prices. Shop {} with top rated customer service</comment>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                    	</description>
+                    	<word_min>
+                    		<label>Min Length For Each Word</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Example:2(recommend)</comment>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                    	</word_min>
+                    	<word_except>
+                    		<label>Word Not Include Follows</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Example:and,with,the,for,all,this,from,size,height,color,inch,to(Case Insensitive)</comment>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                    	</word_except>
+                    	<pagesize_or>
+                    		<label>Page size When Search Type 'Or'</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>Example:36(recommend)</comment>
+                            <sort_order>19</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                    	</pagesize_or>
+                    	<fixed_result>
+                    		<label>Fixed Search Result</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                    	</fixed_result>
+                    	<tags_remove>
+                    		<label>Remove No Result Tags</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>22</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                    	</tags_remove>
+					</fields>
+				</view>
+                <sitemap translate="label">
+                    <label>Sitemap Setting</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>4</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <num translate="label">
+                            <label>Url amount per gz file</label>
+                            <comment>E.g.500/5000/20000</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </num>
+                        <change_freq translate="label">
+                            <label>Change Freq</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>iifire_tags/system_sitemap_freq</source_model>
+                            <comment>E.g.always/hourly/daily/weekly/monthly/yearly</comment>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </change_freq>
+                        <priority translate="label">
+                            <label>Tags Sitemap Priority</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>E.g.0.5</comment>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </priority>
+                        <priority_category translate="label">
+                            <label>Category Sitemap Priority</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>E.g.0.5</comment>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </priority_category>
+                        <priority_product translate="label">
+                            <label>Product Sitemap Priority</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>E.g.0.5</comment>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </priority_product>
+                    </fields>
+                </sitemap>
+                <sitemap_cron translate="label">
+                    <label>Sitemap Cron Settings</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>500</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <enabled translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <error_email translate="label">
+                            <label>Error Email Recipient</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </error_email>
+                        <error_email_identity translate="label">
+                            <label>Error Email Sender</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_identity</source_model>
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </error_email_identity>
+                        <error_email_template translate="label">
+                            <label>Error Email Template</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </error_email_template>
+                        <frequency translate="label">
+                            <label>Frequency</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_cron_frequency</source_model>
+                            <backend_model>adminhtml/system_config_backend_sitemap_cron</backend_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </frequency>
+                        <time translate="label">
+                            <label>Start Time</label>
+                            <frontend_type>time</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </time>
+                    </fields>
+                </sitemap_cron>
+                <general translate="label">
+                    <label>Additional Setting</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                    	<pagesize_important_product>
+                    		<label>Number Of Important Tags On Product View Page</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                    	</pagesize_important_product>
+                    	<pagesize_important_tags>
+                    		<label>Number Of Important Tags On Tags View Page</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                    	</pagesize_important_tags>
+                    	<related_searches>
+                    		<label>Enable Related Searches</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                    	</related_searches>
+                    </fields>
+                </general>
+            </groups>
+        </iifire_tags>
+    </sections>
+</config>

@@ -1,0 +1,22 @@
+<?php $baseSeoUrl = Mage::helper('iifire_tags')->getBaseSeoUrl(); ?>
+<div class="block">
+	<div class="block-content tags-relate-block">
+		<h3><?php echo $this->__("Related Tags"); ?></h3>
+		<ul>
+			<?php if (is_array($this->getRelatedAfter())): ?>
+			<?php foreach($this->getRelatedAfter() as $_tag): ?>
+			<li>
+				<a title="<?php echo $_tag->getTagsText(); ?>" href="<?php echo $baseSeoUrl.str_replace(' ', '-',$_tag->getTagsText()).".html"; ?>"><?php echo $_tag->getTagsText(); ?></a>
+			</li>
+			<?php endforeach; ?>
+			<?php endif; ?>
+			<?php if (is_array($this->getRelatedBefore())): ?>
+			<?php foreach($this->getRelatedBefore() as $_tag): ?>
+			<li>
+				<a title="<?php echo $_tag->getTagsText(); ?>" href="<?php echo $baseSeoUrl.str_replace(' ', '-',$_tag->getTagsText()).".html"; ?>"><?php echo $_tag->getTagsText(); ?></a>
+			</li>
+			<?php endforeach; ?>
+			<?php endif; ?>
+		</ul>
+	</div>
+</div>

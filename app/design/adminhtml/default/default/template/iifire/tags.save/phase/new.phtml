@@ -1,0 +1,39 @@
+<?php
+/**
+ * @author Galey <yanggaojiao@qq.com>
+ * @copyright Copyright &copy; 2011, Hifashion (http://www.magentokey.com, http://www.hifasion.org)
+ * @version 1.0.0
+ */
+?>
+<div class="content-header">
+    <h3 class="icon-head head-products"><?php echo $this->getHeaderText() ?></h3>
+    <p class="content-buttons form-buttons">
+    <?php echo $this->getBackButtonHtml(); ?>
+    <?php echo $this->getSaveButtonHtml(); ?>
+    <?php echo $this->getSaveContinueButtonHtml(); ?>
+    </p>
+</div>
+<form action="<?php echo $this->getSaveUrl() ?>" method="post" name="description_form" id="description_form" enctype="multipart/form-data">
+    <div class="no-display">
+		<input type="hidden" id="continue" name="continue" value="" />
+	</div>
+    <?php echo $this->getBlockHtml('formkey')?>
+    <?php echo $this->getForm(); ?>
+</form>
+
+<script type="text/javascript">
+//<![CDATA[
+	var descriptionForm = new varienForm('description_form');
+	var descriptionControl = {
+		save: function(url) {
+			$('description_form').setAttribute('action', url);
+			descriptionForm.submit();
+		},
+    	continue: function(url) {
+    		$('description_form').setAttribute('action', url);
+    		$('continue').writeAttribute('value',1);
+    		descriptionForm.submit();
+    	}
+	}
+//]]>
+</script>

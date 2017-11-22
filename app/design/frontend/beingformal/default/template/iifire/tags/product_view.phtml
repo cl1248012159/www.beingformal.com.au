@@ -1,0 +1,15 @@
+<?php $helper = $this->helper('itags'); ?>
+<div class="box-collateral box-related-cats">
+	<div class="title"><h2><?php echo $helper->__("Related Tags"); ?></h2></div>
+	<div class="content">
+		<?php $collection = $this->getCollection(10); ?>
+		<?php $i = 0; ?>
+		<?php if(count($collection)): ?>
+			<?php foreach($collection as $_tag): ?>
+			<?php if ($i!=0): ?>,<?php endif; ?>
+			<a title="<?php echo $_tag->getTagsText(); ?>" href="<?php echo strtolower($helper->getProductListUrl($_tag->getTagsText())); ?>"><?php echo $this->htmlEscape($_tag->getTagsText()); ?></a>
+			<?php $i++; ?>
+			<?php endforeach; ?>
+		<?php endif; ?>
+	</div>
+</div>

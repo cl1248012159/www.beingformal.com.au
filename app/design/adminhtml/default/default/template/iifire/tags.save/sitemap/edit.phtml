@@ -1,0 +1,18 @@
+<div class="content-header">
+    <h3 class="icon-head head-products"><?php echo $this->getHeaderText() ?></h3>
+    <p class="content-buttons form-buttons">
+    <?php echo $this->getChildHtml('back_button') ?>
+    <?php echo $this->getChildHtml('reset_button') ?>
+    <?php echo $this->getChildHtml('save_generate_button') ?>
+    <?php //echo $this->getChildHtml('save_button') ?>
+    </p>
+</div>
+<form action="<?php echo $this->getUpdateUrl() ?>" method="post" name="sitemap_form" id="sitemap_form" enctype="multipart/form-data">
+    <?php echo $this->getBlockHtml('formkey')?>
+    <?php echo $this->getForm(); ?>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+	var editForm = new varienForm('sitemap_form');
+//]]>
+</script>

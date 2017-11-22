@@ -1,0 +1,17 @@
+<div class="content-header">
+    <h3 class="icon-head head-products"><?php echo $this->getHeaderText() ?></h3>
+    <p class="content-buttons form-buttons">
+    <?php echo $this->getBackButtonHtml(); ?>
+    </p>
+</div>
+<form action="<?php echo $this->getAsignUrl() ?>" method="post" name="description_asign_form" id="description_asign_form" enctype="multipart/form-data">
+    <?php echo $this->getBlockHtml('formkey')?>
+    <?php echo $this->getForm(); ?>
+    <button class="scalable save" type="submit"><span><?php echo Mage::helper('itags')->__('Continue'); ?></span></button>
+</form>
+
+<script type="text/javascript">
+//<![CDATA[
+	var tagsForm = new varienForm('description_asign_form');
+//]]>
+</script>

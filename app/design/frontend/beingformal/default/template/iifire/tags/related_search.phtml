@@ -1,0 +1,39 @@
+<?php 
+$helper = Mage::helper('itags');
+$tags = $this->getTags(); 
+?>
+<?php if($tags): ?>
+<?php $tags = explode(',',rtrim($tags,',')); ?>
+<?php $tags1 = array_slice($tags, 0, 4); ?>
+<?php $tags2 = array_slice($tags, 4); $count = count($tags2)?>
+<p class="more">
+<b>Related Searches:</b>
+	<?php $i = 0; ?>
+	<?php foreach ($tags1 as $tag): ?>
+    	<?php if($i!=0): ?>,<?php endif; ?><a href="<?php echo $helper->getProductListUrl($tag); ?>"><?php echo $this->htmlEscape($tag); ?></a>
+    	<?php $i++; ?>
+    <?php endforeach; ?>
+    <span id="related-search-more" style="display:none;">
+    <?php foreach ($tags2 as $tag): ?>
+    	,<a href="<?php echo $helper->getProductListUrl($tag); ?>"><?php echo $this->htmlEscape($tag); ?></a>
+    <?php endforeach; ?>
+    </span>
+	<a href="javascript:void(0);" id="related-search-more-btn" rel="nofollow" class="more-link"><span class="view-more"><b>More..</b></span></a>
+</p>
+<script type="text/javascript">
+jQuery('.header .header-widget').addClass('more');
+jQuery(function(){
+	jQuery('#related-search-more-btn').click(function(){
+		if(!jQuery('#related-search-more').is(":visible")) {
+			jQuery('#related-search-more').show();
+			
+			jQuery('#related-search-more-btn .view-more').html('<b>Less..</b>');
+		} else {
+			jQuery('#related-search-more').hide();
+			jQuery('#related-search-more-btn .view-more').html('<b>More..</b>');
+		}
+	})
+})
+
+</script>
+<?php endif; ?>

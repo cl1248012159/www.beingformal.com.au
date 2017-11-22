@@ -1,0 +1,18 @@
+
+<?php 
+$helper = Mage::helper('itags');
+$tags = $this->getTags(); 
+?>
+
+<?php if($tags): ?>
+<?php $tags = explode(',',$tags); ?>
+<p>
+<h3>You may also be interested in :</h3>
+<?php $i = 0; ?>
+<?php foreach ($tags as $tag): ?>
+    	<?php if($i!=0): ?>,<?php endif; ?><a href="<?php echo strtolower($helper->getProductListUrl($tag)); ?>"><?php echo $this->htmlEscape($tag); ?></a>
+    	<?php $i++; ?>
+    <?php endforeach; ?>
+
+</p>
+<?php endif; ?>

@@ -1,0 +1,12 @@
+<div class="content-header">
+   <h3 class="icon-head"><?php echo $this->getHeaderText() ?></h3>
+   <p class="content-buttons form-buttons">
+    	
+    	<?php echo $this->getSynSearchButtonHtml(); ?>
+    	<?php echo $this->getSynTagsButtonHtml(); ?>
+    	
+    </p>
+</div>
+<div>
+    <?php echo $this->getChildHtml('grid') ?>
+</div>

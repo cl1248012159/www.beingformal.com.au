@@ -18,28 +18,8 @@
         </tr>
     </table>
 
-    <?php
-        $helpcenter_promotions =  Mage::getModel('catalog/category')->load(17)
-                                                ->getProductCollection()
-                                                ->addAttributeToSelect('*')
-                                                ->addAttributeToFilter('status', 1)
-                                                ->addAttributeToFilter('visibility', 4);
-    ?>
-    <?php if( $helpcenter_promotions->count() ):?>
-    <div class="promotion_area">
-        <div class="title">promotion area</div>
-        <div class="product_left_to_right">
-            <?php foreach($helpcenter_promotions as $_product):?>
-                <?php echo $this->getLayout()->createBlock('catalog/product_list')
-                                ->setProduct($_product)
-                                ->setShowName('show')
-                                ->setShowCurrencyCode('show')
-                                ->setTemplate('page/pub/product_card.phtml')->toHtml(); ?>
-            <?php endforeach;?>
-        </div>
-    </div>
-    <?php endif;?>
     
+    <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('cms/helpcenter/a_promotion_area.phtml')->toHtml(); ?>
     
 
 

@@ -1,0 +1,33 @@
+<?php $helper = Mage::helper('itags'); ?>
+<h1 id="head1">Google Sitemap <?php echo Mage::getBaseUrl(); ?>sitemap.xml</h1>
+<h2>Number of sitemaps in this Google sitemap index: <?php  ?></h2>
+<table width="100%" border="1">
+	<thead>
+		<tr>
+			<th><?php echo $helper->__('Sitemap URL'); ?></th>
+			<th><?php echo $helper->__('Last modification date'); ?></th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php $sitemaps = $this->getSitemaps(); ?>
+		<?php if(count($sitemaps)): ?>
+		<?php foreach($sitemaps as $sitemap): ?>
+		<tr>
+			<td><a href="<?php echo $sitemap['file'] ?>"><?php echo $sitemap['file']; ?></a></td>
+			<td><?php echo $sitemap['date']; ?></td>
+		</tr>
+		<?php endforeach; ?>
+		<?php endif; ?>
+	</tbody>
+</table>
+<table class="copyright">
+	<tbody>
+		<tr>
+			<td>
+				<p>Google Sitemaps: &copy; 2005 <a href="http://www.google.com">Google</a> - <a href="https://www.google.com/webmasters/sitemaps/stats">My Sitemaps</a> - <a href="http://www.google.com/webmasters/sitemaps/docs/en/about.html">About</a> - <a href="http://www.google.com/webmasters/sitemaps/docs/en/faq.html">FAQ</a> - <a href="http://groups-beta.google.com/group/google-sitemaps">Discussion</a> - <a href="http://sitemaps.blogspot.com/">Blog</a></p>
+              Google Sitemaps Stylesheets v1.5a: &copy; 2005 <a href="http://www.baccoubonneville.com">Baccou Bonneville</a> - <a href="http://sourceforge.net/projects/gstoolbox">Project</a> - <a href="http://www.baccoubonneville.com/blogs/index.php/webdesign/2005/08/20/google-sitemaps-stylesheets">Blog</a><br>
+              Contributions: Johannes Müller, SOFTplus <a href="http://gsitecrawler.com">GSiteCrawler</a> - Tobias Kluge, enarion.net <a href="http://enarion.net/google/phpsitemapng">phpSitemapNG</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

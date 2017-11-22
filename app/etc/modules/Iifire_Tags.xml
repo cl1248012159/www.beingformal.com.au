@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Joy <yanggaojiao@qq.com> (http://ecommerce.iifire.com)
+ * @copyright Copyright &copy; 2012, Iifire (http://demo.iifire.com)
+ * @support Hellokeykey (http://www.hellokeykey.com)
+ * @version 1.6.0
+ */
+ -->
+<config>
+    <modules>
+        <Iifire_Tags>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Core />
+            </depends>
+        </Iifire_Tags>
+    </modules>
+</config>

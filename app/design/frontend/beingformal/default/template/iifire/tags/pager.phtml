@@ -1,0 +1,100 @@
+<?php
+/**
+ * Pager template
+ *
+ * @see Mage_Page_Block_Html_Pager
+ */
+?>
+<?php 
+$listBlock = Mage::getBlockSingleton('iifire_tags/list');
+$w = $listBlock->getTagsW();
+$page = $listBlock->getCurrentPage();
+$baseSeoUrl = Mage::helper('itags')->getBaseSeoUrl();
+$baseSeoPageUrl = $w ? $baseSeoUrl.$w.'/' : $baseSeoUrl;
+$firstPageUrl = $baseSeoPageUrl.'1/';
+$prePageUrl = $baseSeoPageUrl.($page-1).'/';
+$nextPageUrl = $baseSeoPageUrl.($page+1).'/';
+?>
+<?php if($this->getCollection()->getSize()): ?>
+    <?php if($this->getUseContainer()): ?>
+    <div class="pager">
+    <?php endif ?>
+    <?php if($this->getLastPageNum()>1): ?>
+    <div class="pages">
+        <ol>
+        	<li><span class="p-title"><?php echo $this->__("Page %s of %s",$page,$this->getLastPageNum()) ?></span></li>
+        <?php if ($this->canShowFirst()): ?>
+            <li><a class="first"  rel="nofollow"  href="<?php echo $firstPageUrl; ?>"><?php echo $this->__("First"); ?></a></li>
+        <?php endif;?>
+        <?php if (!$this->isFirstPage()): ?>
+            <li>
+                <a  rel="nofollow"  class="previous<?php if(!$this->getAnchorTextForPrevious()): ?> i-previous<?php endif;?>" href="<?php echo $prePageUrl; ?>" title="<?php echo $this->__('Previous') ?>">
+                    	<?php echo $this->__("Previous"); ?>
+                </a>
+            </li>
+        <?php endif;?>
+        
+        <?php foreach ($this->getFramePages() as $_page): ?>
+            <?php if ($this->isPageCurrent($_page)): ?>
+                <li class="current"><?php echo $_page ?></li>
+            <?php else: ?>
+                <li><a href="<?php echo $baseSeoPageUrl.$_page.'/'; ?>"><?php echo $_page ?></a></li>
+            <?php endif;?>
+        <?php endforeach;?>
+        
+        
+        <?php if (!$this->isLastPage()): ?>
+            <li>
+                <a  rel="nofollow"  class="next<?php if(!$this->getAnchorTextForNext()): ?> i-next<?php endif; ?>" href="<?php echo $nextPageUrl; ?>" title="<?php echo $this->__('Next') ?>">
+                    <?php echo $this->__("Next"); ?>
+                </a>
+            </li>
+        <?php endif;?>
+        <?php if ($this->canShowLast()): ?>
+          <li><a class="last" rel="nofollow"  href="<?php echo $baseSeoPageUrl.$this->getLastPageNum().'/' ?>"><?php echo $this->__("Last"); ?></a></li>
+        <?php endif;?>
+        </ol>
+    </div>
+    <?php endif; ?>
+    <?php if($this->getUseContainer()): ?>
+    </div>
+    <?php endif ?>
+<?php endif ?>
+<?php if($this->getLastPageNum()>10): ?>
+	<div id="pages-block">
+		<?php $ps = ceil($this->getLastPageNum()/10); ?>
+		<?php $hiddenNum = 16; ?>
+		<?php for ($i=0;$i<$ps;$i++): ?>
+			<?php if ($i==0):?>
+			<span id="pages-nav">
+			<?php endif; ?>	
+				<a href="<?php echo $baseSeoPageUrl.($i*10+1).'/'; ?>" class="<?php if ($page>$i*10 && $page<($i*10+11)): ?> active <?php endif; ?>"><?php  echo ($i*10+1).'-'.($i*10+10) ?></a>
+			<?php if ($i==$hiddenNum):?>
+			</span>
+			<?php endif; ?>
+			<?php if ($i==$hiddenNum):?>
+			<span id="pages-nav-more" style="display:none;">
+			<?php endif; ?>	
+			<?php if ($i==$ps-1 && $i>=$hiddenNum):?>
+			</span>
+			<?php endif; ?>
+		<?php endfor; ?>
+		<?php if ($ps>$hiddenNum): ?>
+		<a rel="nofollow" class="view-more" href="javascript:void(0);" id="pages-more"><strong>View More</strong></a>
+		<?php endif; ?>
+	</div>
+	<script type="text/javascript">
+	jQuery(function(){
+		jQuery('#pages-more').click(function(){
+			if(!jQuery('#pages-nav-more').is(":visible")) {
+				jQuery('#pages-nav-more').show();
+				jQuery(this).html('<strong>View Less</strong>');
+			} else {
+				jQuery('#pages-nav-more').hide();
+				jQuery(this).html('<strong>View More</strong>');
+			}
+		})
+	})
+	
+	</script>
+<?php endif; ?>

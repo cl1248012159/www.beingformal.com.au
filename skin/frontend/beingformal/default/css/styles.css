@@ -243,7 +243,7 @@ button.button { float: right; margin-left: 5px; overflow: visible; width: auto; 
 
 /*首页end*/
 /*面包屑导航*/
-.breadcrumbs { max-width: 1088px; min-width: 1000px; margin: 0 auto; }
+.breadcrumbs { max-width: 1088px; min-width: 1000px; margin: 0 auto; text-transform: capitalize; }
 .breadcrumbs ul { *zoom: 1; }
 .breadcrumbs ul:after { display: block; content: "clear"; height: 0; clear: both; overflow: hidden; visibility: hidden; }
 .breadcrumbs ul li { float: left; }

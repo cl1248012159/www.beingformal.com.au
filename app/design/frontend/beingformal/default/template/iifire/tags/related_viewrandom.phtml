@@ -1,0 +1,21 @@
+
+<?php 
+$helper = Mage::helper('itags');
+$tags = $this->getTags(); 
+?>
+<?php if($tags): ?>
+<div class="box-collateral box-related-cats">
+<?php $tags = explode(',',rtrim($tags,',')); ?>
+<div class="title"><h2>You may also be interested in</h2></div>
+<div class="content">
+<p>
+<?php $i = 0; ?>
+<?php foreach ($tags as $tag): ?>
+    	<?php if($i!=0): ?>,<?php endif; ?><a href="<?php echo strtolower($helper->getProductListUrl($tag)); ?>"><?php echo $this->htmlEscape($tag); ?></a>
+    	<?php $i++; ?>
+    <?php endforeach; ?>
+
+</p>
+</div>
+</div>
+<?php endif; ?>

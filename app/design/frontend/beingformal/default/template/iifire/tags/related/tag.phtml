@@ -1,0 +1,60 @@
+<?php $helper = Mage::helper('itags'); ?>
+
+<?php 
+		$tags = Mage::getModel('iifire_tags/tags');
+		$tags->setStoreId(Mage::app()->getStore()->getId());
+		$tags->loadByTagsText($this->helper('catalogsearch')->getEscapedQueryText());
+		$tagId = $tags->getId();
+		$tagCategoryId=$tags->getCategoryId();
+		if($tags->getCategoryids()){
+				$categoryid=trim($tags->getCategoryids());
+				$categoryids=explode(',',$categoryid);
+				$relatecategorys=array();
+				foreach($categoryids as $j=> $c){
+					$category='';
+					$category=Mage::getModel('catalog/category')->load($c);
+					$relatecategorys[$j]['name']=$category->getName();
+					$relatecategorys[$j]['url']="http://www.wishesbridal.com/".$category->getUrlPath();
+				}
+			}else{
+				if($tagCategoryId){
+					$tagsCategory = Mage::getModel('iifire_tags/category')->load($tagCategoryId);
+					$storeCategory=$tagsCategory->getStoreCategory();
+					if($storeCategory){
+						$categoryids=array();
+						$categorys=explode(',',$storeCategory);
+						if(count($categorys)>8){
+							$index=array_rand($categorys,8);
+							foreach($index as $i){
+								$categoryids[]=$categorys[$i]; 
+							}
+						}else{
+							$categoryids=$categorys;
+						} 
+						$categoryid=implode(',',$categoryids);
+						$tags->setCategoryids($categoryid)->save();
+						$relatecategorys=array();
+						foreach($categoryids as $j=> $c){
+							$category='';
+							$category=Mage::getModel('catalog/category')->load($c);
+							$relatecategorys[$j]['name']=$category->getName();
+							$relatecategorys[$j]['url']="http://www.wishesbridal.com/".$category->getUrlPath();
+						}
+						//print_r($relatecategorys);
+					}
+				}
+			}
+?>
+
+<div class="block">
+	<div class="block-title">
+		<strong><span><?php echo $this->helper('itags')->__('Recommended Categories'); ?></span></strong>
+	</div>
+	<div class="block-content">
+		<ul>
+		<?php foreach($relatecategorys as $r):?>
+				<li><a href="<?php echo $r['url']; ?>"><?php echo $r['name'];?></a></li>
+				<?php endforeach;?>
+		</ul>
+	</div>
+</div>

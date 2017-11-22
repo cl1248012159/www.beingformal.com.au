@@ -1,0 +1,24 @@
+<div class="content-header">
+   <h3 class="icon-head"><?php echo $this->getHeaderText() ?></h3>
+   <p class="content-buttons form-buttons">
+        <?php echo $this->getSaveButtonHtml(); ?>
+    </p>
+</div>
+<form action="" method="post" id="tags_form">
+	<div class="no-display">
+		<input type="hidden" id="continue" name="continue" value="" />
+	</div>
+	<?php echo $this->getForm(); ?>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    var tagsForm = new varienForm('tags_form');
+    var tagsControl  = {
+    	save: function(url) {
+    		$('tags_form').setAttribute('action', url);
+    		tagsForm.submit();
+            return false;
+    	}
+    }
+//]]>
+</script>

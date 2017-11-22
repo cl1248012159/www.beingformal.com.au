@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+    <iifire_tags_index_home translate="label">
+        <label>Tags List (All Available)</label>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="iifire_tags/list" name="tags_link" template="iifire/tags/home_list.phtml"/>
+        </reference>
+    </iifire_tags_index_home>
+
+    <!-- <catalog_product_view>
+    	<reference name="product.info">
+    		<block type="iifire_tags/related_view" name="related_tags" as="related_tags" template="iifire/tags/product_view.phtml"/>
+    		<block type="iifire_tags/related_viewrandom" name="related_viewrandom" as="related_viewrandom" template="iifire/tags/related_viewrandom.phtml"/>
+    	</reference>
+    </catalog_product_view> -->
+
+	<!-- <catalog_category_default>
+    	<reference name="product_list">
+    	 <block type="iifire_tags/related_categoryrandom" name="related_tags" as="related_tags" template="iifire/tags/product_view.phtml"/>
+    	 <block type="iifire_tags/related_viewrandom" name="related_viewrandom" as="related_viewrandom" template="iifire/tags/related_viewrandom.phtml"/>
+    	</reference>
+    </catalog_category_default> -->
+
+
+	<!-- <catalog_category_layered>
+    	<reference name="product_list">
+    	 <block type="iifire_tags/related_categoryrandom" name="related_tags" as="related_tags" template="iifire/tags/product_view.phtml"/>
+    	 <block type="iifire_tags/related_viewrandom" name="related_viewrandom" as="related_viewrandom" template="iifire/tags/related_viewrandom.phtml"/>
+    	</reference>
+    </catalog_category_layered> -->
+
+    <iifire_tags_index_index translate="label">
+        <label>Tags List (All Available)</label>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="iifire_tags/list" name="tags_link" template="iifire/tags/list.phtml"/>
+            <action method="setColumnCount"><count>4</count></action>
+        </reference>
+    </iifire_tags_index_index>
+
+    <iifire_tags_index_view translate="label">
+    	<reference name="top.search">
+    		<block type="iifire_tags/related_search" name="tags_related_search" as="tags_related_search" template="iifire/tags/related_search.phtml" />
+    	</reference>
+    	<reference name="left">
+    		<action method="unsetChild"><name>left.newsletter</name></action>
+    		<action method="unsetChild"><name>tags_popular</name></action>
+    		<action method="unsetChild"><name>right.reports.product.viewed</name></action>
+    		<action method="unsetChild"><name>right.reports.product.compared</name></action>
+    		<block type="iifire_tags/related_product" name="related.product" template="iifire/tags/related/product.phtml"/>
+            <block type="iifire_tags/related_tag" name="related.tags" template="iifire/tags/related/tag.phtml"/>
+            
+        </reference>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+
+        </reference>
+        <reference name="content">
+				
+        	<block type="iifire_tags/result" name="search.result" template="iifire/tags/view/result.phtml">
+                <block type="iifire_tags/productlist" name="productlist" as="productlist" template="iifire/tags/view/list.phtml"></block>
+
+                <block type="iifire_tags/related_random" name="related_random" as="related_random" template="iifire/tags/related_random.phtml"/>
+            </block>
+			<action method="setColumnCount"><count>4</count></action>
+            <remove name="product_list_toolbar"/>
+        </reference>
+    </iifire_tags_index_view>
+
+    <iifire_tags_sitemap_index translate="label">
+    	<remove name="header"/>
+        <remove name="footer"/>
+        <remove name="right"/>
+        <remove name="left"/>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><file>css/iifire/tags/sitemap.css</file></action>
+        </reference>
+        <reference name="root">
+            <action method="setTemplate"><template>iifire/tags/sitemap_page.phtml</template></action>
+            <block type="core/text_list" name="content" as="content"/>
+        </reference>
+        <reference name="content">
+            <block type="iifire_tags/sitemap" name="tags.view" template="iifire/tags/sitemap.phtml"/>
+        </reference>
+    </iifire_tags_sitemap_index>
+    
+</layout>

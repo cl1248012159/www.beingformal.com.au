@@ -1,0 +1,18 @@
+<?php $helper = Mage::helper('itags'); ?>
+<div class="block">
+	<div class="block-title">
+		<strong><span><?php echo $this->helper('itags')->__('Related Tags'); ?></span></strong>
+	</div>
+	<div class="block-content">
+		<ul>
+		<?php $collection = $this->getCollection(); ?>
+		<?php if(count($collection)): ?>
+		<li>
+			<?php foreach($collection as $_tag): ?>
+			<a title="<?php echo $_tag->getTagsText(); ?>" href="<?php echo strtolower($helper->getProductListUrl($_tag->getTagsText())); ?>"><?php echo $this->htmlEscape($_tag->getTagsText()); ?></a>
+			<?php endforeach; ?>
+		<li>
+		<?php endif; ?>
+		</ul>
+	</div>
+</div>

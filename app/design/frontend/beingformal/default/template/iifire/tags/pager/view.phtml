@@ -1,0 +1,138 @@
+<?php $productListBlock = Mage::getBlockSingleton('catalog/product_list'); ?>
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $helper = Mage::helper('itags'); ?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<div class="page-title">
+	<?php $q = $this->helper('catalogsearch')->getEscapedQueryText(); ?>
+    <?php if ($this->helper('rss/catalog')->getTagFeedUrl()): ?>
+        <a href="<?php echo $this->helper('rss/catalog')->getTagFeedUrl() ?>" class="nobr link-rss"><?php echo $this->__('Subscribe to Feed') ?></a>
+    <?php endif; ?>
+    <h5><?php echo $q; ?></h5>
+    <p><?php echo str_ireplace($q,"<strong>".$q."</strong>",$this->getDescription()); ?></p>
+</div>
+<?php if ($messages = $this->getNoteMessages()):?>
+<p class="note-msg">
+    <?php foreach ($messages as $message):?>
+        <?php echo $message?><br />
+    <?php endforeach;?>
+</p>
+<?php endif; ?>
+<div class="icategory-banner">
+<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('icategory-banner')->toHtml() ?>
+</div>
+<?php $resultEmpty = true; ?>
+<?php $_columnCount = 3; ?>
+<?php if($helper->getViewSearchEnable()): ?>
+	<?php $searchCollection = $this->getSearchCollection(); ?>
+	<?php if($_collectionSize = $searchCollection->getSize()): ?>
+	<?php $resultEmpty = false; ?>
+	<?php echo $this->getChildHtml('pagerSearch'); ?>
+	<div class="grid-block">
+		<?php $i=0; foreach ($searchCollection as $_product): ?>
+		<?php if ($i++%$_columnCount==0): ?>
+	    <ul class="products-grid">
+	    <?php endif ?>
+			<li class="item">
+				<div class="grid-inner">
+					 <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?>" width="135" height="135" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+					 <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
+					 
+					 <?php if($_product->getRatingSummary()): ?>
+	                    <?php echo $this->getReviewsSummaryHtml($_product) ?>
+	                 <?php endif; ?>
+					 <?php echo $productListBlock->getPriceHtml($_product, true) ?>
+					 <div class="actions">
+		                    <?php if($_product->isSaleable()): ?>
+		                        <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+		                    <?php else: ?>
+		                        <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+		                    <?php endif; ?>
+		                    <ul class="add-to-links">
+		                        <?php if ($this->helper('wishlist')->isAllow()) : ?>
+		                            <li><a rel=nofollow href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+		                        <?php endif; ?>
+		                        <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+		                            <li><span class="separator">|</span> <a rel=nofollow href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+		                        <?php endif; ?>
+		                    </ul>
+		                </div>
+				</div>
+			</li>
+			
+		<?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
+	    </ul>
+	    <?php endif; ?>
+	    <?php endforeach; ?>
+	</div>
+	<?php echo $this->getChildHtml('pagerSearch'); ?>
+	<?php endif; ?>
+<?php endif; ?>
+<?php if ($this->getTagId() && $helper->getViewTagEnable()): ?>
+    <?php $tagsCollection = $this->getTagsCollection(); ?>
+    <?php if($_collectionSize = $tagsCollection->getSize()): ?>
+    <br />
+    <?php $resultEmpty = false; ?>
+    <h2><?php echo $this->__("Products tagged with '%s'",$this->htmlEscape($this->getQueryText())); ?></h2>
+    <?php echo $this->getChildHtml('pagerTags'); ?>
+    <div class="grid-block">
+    	<?php $i=0; foreach ($tagsCollection as $_product): ?>
+    	<?php if ($i++%$_columnCount==0): ?>
+        <ul class="products-grid">
+        <?php endif ?>
+    		<li class="item">
+    			<div class="grid-inner">
+    				 <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(135); ?>" width="135" height="135" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+    				 <h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
+    				 <?php if($_product->getRatingSummary()): ?>
+	                    <?php echo $this->getReviewsSummaryHtml($_product) ?>
+	                 <?php endif; ?>
+    				 <?php echo $productListBlock->getPriceHtml($_product, true) ?>
+    				 <div class="actions">
+	                    <?php if($_product->isSaleable()): ?>
+	                        <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+	                    <?php else: ?>
+	                        <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+	                    <?php endif; ?>
+	                    <ul class="add-to-links">
+	                        <?php if ($this->helper('wishlist')->isAllow()) : ?>
+	                            <li><a rel=nofollow href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+	                        <?php endif; ?>
+	                        <?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+	                            <li><span class="separator">|</span> <a rel=nofollow href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+	                        <?php endif; ?>
+	                    </ul>
+	                </div>
+    			</div>
+    		</li>
+		<?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
+        </ul>
+        <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+    <?php echo $this->getChildHtml('tagsSearch'); ?>
+    <?php endif; ?>
+<?php endif; ?>
+<?php if ($resultEmpty): ?>
+
+<div class="iempty">
+	<div>
+		<p>Your Search:&nbsp;<span class="red"><?php echo $q; ?></span></p>
+		<h3 class="red">Sorry, your search returned no results.</h3>
+		<p class="g_t_c"><a href="<?php echo Mage::getBaseUrl(); ?>" title="<?php echo Mage::helper('checkout')->__('Continue Shopping'); ?>" alt="<?php echo Mage::helper('checkout')->__('Continue Shopping'); ?>" class="icontinue"><b><?php echo Mage::helper('checkout')->__('Continue Shopping'); ?></b></a></p>
+	</div>
+</div>
+<?php endif; ?>
+<!--
+<div class="i-site-search">
+	<form method=get action="http://www.google.com/search">
+	<input type=text name="q" value="<?php echo $q; ?>">
+	<input type=submit name=btnG value="Google">
+	<input type=hidden name=ie value=GB2312>
+	<input type=hidden name=oe value=GB2312>
+	<input type=hidden name=hl value=zh-CN>
+	<input type=hidden name=domains value="<?php echo $this->getDomain(); ?>">
+	<input type=hidden name=sitesearch value="<?php echo$this->getDomain(); ?>">
+	</form>
+</div>
+-->
+

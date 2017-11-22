@@ -28,3 +28,7 @@ package.json
 .DS_Store
 .idea/
 .idea/*
+
+
+app/etc/modules/Magneto_Debug.xml
+skin/frontend/base/default/debug/

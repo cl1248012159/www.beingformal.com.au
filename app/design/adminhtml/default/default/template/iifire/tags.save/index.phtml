@@ -1,0 +1,16 @@
+<div class="content-header">
+   <h3 class="icon-head"><?php echo $this->getHeaderText() ?></h3>
+   <p class="content-buttons form-buttons">
+   		<?php echo $this->getChildHtml('reset_description_button');  ?>
+   		<?php echo $this->getChildHtml('reset_product_button');  ?>
+   		<?php echo $this->getChildHtml('reset_important_button');  ?>
+   		<?php echo $this->getChildHtml('cancal_important_button');  ?>
+   		<?php echo $this->getRandomButtonHtml(); ?>
+   		<?php echo $this->getChildHtml('enable_button');  ?>
+    	<?php echo $this->getNewButtonHtml(); ?>
+    	
+    </p>
+</div>
+<div>
+    <?php echo $this->getChildHtml('grid') ?>
+</div>

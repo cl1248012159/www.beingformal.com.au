@@ -1,0 +1,23 @@
+<div class="content-header">
+    <h3 class="icon-head head-products"><?php echo $this->getHeaderText() ?></h3>
+    <p class="content-buttons form-buttons">
+    <?php echo $this->getBackButtonHtml(); ?>
+    <?php echo $this->getSaveButtonHtml(); ?>
+    <?php echo $this->getSaveContinueButtonHtml(); ?>
+    </p>
+</div>
+<form action="<?php echo $this->getSaveUrl() ?>" method="post" name="tags_edit_form" id="tags_edit_form" enctype="multipart/form-data">
+    <?php echo $this->getBlockHtml('formkey')?>
+    <?php echo $this->getForm(); ?>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+	var tagsForm = new varienForm('tags_edit_form');
+	var tagsControl = {
+		save: function(url) {
+			$('tags_edit_form').setAttribute('action', url);
+			tagsForm.submit();
+		}
+	}
+//]]>
+</script>

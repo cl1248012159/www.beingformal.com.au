@@ -1,0 +1,164 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Product list template
+ *
+ * @see Mage_Catalog_Block_Product_List
+ */
+?>
+<?php
+    $_productCollection=$this->getLoadedProductCollection();
+    $_helper = $this->helper('catalog/output');
+?>
+<?php 
+	$tags = Mage::getModel('iifire_tags/tags');
+		$tags->setStoreId(Mage::app()->getStore()->getId());
+		$tags->loadByTagsText($this->helper('catalogsearch')->getEscapedQueryText());
+		$currentUrl1 = $this->helper('core/url')->getCurrentUrl();
+?>
+<?php if(($tags->getId())&&(strpos($currentUrl1,'.html')==true)):?>
+	<?php if(!$_productCollection->count()): ?>
+	<p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+	<?php else: ?>
+	<div class="category-products">
+
+
+	 
+		<?php $_collectionSize = $_productCollection->count() ?>
+		<?php $_columnCount =4; ?>
+		<?php $i=0; foreach ($_productCollection as $_product): ?>
+			<?php if ($i++%$_columnCount==0): ?>
+			<ul class="products-grid">
+			<?php endif ?>
+				<li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?>">
+					<?php $specialprice = Mage::getModel('catalog/product')->load($_product->getId())->getSpecialPrice(); 
+					 if ($specialprice){?>
+						<div class="label-sale">
+							<?php
+								$t_price = $_product->getPrice();
+								$t_special_price = $_product->getSpecialPrice();
+								$bi = (1-$t_special_price/$t_price)*100;
+								$bi = floor($bi);
+								if(($bi>=1)&&($bi<10)){
+									if($bi<=5){
+										$bi = 5;
+									}else{
+										$bi = 10;
+									}
+								}elseif(($bi>=10)&&($bi<99)){
+									$bio = substr($bi,0,1);
+									$bit = substr($bi,1,1);
+									if($bit<=5&&$bit>=1){
+										$bit = 5;
+									}elseif($bit>=5&&$bit<=9){
+										$bit = 10;
+									}
+									$bi = $bio*10+$bit;
+								}else{
+								}
+							?>
+							<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>">
+								<?php if($bi>1&&$bi<99){ ?>
+									<img style="width:50px;height:50px;" src="<?php echo $this->getSkinUrl('images/sale/'.$bi.'.png'); ?>"  />
+							<?php } ?>
+							</a>
+						</div> 
+					<?php } ?>
+					<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(210,320); ?>" width="210" height="320" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" /></a>
+					<div class="socialbottom" style="display:none;">				
+							<div class="share-like">
+							<iframe src="//www.facebook.com/plugins/like.php?href=<?php echo $_product->getProductUrl() ?>&amp;width=85&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:85px; height:21px;" allowTransparency="true"></iframe>
+							</div>
+							<div class="share-pin">
+							<a rel="nofollow" target="_blank" href="http://pinterest.com/pin/create/button/?url=<?php echo urlencode($_product->getProductUrl()); ?>&media=<?php echo urlencode(Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'catalog/product'.$_product->getImage()); ?>&description=<?php echo urlencode($_product->getName()); ?>" class="pin-it-button" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>
+							</div>					
+					</div>
+
+					<div class="item-bottom">
+						<h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
+						<?php echo $this->getPriceHtml($_product, true) ?>                
+					</div>
+					<div class="item-review">
+						<?php if($_product->getRatingSummary()): ?>
+							<?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+						<?php endif; ?>
+					</div>
+
+				</li>			
+			<?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
+			</ul>
+			<div style="border-bottom: 1px dotted #DDDDDD;clear: both;height: 0;margin-bottom: 20px;overflow: hidden;width: 100%;"></div>
+			<?php endif ?>	
+			<?php endforeach ?>
+			<script type="text/javascript">decorateGeneric($$('ul.products-grid'), ['odd','even','first','last'])</script>
+	   
+
+		<div class="toolbar-bottom">
+			<?php echo $this->getToolbarHtml() ?>
+		</div> </div>
+		 <?php endif; ?>
+	  
+	<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		jQuery('a.product-image').bind('mouseover',function(){
+		jQuery(this).next("div.socialbottom").stop(true,true,true).show('500',function(){ });
+		});
+		jQuery('a.product-image').bind('mouseout',function(){
+			jQuery(this).next("div.socialbottom").stop(true,true,true).hide('500',function(){});
+		});
+
+		jQuery('div.socialbottom').bind('mouseover',function() {  
+		   jQuery(this).stop(true,false,true).show('500',function(){});  
+		})
+		jQuery('div.socialbottom').bind('mouseout',function(){
+		   jQuery(this).stop(true,false,true).hide('500',function(){ });
+		});
+	});
+	</script>
+<?php ?>	
+<?php else:?>
+<div class="std"><div class="page-title"><h1>Whoops, our bad...</h1></div>
+<dl>
+<dt>The page you requested was not found, and we have a fine guess why.</dt>
+<dd>
+<ul class="disc">
+<li>If you typed the URL directly, please make sure the spelling is correct.</li>
+<li>If you clicked on a link to get here, the link is outdated.</li>
+</ul></dd>
+</dl>
+<dl>
+<dt>What can you do?</dt>
+<dd>Have no fear, help is near! There are many ways you can get back on track with Magento Store.</dd>
+<dd>
+<ul class="disc">
+<li><a href="#" onclick="history.go(-1); return false;">Go back</a> to the previous page.</li>
+<li>Use the search bar at the top of the page to search for your products.</li>
+<li>Follow these links to get you back on track!<br><a href="http://www.wishesbridal.com/">Store Home</a> <span class="separator">|</span> <a href="http://www.wishesbridal.com/customer/account/">My Account</a></li></ul></dd></dl></div>
+<?php endif;?>
+
+

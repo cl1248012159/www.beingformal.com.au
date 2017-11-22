@@ -1,0 +1,11 @@
+<div class="content-header">
+   <h3 class="icon-head"><?php echo $this->getHeaderText() ?></h3>
+   <p class="content-buttons form-buttons">
+   		<?php echo $this->getAsignButtonHtml(); ?>
+    	<?php echo $this->getNewButtonHtml(); ?>
+    	
+    </p>
+</div>
+<div>
+    <?php echo $this->getChildHtml('grid') ?>
+</div>

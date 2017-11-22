@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author Joy <yanggaojiao@qq.com> (http://ecommerce.iifire.com)
+ * @copyright Copyright &copy; 2012, Iifire (http://demo.iifire.com)
+ * @support Hellokeykey (http://www.hellokeykey.com)
+ * @version 1.6.0
+ */
+ -->
+<config>
+	<menu>
+		<catalog>
+            <children>
+            	<iifire_tags  translate="title" module="itags">
+            		<title>A-Z Tags</title>
+            		<sort_order>49</sort_order>
+            		<children>
+		            	<tags translate="title" module="itags">
+		            		<title>Tags Management</title>
+		            		<sort_order>1</sort_order>
+		            		<action>adminhtml/itag_index/index</action>
+		            	</tags>
+		            	<description translate="title" module="itags">
+		            		<title>Description Management</title>
+		            		<sort_order>2</sort_order>
+		            		<action>adminhtml/itag_description/index</action>
+		            	</description>
+		            	<sitemap translate="title" module="itags">
+		            		<title>Sitemap Management</title>
+		            		<sort_order>4</sort_order>
+		            		<action>adminhtml/itag_sitemap/index</action>
+		            	</sitemap>	
+		            	<category translate="title" module="itags">
+		            		<title>Tags Category Management</title>
+		            		<sort_order>6</sort_order>
+		            		<action>adminhtml/itag_category/index</action>
+		            	</category>
+		            	<syn translate="title" module="itags">
+		            		<title>Synchronization Management</title>
+		            		<sort_order>10</sort_order>
+		            		<action>adminhtml/itag_syn/index</action>
+		            	</syn>            	
+	            	</children>
+            	</iifire_tags>
+            </children>
+		</catalog>
+	</menu>
+	<acl>
+		<resources>
+            <admin>
+                <children>
+                	<iifire_tags translate="title" module="itags">
+                		<title>Pw Tags</title>
+                		<children>
+		                    <tags translate="title" module="itags">
+		                        <title>Tags Management</title>
+		                        <sort_order>1</sort_order>
+		                   </tags>
+		                   <description translate="title" module="itags">
+		                        <title>Description Management</title>
+		                        <sort_order>2</sort_order>
+		                   </description>
+		                   <sitemap translate="title" module="itags">
+		                        <title>Sitemap Management</title>
+		                        <sort_order>4</sort_order>
+		                   </sitemap>
+		                   <category translate="title" module="itags">
+		                        <title>Tags Category Management</title>
+		                        <sort_order>6</sort_order>
+		                   </category>
+		                   <syn translate="title" module="itags">
+		                        <title>Synchronization Management</title>
+		                        <sort_order>10</sort_order>
+		                   </syn>
+	                   </children>
+                   </iifire_tags>
+               </children>
+           </admin>
+       </resources>
+	</acl>
+</config>

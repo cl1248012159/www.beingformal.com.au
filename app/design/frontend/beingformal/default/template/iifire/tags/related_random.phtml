@@ -1,0 +1,54 @@
+
+<?php $helper = Mage::helper('itags'); ?>
+<?php 
+		$tags = Mage::getModel('iifire_tags/tags');
+		$tags->setStoreId(Mage::app()->getStore()->getId());
+		$tags->loadByTagsText($this->helper('catalogsearch')->getEscapedQueryText());
+		$tagId = $tags->getId();
+		$tagCategoryId=$tags->getCategoryId();
+		$storeId = Mage::app()->getStore()->getId();
+		$collection = Mage::getModel('iifire_tags/tags')->getCollection()
+                ->addFieldToFilter('store_id',$storeId);
+        if ($tagId) {
+        	$collection->addFieldToFilter('tags_id',array('gt'=>$tagId));
+			$collection->addFieldToFilter('category_id',array('nq'=>$tagCategoryId));
+        }
+        $collection->getSelect()->limit(10);
+		if(count($collection)<10){
+			$collection1 = Mage::getModel('iifire_tags/tags')->getCollection()
+                ->addFieldToFilter('store_id',$storeId);
+			if ($tagId) {
+				$collection1->addFieldToFilter('category_id',array('nq'=>$tagCategoryId));
+			}
+			$collection1->getSelect()->order('rand()')->limit(10);
+		}
+
+?>
+
+
+<p>
+<h3>You may also be interested in :</h3>
+<?php if(count($collection)>=10): ?>
+<?php $i = 0; ?>
+	<?php foreach($collection as $_tag): ?>
+		<?php if($i!=0): ?>,<?php endif; ?>
+		<?php 
+		$tag=strtolower($_tag->getTagsText());
+		$tag=str_replace(' ','-',trim($tag));?>
+		<a title="<?php echo $_tag->getTagsDescription(); ?>" href="<?php echo 'http://www.wishesbridal.com/mostpopular/'.$tag.'.html' ;?>"><?php echo $this->htmlEscape($_tag->getTagsText()); ?></a>
+		<?php $i++; ?>
+    <?php endforeach; ?>
+<?php else:?>
+	<?php $i = 0; ?>
+	<?php foreach($collection1 as $_tag): ?>
+		<?php if($i!=0): ?>,<?php endif; ?>
+		<?php 
+		$tag=strtolower($_tag->getTagsText());
+		$tag=str_replace(' ','-',trim($tag));?>
+		<a title="<?php echo $_tag->getTagsDescription(); ?>" href="<?php echo 'http://www.wishesbridal.com/mostpopular/'.$tag.'.html'; ?>"><?php echo $this->htmlEscape($_tag->getTagsText()); ?></a>
+		<?php $i++; ?>
+    <?php endforeach; ?>
+<?php endif;?>
+
+
+</p>

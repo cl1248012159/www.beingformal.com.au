@@ -25,79 +25,95 @@
  */
 ?>
 <?php if(true): ?>
-<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
-<div class="page-title">
-    <?php if ($this->helper('rss/catalog')->getTagFeedUrl()): ?>
-        <a href="<?php echo $this->helper('rss/catalog')->getTagFeedUrl() ?>" class="nobr link-rss"><?php echo $this->__('Subscribe to Feed') ?></a>
-    <?php endif; ?>
-    <h1><?php echo ($this->getHeaderText() || $this->getHeaderText() === false) ? $this->getHeaderText() : $this->helper('catalogsearch')->getEscapedQueryText() ?></h1>
-	<p><?php echo $this->getDescription(); ?></p>
-	<?php if(Mage::getSingleton('core/session')->getSearchIsOr()): ?>
-	<p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
-	<h2><?php echo $this->__('You May Also Like These Items:')  ?></h2>
-	<?php endif; ?>
-</div>
-    <?php if ($messages = $this->getNoteMessages()):?>
-    <p class="note-msg">
-        <?php foreach ($messages as $message):?>
-            <?php echo $message?><br />
-        <?php endforeach;?>
-    </p>
-    <?php endif; ?>
-    <?php echo $this->getChildHtml('productlist') ?>
-	
-		<?php $pagsdescription=array(
-			"Each and every bride-to-be warrants {} through Wishesbridal. We now have numerous factors that you should select all of us. Reduced costs as well as high quality. That which you put on displays your own mindset in the direction of style as well as elegance. To begin with, {} from Wishesbridal tend to be for sale right now. You will get the very best product without having busting your financial allowance. For that additional point, we're a dependable worldwide on the internet store that provides a person the greatest high quality occasion materials. You don't in order to be worried about it's sturdiness as well as harsh opposition. Additionally, what we should materials runs through custom-made {} in order to a myriad of footwear as well as add-ons. If you want much more, much more cost savings. The goal really is easy, which is to create your personal second memorable.",
-			"Encouraged in order to Wishesbridal! Your own excellent day time warrants probably the most flirtatious {}. Wishesbridal understands the significance from the wedding ceremony to some bride-to-be. Each and every bride-to-be goodies wedding because the most crucial day time within existence simply because through which day time you aren't just a single one and also you are a spouse for any guy. A person 2 collectively after that reside an extended however pleased existence. Wedding isn't a finish however the begin. With regard to gowns, The {} function within the top quality craftmanship as well as inexpensive costs. All of us not just possess lots of styles but additionally possess numerous a methods that may be personalized as well as customized for your precise specs.",
-			"Wedding is really a special day. Each and every bride-to-be must appear your very best in your big day. After that Wishesbridal may be the correct location and you'll discover the very best a person. All of us will change your own dream in to actuality by giving outstanding couture {} as well as flawless style from inexpensive costs. All of us just utilize the greatest high quality supplies to produce incredible {}. Types of dresses are created within the entrance associated with style. The styles tend to be usually following an action associated with pattern. Right now store your own gowns!",
-			"Have you been in love with get yourself ready for the marriage? Tend to be your own tangled up in your own home? Would you really feel nervous to purchase ‘armor’ for the special day? Wishesbridal is the correct option. Because of Lord you are able to purchase {} straight online with regard to worldwide. Because of this, the reason why we're therefore well-liked amongst ladies. It's handy with regard to client to look on the web. What you ought to perform would be to inform the actual support that {} you prefer greatest or even you need to create a custom-made purchase. The result, all of the difficult point is certainly going resolved through all of us. You simply concentrate on planning your own wedding ceremony and revel in the actual quick delivery.",
-			"Talking about {}, Wishesbridal should be the best option. We've been taking part along with overseas marketers for several years. The manufacturer as well as status tends to be worth your own believed in. Right now we provide the actual new-coming as well as aged clients {} using their very first type of most recent designs about this web page. In addition, you are able to be assured regarding high quality. The highest quality is actually assured simply because we now have the actual severe as well as accountable employees. All of us guarantee to create every gown exceptionally as well as distinctively provides personality. A broad choice of {} tend to be awaiting a person!",
-			"Wishesbridal is really a reputational provider associated with {}. We're promoting an array of {} through various styles and designs. Each top quality as well as sensible costs tends to be assured. The advisable thing is which quick delivery can be obtained. You don't in order to be worried about hold off associated with {} or even horrible lack of products. All of us guarantee in order to deliver the best point to your own doorway, whenever as well as anyplace. Wishesbridal places focal points associated with clients very first as well as boats your own purchase around the globe. Once we make use of worldwide trustworthy logistics companies, you will get satisfaction understanding that your own essential materials is going to be presently there whenever you may need all of them.",
-			"Would you in no way rely upon on the internet buying? 1 buying encounter upon Wishesbridal may completely alter your own emotions. Regardless of the excellent high quality associated with {}, Wishesbridal provides the clients incredibly reduced costs. You're assured to obtain your own spectacular {} over time through the fast shipping. Wishesbridal is actually well-known because of its thoughtful support. Why don't you possess a try to appreciate your own very first pleased buying on the internet upon Wishesbridal?",
-			"Along with a multitude of {}, Wishesbridal is actually well known through the brand new as well as aged clients. Top quality as well as perfect cost can be found. Nearly stunning {} tend to be right here, it is simple to discover appropriate 1 you want. We're satisfaction in our great status. The reason why {} through Wishesbridal tend to be extremely valued? Simply because each and every item goes through a comprehensive screening as well as high quality manage process following obtaining purchases as well as prior to delivering away this, all of us attempt the better to make sure each and every product fulfills worldwide high quality requirements just in case to create reduction as well as unsatisfaction for you. You are able to store right now with full confidence.",
-			"{} tend to be usually costly within our impact. Females invest lots of money to be able to buy an appropriate {}. Why don't you arrived at Wishesbridal? Among the greatest haute couture China-based globally store as well as wholesaler, Wishesbridal usually will keep providing low cost upon high-quality {} to the clients all over the globe. You can purchase an attractive {} without having issues as well as need not split your own financial institution. Encouraged to create range of buy!",
-			"Wishesbridal provides custom-made {} along with other stunning dresses you'll completely drop within adore in the very first view, along with your bridegroom as well as wedding ceremony visitors. Wishesbridal offers its style team within manufacturing plant within the back-up. Whenever getting your own purchase as well as comprehensive info, customer support might at the same time publish in order to collection division. Once the finish item is completed, it will likely be sent to High quality Manage to try high quality. And you simply precede your own hand, purchase what you need as well as wait around in your own home!",
-			"Because is famous Wishesbridal bears broad number of {}. You are able to store an ideal {} fulfills your own wants to decorate your own determine or even display your own enchanting grin. Regardless of reduced costs, the caliber of the {} tend to be worth compliment too. We now have our very own back-up within The far east, a sizable manufacturing plant. For those who have distinctive flavor upon style, use of Wishesbridal from rapidly as you possibly can as well as choose your own desire gown not surprisingly.",
-			"Lately Wishesbridal offers released a number of {}. Each and every woman has got them to gown like a fairy or even full from the woman's wedding ceremony. To be able to supply much better support, our {} can be purchased upon excellent low cost. You're guaranteed to pick the wonderful gown about this web page, with regard to Wishesbridal may be adopted the style developments. Store your preferred 1 and you'll in no way rue to purchase the gown! Obviously quick shipping is to your own fulfillment!",
-			"Have you been nevertheless baffled regarding that {} to choose for the wedding ceremony? Store through Wishesbridal and also you tend to be sure to obtain the solution. Just about all {} the following about this web page is actually associated with best quality. With regard to that you could obtain a much more specific understanding of the actual gowns, we offer comprehensive info or even you are able to additional contact support on the internet. They'll totally cope with your own issue. We're usually right here for the require.",
-			"Engrossing {} can be found upon Wishesbridal. Referred to as the trustful store as well as wholesaler on the internet, we now have the biggest choice of {} for the clients to choose. All of us consider gowns high quality severe. All of us purely follow along with needs associated with clients. The main objective would be to fulfill clients. Additionally, you can purchase your own desire gown about the inexpensive due to the reduced costs. Greatest wants for you personally which is the enjoyment in order to last.",
-			"Huge smiles through clients would be the greatest benefits with regard to providers because Wishesbridal. To be able to achieve this particular objective, all of us release plentiful number of top quality hand crafted {}. They all are listed inexpensively with regards to preserving your hard earned money. Well-timed delivery people can be obtained globally. Furthermore, we provide customized support with regard to clients that require their own {} to become near installed. Wishesbridal embraces a person even while.",
-			"With limited funds however, you continue to be desiring an ideal show- upward from wedding ceremony? Search through the item checklist instantly! Excellent shock is here now! Wishesbridal has got the biggest choice of fashionable {} that your own wishes tend to be made certain to become satisfied. Additionally, all of us listed all of them therefore inexpensive that they'll match each and every spending budget! In short, you will get your own desire {} upon large low cost at this time! Don’t skip the opportunity and start your own buying!",
-			"The duty associated with Wishesbridal would be to emphasize the wonder of the woman. Through selecting an incredible {} in the web page, you are able to get to be the the majority of unexplainable as well as enchanting bride-to-be in the wedding ceremony. The styles tend to be excellent as well as high quality is actually assured. You might in no way look for a shop on the internet supplying this kind of wonderful gown from this kind of reduced costs. Obviously, you may also believe in the style type of {} upon Wishesbridal with regard to all of us adhere to the style for a long time. Attempt to choose 1 you prefer.",
-			"Wishesbridal is actually keeping plentiful number of magnificent {} that are upon large purchase. Most typical individuals may inexpensive this kind of cost without having thinking about the restricted spending budget. You can purchase 1 or maybe more sensitive gowns. To begin with, you need to know which Wishesbridal may be tagged high quality; consequently, you don't have that you should be worried about this. After that, all of the clean {} will never be outdated. Select that which you adore and don't be worried about delivery.",
-			"Wishesbridal offers a range of fashionable {} that function within excellent styles. If you would like clothes to become completely near installed for you personally, after that connection with all of us. We now have provided customized support. We're sure each and every client associated with Wishesbridal drops deeply in love with the actual wonderful {}, outlined through the high quality and extremely reduced costs. What exactly have you been awaiting? Store right now and revel in!",
-			"In the event that you are searching for incredible {} on the internet, Wishesbridal is definitely right here that will help you. It's a shame that you simply skip the actual spectacular number of {} from large discount rates. They're created by superb creative designers and may gentle ladies upward. This may be beneficial in order to make an impression on your self using the amazing {} in the wedding ceremony. Individuals may shock at the appeal as well as elegance. If you're within immediate from it, hurry purchase support can be obtained."	
-		);
-		$tags = Mage::getModel('iifire_tags/tags');
-		$tags->setStoreId(Mage::app()->getStore()->getId());
-		$tags->loadByTagsText($this->helper('catalogsearch')->getEscapedQueryText());
-		
-		if($tags->getId()){
-			$tagstext="<strong>".$tags->getTagsText()."</strong>";
-			$a=array_rand($pagsdescription,1);
-			$tagsdescription=str_replace('{}',$tagstext,$pagsdescription[$a]);
-		}
-		?>
-	<style type="text/css">
-		
-	</style>	
-	<?php if($tagsdescription):?>	
-		<div class="tags-view-page-description">
-			<p><?php echo $tagsdescription; ?></p>
-		</div>
-	<?php endif;?>
+
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+
+    <div class="tag-page">
+        <div class="tag-left"><?php echo $this->getChildHtml('related.tags') ?></div>
+        <div class="tag-main">
+            <div class="page-title">
+                <h1><?php echo ($this->getHeaderText() || $this->getHeaderText() === false) ? $this->getHeaderText() : $this->helper('catalogsearch')->getEscapedQueryText() ?></h1>
+                <p><?php echo $this->getDescription(); ?></p>
+                <?php if(Mage::getSingleton('core/session')->getSearchIsOr()): ?>
+                    <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+                    <h2><?php echo $this->__('You May Also Like These Items:')  ?></h2>
+                <?php endif; ?>
+            </div>
+
+            <?php if ($messages = $this->getNoteMessages()):?>
+                <p class="note-msg">
+                    <?php foreach ($messages as $message):?>
+                        <?php echo $message?><br />
+                    <?php endforeach;?>
+                </p>
+            <?php endif; ?>
+
+            <?php echo $this->getChildHtml('productlist') ?>
+
+            <?php /*
+                    <?php 
+                    $pagsdescription=array(
+                        "Each and every bride-to-be warrants {} through Wishesbridal. We now have numerous factors that you should select all of us. Reduced costs as well as high quality. That which you put on displays your own mindset in the direction of style as well as elegance. To begin with, {} from Wishesbridal tend to be for sale right now. You will get the very best product without having busting your financial allowance. For that additional point, we're a dependable worldwide on the internet store that provides a person the greatest high quality occasion materials. You don't in order to be worried about it's sturdiness as well as harsh opposition. Additionally, what we should materials runs through custom-made {} in order to a myriad of footwear as well as add-ons. If you want much more, much more cost savings. The goal really is easy, which is to create your personal second memorable.",
+                        "Encouraged in order to Wishesbridal! Your own excellent day time warrants probably the most flirtatious {}. Wishesbridal understands the significance from the wedding ceremony to some bride-to-be. Each and every bride-to-be goodies wedding because the most crucial day time within existence simply because through which day time you aren't just a single one and also you are a spouse for any guy. A person 2 collectively after that reside an extended however pleased existence. Wedding isn't a finish however the begin. With regard to gowns, The {} function within the top quality craftmanship as well as inexpensive costs. All of us not just possess lots of styles but additionally possess numerous a methods that may be personalized as well as customized for your precise specs.",
+                        "Wedding is really a special day. Each and every bride-to-be must appear your very best in your big day. After that Wishesbridal may be the correct location and you'll discover the very best a person. All of us will change your own dream in to actuality by giving outstanding couture {} as well as flawless style from inexpensive costs. All of us just utilize the greatest high quality supplies to produce incredible {}. Types of dresses are created within the entrance associated with style. The styles tend to be usually following an action associated with pattern. Right now store your own gowns!",
+                        "Have you been in love with get yourself ready for the marriage? Tend to be your own tangled up in your own home? Would you really feel nervous to purchase ‘armor’ for the special day? Wishesbridal is the correct option. Because of Lord you are able to purchase {} straight online with regard to worldwide. Because of this, the reason why we're therefore well-liked amongst ladies. It's handy with regard to client to look on the web. What you ought to perform would be to inform the actual support that {} you prefer greatest or even you need to create a custom-made purchase. The result, all of the difficult point is certainly going resolved through all of us. You simply concentrate on planning your own wedding ceremony and revel in the actual quick delivery.",
+                        "Talking about {}, Wishesbridal should be the best option. We've been taking part along with overseas marketers for several years. The manufacturer as well as status tends to be worth your own believed in. Right now we provide the actual new-coming as well as aged clients {} using their very first type of most recent designs about this web page. In addition, you are able to be assured regarding high quality. The highest quality is actually assured simply because we now have the actual severe as well as accountable employees. All of us guarantee to create every gown exceptionally as well as distinctively provides personality. A broad choice of {} tend to be awaiting a person!",
+                        "Wishesbridal is really a reputational provider associated with {}. We're promoting an array of {} through various styles and designs. Each top quality as well as sensible costs tends to be assured. The advisable thing is which quick delivery can be obtained. You don't in order to be worried about hold off associated with {} or even horrible lack of products. All of us guarantee in order to deliver the best point to your own doorway, whenever as well as anyplace. Wishesbridal places focal points associated with clients very first as well as boats your own purchase around the globe. Once we make use of worldwide trustworthy logistics companies, you will get satisfaction understanding that your own essential materials is going to be presently there whenever you may need all of them.",
+                        "Would you in no way rely upon on the internet buying? 1 buying encounter upon Wishesbridal may completely alter your own emotions. Regardless of the excellent high quality associated with {}, Wishesbridal provides the clients incredibly reduced costs. You're assured to obtain your own spectacular {} over time through the fast shipping. Wishesbridal is actually well-known because of its thoughtful support. Why don't you possess a try to appreciate your own very first pleased buying on the internet upon Wishesbridal?",
+                        "Along with a multitude of {}, Wishesbridal is actually well known through the brand new as well as aged clients. Top quality as well as perfect cost can be found. Nearly stunning {} tend to be right here, it is simple to discover appropriate 1 you want. We're satisfaction in our great status. The reason why {} through Wishesbridal tend to be extremely valued? Simply because each and every item goes through a comprehensive screening as well as high quality manage process following obtaining purchases as well as prior to delivering away this, all of us attempt the better to make sure each and every product fulfills worldwide high quality requirements just in case to create reduction as well as unsatisfaction for you. You are able to store right now with full confidence.",
+                        "{} tend to be usually costly within our impact. Females invest lots of money to be able to buy an appropriate {}. Why don't you arrived at Wishesbridal? Among the greatest haute couture China-based globally store as well as wholesaler, Wishesbridal usually will keep providing low cost upon high-quality {} to the clients all over the globe. You can purchase an attractive {} without having issues as well as need not split your own financial institution. Encouraged to create range of buy!",
+                        "Wishesbridal provides custom-made {} along with other stunning dresses you'll completely drop within adore in the very first view, along with your bridegroom as well as wedding ceremony visitors. Wishesbridal offers its style team within manufacturing plant within the back-up. Whenever getting your own purchase as well as comprehensive info, customer support might at the same time publish in order to collection division. Once the finish item is completed, it will likely be sent to High quality Manage to try high quality. And you simply precede your own hand, purchase what you need as well as wait around in your own home!",
+                        "Because is famous Wishesbridal bears broad number of {}. You are able to store an ideal {} fulfills your own wants to decorate your own determine or even display your own enchanting grin. Regardless of reduced costs, the caliber of the {} tend to be worth compliment too. We now have our very own back-up within The far east, a sizable manufacturing plant. For those who have distinctive flavor upon style, use of Wishesbridal from rapidly as you possibly can as well as choose your own desire gown not surprisingly.",
+                        "Lately Wishesbridal offers released a number of {}. Each and every woman has got them to gown like a fairy or even full from the woman's wedding ceremony. To be able to supply much better support, our {} can be purchased upon excellent low cost. You're guaranteed to pick the wonderful gown about this web page, with regard to Wishesbridal may be adopted the style developments. Store your preferred 1 and you'll in no way rue to purchase the gown! Obviously quick shipping is to your own fulfillment!",
+                        "Have you been nevertheless baffled regarding that {} to choose for the wedding ceremony? Store through Wishesbridal and also you tend to be sure to obtain the solution. Just about all {} the following about this web page is actually associated with best quality. With regard to that you could obtain a much more specific understanding of the actual gowns, we offer comprehensive info or even you are able to additional contact support on the internet. They'll totally cope with your own issue. We're usually right here for the require.",
+                        "Engrossing {} can be found upon Wishesbridal. Referred to as the trustful store as well as wholesaler on the internet, we now have the biggest choice of {} for the clients to choose. All of us consider gowns high quality severe. All of us purely follow along with needs associated with clients. The main objective would be to fulfill clients. Additionally, you can purchase your own desire gown about the inexpensive due to the reduced costs. Greatest wants for you personally which is the enjoyment in order to last.",
+                        "Huge smiles through clients would be the greatest benefits with regard to providers because Wishesbridal. To be able to achieve this particular objective, all of us release plentiful number of top quality hand crafted {}. They all are listed inexpensively with regards to preserving your hard earned money. Well-timed delivery people can be obtained globally. Furthermore, we provide customized support with regard to clients that require their own {} to become near installed. Wishesbridal embraces a person even while.",
+                        "With limited funds however, you continue to be desiring an ideal show- upward from wedding ceremony? Search through the item checklist instantly! Excellent shock is here now! Wishesbridal has got the biggest choice of fashionable {} that your own wishes tend to be made certain to become satisfied. Additionally, all of us listed all of them therefore inexpensive that they'll match each and every spending budget! In short, you will get your own desire {} upon large low cost at this time! Don’t skip the opportunity and start your own buying!",
+                        "The duty associated with Wishesbridal would be to emphasize the wonder of the woman. Through selecting an incredible {} in the web page, you are able to get to be the the majority of unexplainable as well as enchanting bride-to-be in the wedding ceremony. The styles tend to be excellent as well as high quality is actually assured. You might in no way look for a shop on the internet supplying this kind of wonderful gown from this kind of reduced costs. Obviously, you may also believe in the style type of {} upon Wishesbridal with regard to all of us adhere to the style for a long time. Attempt to choose 1 you prefer.",
+                        "Wishesbridal is actually keeping plentiful number of magnificent {} that are upon large purchase. Most typical individuals may inexpensive this kind of cost without having thinking about the restricted spending budget. You can purchase 1 or maybe more sensitive gowns. To begin with, you need to know which Wishesbridal may be tagged high quality; consequently, you don't have that you should be worried about this. After that, all of the clean {} will never be outdated. Select that which you adore and don't be worried about delivery.",
+                        "Wishesbridal offers a range of fashionable {} that function within excellent styles. If you would like clothes to become completely near installed for you personally, after that connection with all of us. We now have provided customized support. We're sure each and every client associated with Wishesbridal drops deeply in love with the actual wonderful {}, outlined through the high quality and extremely reduced costs. What exactly have you been awaiting? Store right now and revel in!",
+                        "In the event that you are searching for incredible {} on the internet, Wishesbridal is definitely right here that will help you. It's a shame that you simply skip the actual spectacular number of {} from large discount rates. They're created by superb creative designers and may gentle ladies upward. This may be beneficial in order to make an impression on your self using the amazing {} in the wedding ceremony. Individuals may shock at the appeal as well as elegance. If you're within immediate from it, hurry purchase support can be obtained."    
+                    );
+                    $tags = Mage::getModel('iifire_tags/tags');
+                    $tags->setStoreId(Mage::app()->getStore()->getId());
+                    $tags->loadByTagsText($this->helper('catalogsearch')->getEscapedQueryText());
+                    
+                    if($tags->getId()){
+                        $tagstext="<strong>".$tags->getTagsText()."</strong>";
+                        $a=array_rand($pagsdescription,1);
+                        $tagsdescription=str_replace('{}',$tagstext,$pagsdescription[$a]);
+                    }
+                ?>
+                
+                <?php if($tagsdescription):?>   
+                    <div class="tags-view-page-description">
+                        <p><?php echo $tagsdescription; ?></p>
+                    </div>
+                <?php endif;?>
+            */?>
+
+        </div>
+    </div>
+
+
 <?php else: ?>
-<div class="page-title">
-    <h1><?php echo ($this->getHeaderText() || $this->getHeaderText() === false) ? $this->getHeaderText() : $this->__("Search results for '%s'", $this->helper('catalogsearch')->getEscapedQueryText()) ?></h1>
-</div>
-<p class="note-msg">
-    <?php echo ($this->getNoResultText()) ? $this->getNoResultText() : $this->__('Your search returns no results.') ?>
-    <?php if ($messages = $this->getNoteMessages()):?>
-        <?php foreach ($messages as $message):?>
-        <br /><?php echo $message?>
-        <?php endforeach;?>
-    <?php endif; ?>
-</p>
+
+
+    <div class="page-title">
+        <h1><?php echo ($this->getHeaderText() || $this->getHeaderText() === false) ? $this->getHeaderText() : $this->__("Search results for '%s'", $this->helper('catalogsearch')->getEscapedQueryText()) ?></h1>
+    </div>
+    <p class="note-msg">
+        <?php echo ($this->getNoResultText()) ? $this->getNoResultText() : $this->__('Your search returns no results.') ?>
+        <?php if ($messages = $this->getNoteMessages()):?>
+            <?php foreach ($messages as $message):?>
+            <br /><?php echo $message?>
+            <?php endforeach;?>
+        <?php endif; ?>
+    </p>
+
+
 <?php endif; ?>
-<br/>
-<?php echo $this->getChildHtml('related_random'); ?>
+
+
+
+<?php //echo $this->getChildHtml('related_random'); ?>

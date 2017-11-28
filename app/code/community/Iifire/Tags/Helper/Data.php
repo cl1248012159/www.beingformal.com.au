@@ -13,7 +13,7 @@ class Iifire_Tags_Helper_Data extends Mage_Core_Helper_Abstract
 	protected $_sitemapNum = 20000;
 	protected $_changeFreq = "weekly";
 	protected $_urlSuffix = ".html";
-	protected $_subUrl = 'tags';
+	protected $_subUrl = 'mostpopular';
 	
 	public function getSubUrl()
 	{
@@ -258,6 +258,6 @@ class Iifire_Tags_Helper_Data extends Mage_Core_Helper_Abstract
     public function replaceTagUrl($url)
     {
     	$q = Mage::app()->getRequest()->getParam('q');
-    	return strtolower(preg_replace("/tags\/index\/view\/q\/(.*)\//","tags/".$q.".html",$url));
+    	return strtolower(preg_replace("/tags\/index\/view\/q\/(.*)\//","mostpopular/".$q.".html",$url));
     }
 }

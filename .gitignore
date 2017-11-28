@@ -30,6 +30,7 @@ package.json
 .idea/*
 
 
+
 app/etc/modules/Magneto_Debug.xml
 skin/frontend/base/default/debug/
 app/code/community/Magneto/

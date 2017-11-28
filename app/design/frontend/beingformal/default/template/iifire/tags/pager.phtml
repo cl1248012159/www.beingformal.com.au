@@ -17,20 +17,18 @@ $nextPageUrl = $baseSeoPageUrl.($page+1).'/';
 ?>
 <?php if($this->getCollection()->getSize()): ?>
     <?php if($this->getUseContainer()): ?>
-    <div class="pager">
+    <div class="toolbar-bottom">
     <?php endif ?>
     <?php if($this->getLastPageNum()>1): ?>
-    <div class="pages">
+    <div class="pagination">
         <ol>
-        	<li><span class="p-title"><?php echo $this->__("Page %s of %s",$page,$this->getLastPageNum()) ?></span></li>
+        	<!-- <li><span class="p-title"><?php echo $this->__("Page %s of %s",$page,$this->getLastPageNum()) ?></span></li> -->
         <?php if ($this->canShowFirst()): ?>
             <li><a class="first"  rel="nofollow"  href="<?php echo $firstPageUrl; ?>"><?php echo $this->__("First"); ?></a></li>
         <?php endif;?>
         <?php if (!$this->isFirstPage()): ?>
             <li>
-                <a  rel="nofollow"  class="previous<?php if(!$this->getAnchorTextForPrevious()): ?> i-previous<?php endif;?>" href="<?php echo $prePageUrl; ?>" title="<?php echo $this->__('Previous') ?>">
-                    	<?php echo $this->__("Previous"); ?>
-                </a>
+                <a  rel="nofollow"  class="previous<?php if(!$this->getAnchorTextForPrevious()): ?> i-previous<?php endif;?>" href="<?php echo $prePageUrl; ?>" title="<?php echo $this->__('Previous') ?>">&nbsp;</a>
             </li>
         <?php endif;?>
         
@@ -45,9 +43,7 @@ $nextPageUrl = $baseSeoPageUrl.($page+1).'/';
         
         <?php if (!$this->isLastPage()): ?>
             <li>
-                <a  rel="nofollow"  class="next<?php if(!$this->getAnchorTextForNext()): ?> i-next<?php endif; ?>" href="<?php echo $nextPageUrl; ?>" title="<?php echo $this->__('Next') ?>">
-                    <?php echo $this->__("Next"); ?>
-                </a>
+                <a  rel="nofollow"  class="next<?php if(!$this->getAnchorTextForNext()): ?> i-next<?php endif; ?>" href="<?php echo $nextPageUrl; ?>" title="<?php echo $this->__('Next') ?>">&nbsp;</a>
             </li>
         <?php endif;?>
         <?php if ($this->canShowLast()): ?>

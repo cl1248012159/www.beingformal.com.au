@@ -25,43 +25,43 @@
 		</helpers>
 		<rewrite>
         	<tags_url_1>
-                  <from><![CDATA[/tags\/(.*)\/(.*)\//]]></from>
+                  <from><![CDATA[/mostpopular\/(.*)\/(.*)\//]]></from>
                   <to><![CDATA[tags/index/index/w/$1/p/$2]]></to>
                   <complete>1</complete>
             </tags_url_1>
             <tags_url_2>
-                  <from><![CDATA[/tags\/(.*)\.html/]]></from>
+                  <from><![CDATA[/mostpopular\/(.*)\.html/]]></from>
                   <to><![CDATA[tags/index/view/q/$1]]></to>
                   <complete>1</complete>
             </tags_url_2>
 			 <tags_url_2_1>
-                  <from><![CDATA[/tags\/(.*)\.htm/]]></from>
+                  <from><![CDATA[/mostpopular\/(.*)\.htm/]]></from>
                   <to><![CDATA[tags/index/view/q/$1]]></to>
                   <complete>1</complete>
             </tags_url_2_1>
             <tags_url_3>
-                  <from><![CDATA[/tags\/0\-9/]]></from>
+                  <from><![CDATA[/mostpopular\/0\-9/]]></from>
                   <to><![CDATA[tags/index/index/w/0-9/]]></to>
                   <complete>1</complete>
             </tags_url_3>
         	<tags_url_4>
-                  <from><![CDATA[/tags\/([0-9]+)/]]></from>
+                  <from><![CDATA[/mostpopular\/([0-9]+)/]]></from>
                   <to><![CDATA[tags/index/index/p/$1/]]></to>
                   <complete>1</complete>
             </tags_url_4>
             
             <tags_url_5>
-                  <from><![CDATA[/tags\/([a-zA-Z])\/$/]]></from>
+                  <from><![CDATA[/mostpopular\/([a-zA-Z])\/$/]]></from>
                   <to><![CDATA[tags/index/index/w/$1/]]></to>
                   <complete>1</complete>
             </tags_url_5>
             <tags_url_6>
-                  <from><![CDATA[/tags\/$/]]></from>
+                  <from><![CDATA[/mostpopular\/$/]]></from>
                   <to><![CDATA[tags/index/home/]]></to>
                   <complete>1</complete>
             </tags_url_6>
             <tags_url_6_1>
-                  <from><![CDATA[/tags/]]></from>
+                  <from><![CDATA[/mostpopular/]]></from>
                   <to><![CDATA[tags/index/home/]]></to>
                   <complete>1</complete>
             </tags_url_6_1>

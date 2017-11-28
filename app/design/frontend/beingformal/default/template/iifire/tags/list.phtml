@@ -4,6 +4,13 @@ $helper = Mage::helper('itags');
 $alphabet = $helper->getAlphabet(); 
 $w = $this->getRequest()->getParam('w');
 ?>
+
+<style type="text/css"> 
+    .itags-alphabet {border-bottom: 1px solid #ddd;padding: 5px;}
+    .itags-alphabet a{margin:0 4px 0 3px;}
+</style>
+
+
 <div class="itags-alphabet">
 	<?php $i = 0; ?>
 	<?php foreach($alphabet as $letter): ?>
@@ -14,24 +21,43 @@ $w = $this->getRequest()->getParam('w');
 </div>
 
 
+
+
 <div class="itags-list">
     <?php $tags = $this->getTags(); ?>
     <?php if(count($tags)): ?>
-        <ul>
-        <?php foreach ($tags as $_tag): ?>
-        	<li><a href="<?php echo strtolower($helper->getProductListUrl($_tag->getTagsText())); ?>"><?php echo $this->htmlEscape($_tag->getTagsText()); ?></a>
-        <?php endforeach; ?>
-        </ul>
-    	
+        <div class="tags-home">
+            <div class="box-shadow left-top"></div>
+            <div class="box-shadow left-bottom"></div>
+            <div class="box-shadow right-top"></div>
+            <div class="box-shadow right-bottom"></div>
+            <div class="tage-list">
+                <div class="contents">
+                    <?php foreach($tags as $_tag):?>
+                        <a href="<?php echo strtolower($helper->getProductListUrl($_tag->getTagsText())); ?>">
+                            <?php echo $this->htmlEscape($_tag->getTagsText()); ?>
+                        </a>
+                    <?php endforeach;?>
+                </div>
+
+                <div class="itags-pager">
+                    <?php echo $this->getPagerHtml(); ?>
+                </div>
+            </div>
+            
+            
+
+        </div>
     <?php else: ?>
         <p class="note-msg"><?php echo $this->__('No tag available.') ?></p>
     <?php endif; ?>
 </div>
 
 
-<br class="clear" />
 
 
-<div class="itags-pager">
-<?php echo $this->getPagerHtml(); ?>
-</div>
+
+
+
+
+<?php echo $this->getLayout()->createBlock('core/template')->setTemplate('cms/helpcenter/a_promotion_area.phtml')->toHtml(); ?>

@@ -17,6 +17,34 @@ $alphabet = $helper->getAlphabet();
 </div>
 
 
+<?php 
+    $tagsCollection = Mage::getModel('iifire_tags/tags')->getCollection()
+                ->addFieldToFilter('store_id',Mage::app()->getStore()->getId())
+                ->addFieldToFilter('tags_type',1)
+                ->setOrder('tags_id','desc')
+                ->setCurPage(1)
+                ->setPageSize(60);
+?>
+<?php if(count($tagsCollection)):?>
+    <div class="tags-home">
+        <div class="box-shadow left-top"></div>
+        <div class="box-shadow left-bottom"></div>
+        <div class="box-shadow right-top"></div>
+        <div class="box-shadow right-bottom"></div>
+        <div class="tage-list">
+            <div class="contents">
+            <?php foreach($tagsCollection as $_tag):?>
+                <a href="<?php echo strtolower($helper->getProductListUrl($_tag->getTagsText())); ?>">
+                    <?php echo $this->htmlEscape($_tag->getTagsText()); ?>
+                </a>
+            <?php endforeach;?>
+            </div>
+        </div>
+    </div>
+    
+<?php endif;?>
+
+
 
 
 <?php echo $this->getLayout()->createBlock('core/template')->setTemplate('cms/helpcenter/a_promotion_area.phtml')->toHtml(); ?>

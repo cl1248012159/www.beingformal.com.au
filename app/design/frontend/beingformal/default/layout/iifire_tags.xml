@@ -48,27 +48,23 @@
     	<reference name="top.search">
     		<block type="iifire_tags/related_search" name="tags_related_search" as="tags_related_search" template="iifire/tags/related_search.phtml" />
     	</reference>
-    	<reference name="left">
+    	<!-- <reference name="left">
     		<action method="unsetChild"><name>left.newsletter</name></action>
     		<action method="unsetChild"><name>tags_popular</name></action>
     		<action method="unsetChild"><name>right.reports.product.viewed</name></action>
     		<action method="unsetChild"><name>right.reports.product.compared</name></action>
     		<block type="iifire_tags/related_product" name="related.product" template="iifire/tags/related/product.phtml"/>
             <block type="iifire_tags/related_tag" name="related.tags" template="iifire/tags/related/tag.phtml"/>
-            
-        </reference>
+        </reference> -->
         <reference name="root">
-            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
-
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
         </reference>
         <reference name="content">
-				
         	<block type="iifire_tags/result" name="search.result" template="iifire/tags/view/result.phtml">
+                <block type="iifire_tags/related_tag" name="related.tags" template="iifire/tags/related/tag.phtml"/>
                 <block type="iifire_tags/productlist" name="productlist" as="productlist" template="iifire/tags/view/list.phtml"></block>
-
                 <block type="iifire_tags/related_random" name="related_random" as="related_random" template="iifire/tags/related_random.phtml"/>
             </block>
-			<action method="setColumnCount"><count>4</count></action>
             <remove name="product_list_toolbar"/>
         </reference>
     </iifire_tags_index_view>

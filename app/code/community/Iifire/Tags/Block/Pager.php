@@ -16,7 +16,7 @@ class Iifire_Tags_Block_Pager extends Mage_Page_Block_Html_Pager
         $urlParams['_query']    = $params;
         $url = $this->getUrl('*/*/*', $urlParams);
         $q = $this->getRequest()->getParam('q');
-    	return strtolower(preg_replace("/tags\/index\/view\/q\/(.*)\//","tags/".$q.".html",$url));
+    	return strtolower(preg_replace("/tags\/index\/view\/q\/(.*)\//","mostpopular/".$q.".html",$url));
     }
 }
 ?>

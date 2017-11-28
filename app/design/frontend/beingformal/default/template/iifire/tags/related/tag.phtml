@@ -14,7 +14,7 @@
 					$category='';
 					$category=Mage::getModel('catalog/category')->load($c);
 					$relatecategorys[$j]['name']=$category->getName();
-					$relatecategorys[$j]['url']="http://www.wishesbridal.com/".$category->getUrlPath();
+					$relatecategorys[$j]['url']="/".$category->getUrlPath();
 				}
 			}else{
 				if($tagCategoryId){
@@ -38,18 +38,16 @@
 							$category='';
 							$category=Mage::getModel('catalog/category')->load($c);
 							$relatecategorys[$j]['name']=$category->getName();
-							$relatecategorys[$j]['url']="http://www.wishesbridal.com/".$category->getUrlPath();
+							$relatecategorys[$j]['url']="/".$category->getUrlPath();
 						}
 						//print_r($relatecategorys);
 					}
 				}
 			}
 ?>
-
+<?php if(isset($relatecategorys)): ?>
 <div class="block">
-	<div class="block-title">
-		<strong><span><?php echo $this->helper('itags')->__('Recommended Categories'); ?></span></strong>
-	</div>
+	<div class="block-title"><?php echo $this->helper('itags')->__('TAGS CATEGORY'); ?></div>
 	<div class="block-content">
 		<ul>
 		<?php foreach($relatecategorys as $r):?>
@@ -58,3 +56,4 @@
 		</ul>
 	</div>
 </div>
+<?php endif;?>

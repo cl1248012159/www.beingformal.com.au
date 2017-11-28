@@ -51,6 +51,7 @@ class Iifire_Tags_Block_List extends Mage_Core_Block_Template
             $tagsCollection->setCurPage($curpage)
             	->setPageSize($this->_getPageSize());
 			$this->_tagsCollection = $tagsCollection;
+
             if( count($tagsCollection) == 0 ) {
                 return $this;
             }

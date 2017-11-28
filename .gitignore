@@ -1,25 +1,25 @@
-var/
-downloader/
-media/
+/var
+/downloader
+/media
 
 
-skin/frontend/beingformal/default/scss
-skin/frontend/beingformal/default/css/*.map
+/skin/frontend/beingformal/default/scss
+/skin/frontend/beingformal/default/css/*.map
 
 
-app/etc/local.xml
-sitemap.xml
-robots.txt
+/app/etc/local.xml
+/sitemap.xml
+/robots.txt
 
 
 
 
 
-node_modules/
+/node_modules/
 .sass-cache/
 .sass-cache/*
-Gruntfile.js
-package.json
+/Gruntfile.js
+/package.json
 
 
 
@@ -31,8 +31,8 @@ package.json
 
 
 
-app/etc/modules/Magneto_Debug.xml
-skin/frontend/base/default/debug/
-app/code/community/Magneto/
-app/design/frontend/base/default/layout/debug.xml
-app/design/frontend/base/default/template/debug/
+/app/etc/modules/Magneto_Debug.xml
+/skin/frontend/base/default/debug/
+/app/code/community/Magneto/
+/app/design/frontend/base/default/layout/debug.xml
+/app/design/frontend/base/default/template/debug/

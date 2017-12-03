@@ -1,0 +1,1094 @@
+<style type="text/css">
+    .twbox-help-shadow-s { float:left; position:relative; z-index:0;margin:0 0 16px 0; padding-bottom:12px; width:100%; border:1px solid #e4e4e4; color:#555;min-height:100px}
+    .twbox-help-shadow-s i.i, .twbox-help-shadow-s em.i { display:inline-block; position:absolute; width:125px; height:82px; background-image:url(/skin/frontend/beingformal/default/images/help-s.gif); z-index:-1; }
+    .twbox-help-shadow-s i.l, .twbox-help-shadow-s em.l { left:-6px; bottom:-10px; background-position:0 0; }
+    .twbox-help-shadow-s i.r, .twbox-help-shadow-s em.r { right:-6px; bottom:-10px; background-position:-125px 0; }
+    .twbox-help-shadow-s i.tl, .twbox-help-shadow-s em.tl { top:-10px; left:-6px; background-position:-250px 0; }
+    .twbox-help-shadow-s i.tr, .twbox-help-shadow-s em.tr { top:-10px; right:-6px; background-position:-375px 0; }
+    .twbox-help-shadow-s div.ft11 p{ min-height:33px;}
+    .tw-boxshadow-s3 a:hover img { -moz-box-shadow: 3px 3px #888; -webkit-box-shadow: 3px 3px #888; box-shadow: 3px 3px #888; -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(color='#888888',direction=135,strength=3)"; filter: progid:DXImageTransform.Microsoft.Shadow(color='#888888', direction=135, strength=3);
+    }
+    .tw-boxshadow-s3 a.current img { -moz-box-shadow: 3px 3px #4dc1df; -webkit-box-shadow: 3px 3px #4dc1df; box-shadow: 3px 3px #4dc1df; -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(color='#4dc1df',direction=135,strength=3)"; filter: progid:DXImageTransform.Microsoft.Shadow(color='#4dc1df', direction=135, strength=3);
+    }
+    .tw-boxshadow-s3 img { -moz-box-shadow: 3px 3px #cecece; -webkit-box-shadow: 3px 3px #cecece; box-shadow: 3px 3px #cecece; -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(color='#cecece',direction=135,strength=3)"; filter: progid:DXImageTransform.Microsoft.Shadow(color='#cecece', direction=135, strength=3);
+    }
+    .tw-contrast-simple .button { background: none repeat scroll 0 0 #FFFFFF; border: 1px solid #979797; -moz-box-shadow: 3px 3px #cecece; -webkit-box-shadow: 3px 3px #cecece; box-shadow: 3px 3px #cecece; -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(color='#cecece',direction=135,strength=3)"; filter: progid:DXImageTransform.Microsoft.Shadow(color='#cecece', direction=135, strength=3);
+    color: #000000; display: inline-block; font: bold 11px Tahoma; margin: 0 3px; padding: 2px 3px; text-decoration: none; text-transform: uppercase; font-size:10px; }
+
+    .cust_box{padding:20px 20px 0 20px}
+    .cust_vs{height:265px;font-family:"Times New Roman", Times, serif;font-size:16px;text-align:left;color:#333;margin-bottom:10px;background:url(/skin/frontend/beingformal/default/images/cust_bg.jpg) right top no-repeat}
+    .cust_vs h3{font-size:36px;height:40px;line-height:40px;font-weight:normal;}
+    .cust_vs h2{height:60px;line-height:60px;font-size:48px;font-weight:normal;color:#c06}
+    .cust_txt{padding:20px 0;font-family:"Times New Roman", Times, serif;font-size:14px;overflow:hidden}
+    .cust_dot{width:720px;margin:0;border:none;border-bottom:1px dotted #dbdbdb;height:0;font-size:0;}
+
+    .custOpts{padding:20px 30px;border:1px dotted #b7b7b7;background:#f6f6f6;color:#333;}
+    .custOp{padding:0 0 14px 84px;line-height:22px;}
+    .custlb{position:relative;float:left;width:84px;margin-left:-84px;}
+    .custOpts .input{border:1px solid #dbdbdb;height:25px;padding:2px 1px 3px 5px;width:210px}
+
+    .cust_fab{position:absolute;top:0;right:0;}
+    .cust_fab img{width:168px;height:168px;}
+    .cust_fab span{display:block;width:168px;height:168px;padding:3px;border:1px solid #dbdbdb;background:#fff;}
+    .cust_fab p{text-align:center;color:#666;line-height:16px}
+    .custOp .button{width:120px;}
+    .cust_step{padding:0 0 10px 20px}
+    .cust_step em{position:relative;float:left;margin-left:-20px;}
+    .dlink{display:inline-block;vertical-align:middle;position:relative;line-height:18px;padding:1px;margin:0 3px 5px -1px;*margin:0 3px 5px 3px;border:1px solid #c8c9cd;background:#fff;color:#333;overflow:hidden}
+    .dlink:hover{border:1px solid #bd323e;color:#333;text-decoration:none}
+    .cr{position:absolute;right:0;bottom:0;display:none;width:12px;height:12px;background:url(/skin/frontend/beingformal/default/images/sec_cor.png) no-repeat}
+    .scd,a.scd:link,a.scd:visited{border:1px solid #bd323e;}
+    .scd i.cr,a.scd:link i.cr,a.scd:visited i.cr{display:block}
+    .dlink .icon22{font-size:12px;text-align:center;vertical-align:top;-webkit-animation-duration: .5s;-moz-animation-duration:.5s;-o-animation-duration:.5s;animation-duration:.5s;}
+    .dlink:hover .icon22{-webkit-animation-name:fadeIn;-moz-animation-name: fadeIn;-o-animation-name: fadeIn;animation-name: fadeIn;}
+    .icon16,.icon22,.icont,.icon24,.icon32,.icon28,.icon36,.picSec{display:inline-block;text-align:center;vertical-align:middle}
+    .icon16{width:16px;height:16px;line-height:16px;font-size:15px;margin:2px 0 0 3px;}
+    .icon22{width:22px;height:22px;line-height:22px;font-size:21px;}
+    .icont{padding:0 6px;height:22px;line-height:22px;font-size:11px;text-align:center;cursor:pointer;vertical-align:top}
+    .icon24{width:24px;height:24px;line-height:24px;font-size:22px}
+    .icon32{width:32px;height:32px;line-height:32px;font-size:30px}
+    .icon28{width:28px;height:28px;line-height:28px;font-size:28px}
+    .icon36{width:36px;height:36px;line-height:36px;font-size:36px}
+    .pre_other {
+        padding: 0 20px 20px 20px;
+    }
+    .pre_detail{padding:20px;*zoom:1;}
+    .pre_detail:after{
+        display:block; content:"clear"; height:0; clear:both; overflow:hidden; visibility:hidden;
+      }
+    .tbTit{position:relative;margin:20px 0 5px;padding:0 20px;height:30px;line-height:30px;cursor:pointer;font-family:"Times New Roman", Times, serif;background:#e6e6e6}
+
+.tbTit .icon{position:absolute;right:5px;top:3px;}
+.c,.e,.tbTit.togOn .e{display:none}
+.tbTit .e,.tbTit.togOn .c{display:block}
+.tblist{width:100%;border-collapse:collapse;border-spacing:0;empty-cells:show;table-layout:fixed;}
+.tblist thead tr{background:#e6e6e6;height:35px;}
+.tblist thead th{font-size:11px;border:1px solid #FAFAFA;box-shadow: 0 0 1px #fff inset;color:#333;height:33px;font-weight:normal;text-align:center;}
+.tblist thead td{text-align:center;padding:0}
+.tblist td{border:1px solid #FAFAFA;line-height:24px;padding:3px 5px;}
+.tblist tfoot td{background:#FCFCFC;border:1px solid #FAFAFA;line-height:26px;}
+.tblist .hotline td{color:#A76448;background:#FEFDFD}
+.blod{font-weight:700}
+.colHover tbody tr:hover{background:#fff3ed;color:#666}
+col.hover,td.hover{background:#fff3ed !important;}
+td.hot,th.hover{background:#ff9e7c !important;}
+.tdhot{background:#ff9e7c;}
+.tblist thead th.tdhot{border-bottom:1px solid #999 !important}
+.dashL{border-left:1px dashed #dadada;padding-left:10px;}
+.mHalf{position:relative;display:inline-block;float:left;margin:20px 0;vertical-align:top;width:450px;}
+.mtip{position:absolute;display:block;z-index:1;height:20px;background:#fff;opacity:.1;filter:alpha(opacity=10);cursor:pointer}
+.cust_other{font-family:"Times New Roman", Times, serif;font-size:16px;}
+.custTit{font-size:26px;color:#333;}
+.custCase{overflow:hidden}
+.custCase li{position:relative;float:left;width:470px;height:628px;margin:0 0 15px 20px;overflow:hidden}
+.custCase.waul li{height:auto}
+.custCase li .icon{position:absolute;left:5px;bottom:5px;color:#fff;}
+.custCn{display:inline-block;height:26px;line-height:26px;padding:0 15px;margin-bottom:5px;background:#a0a0a0;color:#fff;}
+.custCase li.custCR{text-align:right;width:470px;}
+
+.custWitem{margin-bottom:20px;border:1px solid #dbdbdb;}
+.custWitemin{padding:13px;padding-top:0;text-align:center;background:#eee;border:1px solid #fbfbfb;}
+.custWitemin h3{height:48px;line-height:48px;font-family:"Times New Roman", Times, serif;font-size:20px;font-weight:normal}
+.wimg{border:1px solid #fff;width:438px;}
+.wallTit{width:390px;padding:10px 0;font-size:36px;height:90px;margin:0 auto;line-height:40px;text-align:center;font-family:"Times New Roman", Times, serif;font-weight:normal}
+.waul li{margin-bottom:0}
+.hidden{display: none;}
+.cust_pdr{position:relative;padding:0 200px 10px 0;}
+
+.prevCont{width:22px;height:22px;display:inline-block;vertical-align:top;border:1px solid #d6d6d6;padding:1px;background:#fff;}
+.prevCont img{vertical-align:top}
+.upload-pre-view{-moz-user-select:none;cursor:pointer;display:inline-block;background:#f3f3f3;border:1px solid #d6d6d6;color:#666;height: 24px;line-height: 24px;text-align:center;vertical-align:top;white-space:nowrap; position:relative;}
+.upload-pre-view .twbtn-grey{border:1px solid #fff;height:22px;line-height:22px;display:block;width:220px;text-align:center;color: #494949;}
+.upload-pre-view:hover{border-color:#ccc;}
+.filePrew{display:block;cursor:pointer;margin:0;height:100%;position:absolute;left:230px;top:0;font-family:inherit;}
+.textarea {
+    padding: 4px;
+    border: 1px solid #d8d8d8;
+    resize: none;
+    vertical-align: top;
+}
+.twbtn-orange,.twbtn-orange:link,.twbtn-orange:visited { color:#000 !important; background:#ffac59;background:-moz-linear-gradient(top, #ffac59 0%, #ff9428 100%); background:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffac59), color-stop(100%, #ff9428)); background:-webkit-linear-gradient(top, #ffac59 0%, #ff9428 100%); background:-o-linear-gradient(top, #ffac59 0%, #ff9428 100%); background:-ms-linear-gradient(top, #ffac59 0%, #ff9428 100%); background:linear-gradient(top, #ffac59 0%, #ff9428 100%); -moz-box-shadow:1px 1px 1px 0 rgba(0, 0, 0, .6); -webkit-box-shadow:1px 1px 1px 0 rgba(0, 0, 0, .6); box-shadow:1px 1px 1px 0 rgba(0, 0, 0, .6); -ms-filter:"progid:DXImageTransform.Microsoft.Shadow(color='#707070', direction=135, strength=2), progid:DXImageTransform.Microsoft.Gradient(startColorstr='#ffac59', endColorstr='#ff9428')"; filter:progid:DXImageTransform.Microsoft.Shadow(color='#707070', direction=135, strength=2), progid:DXImageTransform.Microsoft.Gradient(startColorstr='#ffac59', endColorstr='#ff9428');
+zoom:1; _background-color:#ff9c38; }
+.twbtn-orange:hover { color:#fff !important; background:#606060;background:-moz-linear-gradient(top, #606060 0%, #2f2f2f 100%); background:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #606060), color-stop(100%, #2f2f2f)); background:-webkit-linear-gradient(top, #606060 0%, #2f2f2f 100%); background:-o-linear-gradient(top, #606060 0%, #2f2f2f 100%); background:-ms-linear-gradient(top, #606060 0%, #2f2f2f 100%); background:linear-gradient(top, #606060 0%, #2f2f2f 100%); -ms-filter:"progid:DXImageTransform.Microsoft.Shadow(color='#707070', direction=135, strength=2), progid:DXImageTransform.Microsoft.Gradient(startColorstr='#606060', endColorstr='#2f2f2f')"; filter:progid:DXImageTransform.Microsoft.Shadow(color='#707070', direction=135, strength=2), progid:DXImageTransform.Microsoft.Gradient(startColorstr='#606060', endColorstr='#2f2f2f');
+zoom:1; _background-color:#4d4948;}
+body a.twbtn-orange:active, body input.twbtn-orange:active { color:#fff !important; background:#606060;background:-moz-linear-gradient(top, #606060 0%, #2f2f2f 100%); background:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #606060), color-stop(100%, #2f2f2f)); background:-webkit-linear-gradient(top, #606060 0%, #2f2f2f 100%); background:-o-linear-gradient(top, #606060 0%, #2f2f2f 100%); background:-ms-linear-gradient(top, #606060 0%, #2f2f2f 100%); background:linear-gradient(top, #606060 0%, #2f2f2f 100%); -moz-box-shadow:inset 2px 2px 5px #000000, 1px 1px 1px 0 rgba(0, 0, 0, .6); -webkit-box-shadow:inset 2px 2px 5px #000000, 1px 1px 1px 0 rgba(0, 0, 0, .6); box-shadow:inset 2px 2px 5px #000000, 1px 1px 1px 0 rgba(0, 0, 0, .6); -ms-filter:"progid:DXImageTransform.Microsoft.Shadow(color='#707070', direction=135, strength=2), progid:DXImageTransform.Microsoft.Gradient(startColorstr='#606060', endColorstr='#2f2f2f')"; filter:progid:DXImageTransform.Microsoft.Shadow(color='#707070', direction=135, strength=2), progid:DXImageTransform.Microsoft.Gradient(startColorstr='#606060', endColorstr='#2f2f2f');
+zoom:1; _background-color:#606060; }
+.custOp .button {
+    border:0;
+    font-size: 13px !important;
+    height: 25px;
+    line-height: 24px;
+    padding: 0 10px 2px !important;
+}
+.Vmsg{font-style:normal;display:inline-block;vertical-align:middle;margin-left:5px;color: #333;*margin-top:2px;line-height:14px;font-size:11px;}
+.Vpass,.Verro,.Vsend{padding:3px 3px 4px 20px;max-width:610px;}
+.Vpass{background:#F2FDDB url(/skin/frontend/base/default/images/validate/accept.png) 0 2px no-repeat;border:1px solid #ADCD3C !important;}
+.Verro{background:#FFF2E9 url(/skin/frontend/base/default/images/validate/exclamation.png) 0 2px no-repeat;border:1px solid #f60 !important;}
+.Vsend{background:#ffd url(/skin/frontend/base/default/images/validate/loading.gif) 0 2px no-repeat;border:1px solid #fc0 !important;}
+.custom-size-box { position:fixed; background:#fff; width:582px;height:622px;left:50%;top:50%;margin:-276px 0 0 -291px; 
+color:#777;  padding:0 0 10px 0; border:1px solid #dcdcdc; border-radius:1px; z-index:1000; box-shadow:0 2px 5px #aaa; -moz-box-shadow:0 2px 5px #aaa; -webkit-box-shadow:0 2px 5px #aaa; -ms-box-shadow:0 2px 5px #aaa; -o-box-shadow:0 2px 5px #aaa;display:none;padding-top:25px;}
+.custom-size-box .p-close-box {height:25px;position:absolute;width:25px;top:3px;right:0;}
+.custom-size-box .p-close-box i,.custom-size-box .p-close-box em { display:block; float:right; width:25px; height:20px; overflow:hidden; background:url(/skin/frontend/beingformal/default/images/p-s.gif) no-repeat -88px -45px; cursor:pointer; }
+.custBoxin{height: 580px;overflow-x: hidden; overflow-y: auto;}
+.custom-size-box table {width:540px;margin:0 auto }
+.side-za-r .select-custom-size select { color:#777; font-size:11px; }
+.custom-size-box table tr.dotted td{padding-bottom:5px;border-bottom:1px dotted #dcdcdc;}
+.custom-size-box table tr td { padding:5px 0 2px 0;padding-right:3px\0; text-align:left; vertical-align:top; }
+.custom-size-box table tr td.tr { text-align:right; *padding-right:0 !important;}
+.custom-size-box table tr td.tl { text-align:left; }
+.custom-size-box table tr td.tc { text-align:center; }
+.custom-size-box img {}
+.custom-size-box .customer-size { padding:0; margin:0; width:48px; height:15px; line-height:15px; text-align:center; color:#333; font-size:11px; }
+.tc { text-align:center; }
+.pro-measure-icon { display:inline-block;text-align:center;position:relative;}
+.pro-measure-icon em { display:block; position:absolute; top:0px; left:10px; width:40px; height:40px; background:url(../../images/tw_images/pro-measure-icon.gif) no-repeat 0 0; }
+.pro-measure-icon:hover em { background-position:-40px 0; }
+.acc-w4 { width:37px; height:22px; text-align:center; }
+.acc-inputtext { line-height: 22px; padding: 0 4px; border-radius:2px; box-shadow:inset 0 0 2px #eee; font-size:11px; }
+
+#select-custom-size-list .twbtn-orange { font-size: 10px !important; height: 17px; line-height: 16px;*line-height:15px;*margin-left:5px;}
+#select-custom-size-list input[type="text"] { border: 1px solid #CCCCCC; border-radius:2px; box-shadow:inset 0 0 2px #eee;*margin-left:5px; }
+#select-custom-size-list input[type="text"]:focus { border-color: #4DC1DF; }
+
+.twbtn-grey,body a.twbtn-grey, body input.twbtn-grey { border:1px solid; border-color:#e3e3e3 #c9c9c9 #a5a5a5; color:#494949 !important; background:#e1e1e1;background:-moz-linear-gradient(top, #eeeeee 0%, #cccccc 100%); background:-webkit-gradient(linear, left top, left bottom, color-stop(0%, #eeeeee), color-stop(100%, #cccccc)); background:-webkit-linear-gradient(top, #eeeeee 0%, #cccccc 100%); background:-o-linear-gradient(top, #eeeeee 0%, #cccccc 100%); background:-ms-linear-gradient(top, #eeeeee 0%, #cccccc 100%); background:linear-gradient(top, #eeeeee 0%, #cccccc 100%); -ms-filter:"progid:DXImageTransform.Microsoft.Gradient(startColorstr='#606060', endColorstr='#2f2f2f')"; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#cccccc');
+zoom:1; }
+body input.twbtn-grey.small { font-size:10px !important; height:18px; line-height:14px; padding:0 10px 3px !important; }
+body input.twbtn-orange,body input.twbtn-black, body input.twbtn-orange-disabled {font-size:13px !important;height:25px;line-height:24px;padding:0 10px 2px !important; *padding:0 5px 2px !important;}
+.cuswrapper{width:540px;overflow:hidden}
+#custLinkFm{cursor:pointer;position:relative;padding-bottom:20px;color:#4dc1df}
+#custLinkFm .icon{position:absolute;bottom:2px;left:50%;margin-left:-8px;
+    border-top:8px solid #4dc1df;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+}
+#custLinkFm .icon.opened{
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid #4dc1df;
+}
+#custLinkFm.togged .icon{-webkit-transform: rotate(180deg);-moz-transform: rotate(180deg);-o-transform: rotate(180deg);transform: rotate(180deg);}
+
+</style>
+
+
+<div>
+    <div class="twbox-help-shadow-s">
+        <em class="i tl">&nbsp;</em> <em class="i tr">&nbsp;</em><em class="i l">&nbsp;</em> <em class="i r">&nbsp;</em>
+        <div class="cust_box clearfix">
+            <div class="cust_vs">
+                <h3>Customize</h3>
+                <h2>Your Own Dresses !</h2>
+                <div class="cust_txt">
+                    <p><i>Many customers ask if we can make dresses according to personal design &amp; special request,</i></p>
+                    <p><i><b>Customized Dresses</b> are certainly available with our professional dress makers and customer-oriented service.</i></p>
+                </div>
+                <div class="cust_dot"></div>
+                <div class="cust_txt">
+                    <p><b>Three Easy Steps</b> to Design &amp; Customize Your Dress</p>
+                    <div class="cust_step"><em>1.</em>Submit your information &amp; request below:</div>
+                </div>
+            </div>
+            <div class="custOpts" id="custOpts">
+                <form name="custForm" method="post" action="/custom/index/add" id="custForm" enctype="multipart/form-data">
+
+                    <div class="custOp">
+                        <div class="custlb"><span class="red-t">*</span>Size: </div>
+                        <div>
+                            <a class="dlink" href="javascript:;" data-size="custom" id="custSbtn"><span class="icont" style="width:106px">Custom Size</span><i class="cr"></i></a>
+                            <a class="dlink" href="javascript:;" data-size="2"><span class="icont">2</span><i class="cr"></i></a>
+                            <a class="dlink" href="javascript:;" data-size="4"><span class="icont">4</span><i class="cr"></i></a>
+                            <a class="dlink" href="javascript:;" data-size="6"><span class="icont">6</span><i class="cr"></i></a>
+                            <a class="dlink" href="javascript:;" data-size="8"><span class="icont">8</span><i class="cr"></i></a>
+                            <a class="dlink" href="javascript:;" data-size="10"><span class="icont">10</span><i class="cr"></i></a>
+                            <a class="dlink" href="javascript:;" data-size="12"><span class="icont">12</span><i class="cr"></i></a>
+                            <a class="dlink" href="javascript:;" data-size="14"><span class="icont">14</span><i class="cr"></i></a>
+                            <a class="dlink" href="javascript:;" data-size="16"><span class="icont">16</span><i class="cr"></i></a>
+                            <a class="dlink" href="javascript:;" data-size="14W"><span class="icont">14W</span><i class="cr"></i></a>
+                            <a class="dlink" href="javascript:;" data-size="16W"><span class="icont">16W</span><i class="cr"></i></a>
+                            <a class="dlink" href="javascript:;" data-size="18W"><span class="icont">18W</span><i class="cr"></i></a>
+                            <a class="dlink" href="javascript:;" data-size="20W"><span class="icont">20W</span><i class="cr"></i></a>
+                            <a class="dlink" href="javascript:;" data-size="22W"><span class="icont">22W</span><i class="cr"></i></a>
+                            <a class="dlink" href="javascript:;" data-size="24W"><span class="icont">24W</span><i class="cr"></i></a>
+                            <a class="dlink" href="javascript:;" data-size="26W"><span class="icont">26W</span><i class="cr"></i></a>
+                            (US size)
+                            <input type="hidden" data-rule="required" name="size"    value="">
+                            <dfn class="Vmsg" data-rule="required" data-for="custSize" data-passhide="true" data-warn="Please Choose Size."></dfn>                            
+                        </div>
+                    </div>
+                    <div class="custOp">
+                        <div class="custlb"><span class="red-t">*</span>Color:</div>
+                        <div class="cust_pdr">
+                            <?php 
+                                $colors_str = Mage::getModel('core/variable')->loadByCode('colorRGB')->getValue('text');
+                                $colors_str = str_replace(array("\r\n", "\r", "\n"), "", $colors_str);
+                                $colors_str = trim($colors_str,",");
+                                $colors_arr = explode(",", $colors_str);
+                                $colors = array();
+                                foreach($colors_arr as $color){
+                                    $tmp = explode("=>", $color);
+                                    $colors[trim($tmp[0],"'")] = trim($tmp[1],"'");
+                                }
+                            ?>
+                            <?php foreach($colors as $k_c=>$color):?>
+                                <a class="dlink" href="javascript:;" data-colorname="<?php echo $k_c;?>" data-colorrgb="<?php echo $color;?>"><span class="icon22" title="<?php echo $k_c;?>" style="background-color:<?php echo $color;?>;"></span><i class="cr"></i></a>
+                            <?php endforeach;?>
+                            <input type="hidden" data-rule="required" name="color"   value="">
+                            <dfn class="Vmsg" data-rule="required" data-for="custFab" data-passhide="true" data-warn="Please Select Color."></dfn>
+                        </div>
+                    </div>
+                    <div class="custOp">
+                        <div class="custlb"><span class="red-t">*</span>Images: </div>
+                        <div class="cust_pdr">
+                            <span class="upload-pre-view">
+                                <span class="twbtn-grey">Choose Files (Front View)</span>
+                                <input class="filePrew" data-rule="required" type="file" name="customimage1" id="picFront">
+                            </span>
+                            <dfn class="Vmsg" data-rule="required" data-warn="Please Upload a Front View Pictrue." style="margin-left:250px;"></dfn>
+                        </div>
+                        <div class="cust_pdr">
+                            <span class="upload-pre-view">
+                                <span class="twbtn-grey">Choose Files (Back View)</span>
+                                <input class="filePrew" type="file" name="customimage2">
+                            </span>
+                            <dfn class="Vmsg" data-rule="required" data-warn="Please Upload a Back View Pictrue."></dfn>
+                        </div>
+                        <div class="cust_pdr">
+                            <span class="upload-pre-view">
+                                <span class="twbtn-grey">Choose Files (Details)</span>
+                                <input class="filePrew" type="file" name="customimage3">
+                            </span>
+                            <dfn class="Vmsg" data-rule="required" data-warn="Please Upload a Details Pictrue."></dfn>
+                        </div>
+
+                        <div id="addFiles">
+                            <div class="cust_pdr">
+                                <span class="upload-pre-view">
+                                    <span class="twbtn-grey">Choose Files</span>
+                                    <input class="filePrew" type="file" name="customimage4">
+                                </span>
+                            </div>
+                            <div class="cust_pdr">
+                                <span class="upload-pre-view">
+                                    <span class="twbtn-grey">Choose Files</span>
+                                    <input class="filePrew" type="file"  name="customimage5">
+                                </span>
+                            </div>
+                            <div class="cust_pdr">
+                                <span class="upload-pre-view">
+                                    <span class="twbtn-grey">Choose Files</span>
+                                    <input class="filePrew" type="file" name="customimage6">
+                                </span>
+                            </div>
+                            <div class="cust_pdr">
+                                <span class="upload-pre-view">
+                                    <span class="twbtn-grey">Choose Files</span>
+                                    <input class="filePrew" type="file" name="customimage7">
+                                </span>
+                            </div>
+                            <div class="cust_pdr">
+                                <span class="upload-pre-view">
+                                    <span class="twbtn-grey">Choose Files</span>
+                                    <input class="filePrew" type="file" name="customimage8">
+                                </span>
+                            </div>
+                            <div class="cust_pdr">
+                                <span class="upload-pre-view">
+                                    <span class="twbtn-grey">Choose Files</span>
+                                    <input class="filePrew" type="file" name="customimage9">
+                                </span>
+                            </div>
+                            <div class="cust_pdr">
+                                <span class="upload-pre-view">
+                                    <span class="twbtn-grey">Choose Files</span>
+                                    <input class="filePrew" type="file" name="customimage10" >
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="cust_pdr gray">
+                            <p class="ft11">The more and clearer images you upload, the better we can understand styles and detail you like.</p>
+                        </div>
+                    </div>
+
+                    <div class="custOp">
+                        <div class="custlb"><span class="red-t">*</span>Your Name: </div>
+                        <input type="text"  data-rule="required" class="input" id="custName" name="name">
+                        <dfn class="Vmsg" data-rule="required" data-for="custName" data-passhide="true" data-warn="Please enter your name."></dfn>
+                    </div>
+
+                    <div class="custOp">
+                        <div class="custlb"><span class="red-t">*</span>Telephone: </div>
+                        <input type="text" data-rule="required" class="input" id="custPhone" name="telephone">
+                        <dfn class="Vmsg" data-rule="required" data-for="custPhone" data-passhide="true" data-warn="This is a required field."></dfn>
+                    </div>
+
+                    <div class="custOp">
+                        <div class="custlb"><span class="red-t">*</span>Your Email: </div>
+                        <input type="text" data-rule="required" class="input" id="custMail" name="email">
+                        <dfn class="Vmsg" data-rule="required" data-for="custMail" data-passhide="true" data-warn="Please enter a valid email address."></dfn>
+                    </div>
+
+                    <div class="custOp">
+                        <div class="custlb">Special Need:</div>
+                        <textarea id="custSpecial" name="special_need" class="textarea" style="width:580px;height:120px;"></textarea>
+                    </div>
+
+                    <div class="custOp">
+                        <input class="button twbtn-orange medium" type="button" value="Submit" name="custBtn" id="custBtn">
+                    </div>
+
+                    <div class="custOp">
+                        <div class="custlb"><span class="red-t">*</span>Be Advised:</div>
+                        <p>If you have any question on size or measuring, please see our size chart and measuring guide below for help. </p>
+                        <p>For further help, please email us at: <a href="mailto:cs@topwedding.com" class="undline">cs@topwedding.com</a></p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="cust_txt">
+                <div class="cust_step"><em>2.</em>We will make a feedback to you within 2 business days to discuss and confirm the price, material, detail. </div>
+                <div class="cust_step"><em>3.</em>Dress tailoring will be started when all the information settled. Images of the finished dress will be sent to you before shipment. It won't be shipped until you say 'YES'.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="twbox-help-shadow-s">
+        <em class="i tl">&nbsp;</em> <em class="i tr">&nbsp;</em><em class="i l">&nbsp;</em> <em class="i r">&nbsp;</em>
+        <div class="pre_detail clearfix" id="colHov">
+            <div class="tbTit"><b>Dresses Size Chart</b><em class="icon icon22 c" data-icon=""></em><em class="icon icon22 e" data-icon=""></em></div>
+            <div class="cusTog hidden">
+                <table class="tblist colHover" id="a1">
+                    <colgroup>
+                        <col style="width: 135px;background:#ece8e5">
+                        <col style="width: 135px;">
+                        <col style="width: 135px;">
+                        <col style="width: 135px;">
+                        <col style="width: 135px;">
+                        <col style="width: 135px;">
+                        <col class="">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th class="">US Size</th>
+                            <th class="">Euro Size</th>
+                            <th class="">UK Size</th>
+                            <th class="">Bust</th>
+                            <th class="">Waist</th>
+                            <th class="">Hips</th>
+                            <th class="">Hollow to Floor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <td align="center" class="blod">00</td>
+                        <td align="center" class="blod">28</td>
+                        <td align="center" class="blod">0</td>
+                        <td align="center">31.5</td>
+                        <td align="center">24</td>
+                        <td align="center">34</td>
+                        <td align="center">58</td>
+                        </tr>
+                        <tr>
+                        <td align="center" class="blod">0</td>
+                        <td align="center" class="blod">30</td>
+                        <td align="center" class="blod">2</td>
+                        <td align="center">32</td>
+                        <td align="center">25</td>
+                        <td align="center">35</td>
+                        <td align="center">58</td>
+                        </tr>
+                        <tr>
+                        <td align="center" class="blod">2</td>
+                        <td align="center" class="blod">32</td>
+                        <td align="center" class="blod">4</td>
+                        <td align="center">32.5</td>
+                        <td align="center">25.5</td>
+                        <td align="center">35.5</td>
+                        <td align="center">58</td>
+                        </tr>
+                        <tr>
+                        <td align="center" class="blod">4</td>
+                        <td align="center" class="blod">34</td>
+                        <td align="center" class="blod">6</td>
+                        <td align="center">33.5</td>
+                        <td align="center">26.5</td>
+                        <td align="center" class="">36.75</td>
+                        <td align="center">58</td>
+                        </tr>
+                        <tr>
+                        <td align="center" class="blod">6</td>
+                        <td align="center" class="blod">36</td>
+                        <td align="center" class="blod">8</td>
+                        <td align="center">34.5</td>
+                        <td align="center">27.5</td>
+                        <td align="center">37.75</td>
+                        <td align="center">59</td>
+                        </tr>
+                        <tr>
+                        <td align="center" class="blod">8</td>
+                        <td align="center" class="blod">38</td>
+                        <td align="center" class="blod">10</td>
+                        <td align="center">35.5</td>
+                        <td align="center" class="">28.5</td>
+                        <td align="center">38.75</td>
+                        <td align="center">59</td>
+                        </tr>
+                        <tr>
+                        <td align="center" class="blod">10</td>
+                        <td align="center" class="blod">40</td>
+                        <td align="center" class="blod">12</td>
+                        <td align="center">36.5</td>
+                        <td align="center">29.5</td>
+                        <td align="center">39.75</td>
+                        <td align="center" class="">60</td>
+                        </tr>
+                        <tr>
+                        <td align="center" class="blod">12</td>
+                        <td align="center" class="blod">42</td>
+                        <td align="center" class="blod">14</td>
+                        <td align="center" class="">38</td>
+                        <td align="center">31</td>
+                        <td align="center" class="">41.25</td>
+                        <td align="center">60</td>
+                        </tr>
+                        <tr>
+                        <td align="center" class="blod">14</td>
+                        <td align="center" class="blod">44</td>
+                        <td align="center" class="blod">16</td>
+                        <td align="center" class="">39.5</td>
+                        <td align="center" class="">32.5</td>
+                        <td align="center" class="">42.75</td>
+                        <td align="center">61</td>
+                        </tr>
+                        <tr>
+                        <td align="center" class="blod">16</td>
+                        <td align="center" class="blod">46</td>
+                        <td align="center" class="blod">18</td>
+                        <td align="center" class="">41</td>
+                        <td align="center" class="">34</td>
+                        <td align="center" class="">44.25</td>
+                        <td align="center">61</td>
+                        </tr>
+                        <tr>
+                        <td align="center" class="blod">14W</td>
+                        <td align="center" class="blod">46</td>
+                        <td align="center" class="blod">18</td>
+                        <td align="center" class="">41</td>
+                        <td align="center" class="">34</td>
+                        <td align="center">43.5</td>
+                        <td align="center">61</td>
+                        </tr>
+                        <tr>
+                        <td align="center" class="blod">16W</td>
+                        <td align="center" class="blod">48</td>
+                        <td align="center" class="blod">20</td>
+                        <td align="center" class="">43</td>
+                        <td align="center">36.25</td>
+                        <td align="center">45.5</td>
+                        <td align="center">61</td>
+                        </tr>
+                        <tr>
+                        <td align="center" class="blod">18W</td>
+                        <td align="center" class="blod">50</td>
+                        <td align="center" class="blod">22</td>
+                        <td align="center">45</td>
+                        <td align="center" class="">38.5</td>
+                        <td align="center">47.5</td>
+                        <td align="center">61</td>
+                        </tr>
+                        <tr>
+                        <td align="center" class="blod">20W</td>
+                        <td align="center" class="blod">52</td>
+                        <td align="center" class="blod">24</td>
+                        <td align="center">47</td>
+                        <td align="center">40.75</td>
+                        <td align="center">49.5</td>
+                        <td align="center">61</td>
+                        </tr>
+                        <tr>
+                        <td align="center" class="blod">22W</td>
+                        <td align="center" class="blod">54</td>
+                        <td align="center" class="blod">26</td>
+                        <td align="center">49</td>
+                        <td align="center">43</td>
+                        <td align="center">51.5</td>
+                        <td align="center">61</td>
+                        </tr>
+                        <tr>
+                        <td align="center" class="blod">24W</td>
+                        <td align="center" class="blod">56</td>
+                        <td align="center" class="blod">28</td>
+                        <td align="center" class="">51</td>
+                        <td align="center" class="">45.25</td>
+                        <td align="center">53.5</td>
+                        <td align="center">61</td>
+                        </tr>
+                        <tr>
+                        <td align="center" class="blod">26W</td>
+                        <td align="center" class="blod">58</td>
+                        <td align="center" class="blod">30</td>
+                        <td align="center">53</td>
+                        <td align="center">47.5</td>
+                        <td align="center">55.5</td>
+                        <td align="center">61</td>
+                        </tr>
+                        <tr>
+                        <td align="center" class="blod">28W</td>
+                        <td align="center" class="blod">60</td>
+                        <td align="center" class="blod">32</td>
+                        <td align="center">55</td>
+                        <td align="center">49</td>
+                        <td align="center">57.5</td>
+                        <td align="center">61</td>
+                        </tr>
+                        <tr>
+                        <td align="center" class="blod">30W</td>
+                        <td align="center" class="blod">62</td>
+                        <td align="center" class="blod">34</td>
+                        <td align="center">57</td>
+                        <td align="center">50.5</td>
+                        <td align="center">59</td>
+                        <td align="center">61</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <div class="tbTit"><b>Flower Girl Dresses Size Chart</b><em class="icon icon22 c" data-icon=""></em><em class="icon icon22 e" data-icon=""></em></div>
+            <div class="cusTog hidden">
+                                    <table class="tblist colHover" id="a5">
+                                    <colgroup>
+                                    <col style="width:187px;background:#ece8e5">
+                                    <col style="width:187px">
+                                    <col style="width:187px">
+                                    <col style="width:187px">
+                                    <col class="">
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                    <th class="">Size</th>
+                                    <th class="">Bust</th>
+                                    <th class="">Waist</th>
+                                    <th class="">Hips</th>
+                                    <th class="">Hollow to Floor</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                    <td align="center" class="blod">Child-2</td>
+                                    <td align="center" class="">21</td>
+                                    <td align="center" class="">20</td>
+                                    <td align="center">20</td>
+                                    <td align="center">33</td>
+                                    </tr>
+                                    <tr>
+                                    <td align="center" class="blod">Child-3</td>
+                                    <td align="center" class="">22</td>
+                                    <td align="center">21</td>
+                                    <td align="center">21</td>
+                                    <td align="center">35</td>
+                                    </tr>
+                                    <tr>
+                                    <td align="center" class="blod">Child-4</td>
+                                    <td align="center" class="">23</td>
+                                    <td align="center">22</td>
+                                    <td align="center">22</td>
+                                    <td align="center">38</td>
+                                    </tr>
+                                    <tr>
+                                    <td align="center" class="blod">Child-5</td>
+                                    <td align="center" class="">24</td>
+                                    <td align="center">23</td>
+                                    <td align="center">23</td>
+                                    <td align="center">40</td>
+                                    </tr>
+                                    <tr>
+                                    <td align="center" class="blod">Child-6</td>
+                                    <td align="center" class="">25</td>
+                                    <td align="center">24</td>
+                                    <td align="center">25</td>
+                                    <td align="center">41</td>
+                                    </tr>
+                                    <tr>
+                                    <td align="center" class="blod">Child-7</td>
+                                    <td align="center" class="">26</td>
+                                    <td align="center">25</td>
+                                    <td align="center" class="">26</td>
+                                    <td align="center">42</td>
+                                    </tr>
+                                    <tr>
+                                    <td align="center" class="blod">Child-8</td>
+                                    <td align="center" class="">27</td>
+                                    <td align="center">26</td>
+                                    <td align="center" class="">27</td>
+                                    <td align="center">43</td>
+                                    </tr>
+                                    <tr>
+                                    <td align="center" class="blod">Child-9</td>
+                                    <td align="center">28</td>
+                                    <td align="center" class="">27</td>
+                                    <td align="center" class="">29</td>
+                                    <td align="center">44</td>
+                                    </tr>
+                                    <tr>
+                                    <td align="center" class="blod">Child-10</td>
+                                    <td align="center">29</td>
+                                    <td align="center">28</td>
+                                    <td align="center" class="">31</td>
+                                    <td align="center" class="">47</td>
+                                    </tr>
+                                    <tr>
+                                    <td align="center" class="blod">Child-11</td>
+                                    <td align="center">30.5</td>
+                                    <td align="center">29</td>
+                                    <td align="center" class="">33</td>
+                                    <td align="center">48</td>
+                                    </tr>
+                                    <tr>
+                                    <td align="center" class="blod">Child-12</td>
+                                    <td align="center">32</td>
+                                    <td align="center" class="">30</td>
+                                    <td align="center">34</td>
+                                    <td align="center">50</td>
+                                    </tr>
+                                    <tr>
+                                    <td align="center" class="blod">Child-13</td>
+                                    <td align="center">33</td>
+                                    <td align="center" class="">31</td>
+                                    <td align="center">34.5</td>
+                                    <td align="center">51</td>
+                                    </tr>
+                                    <tr>
+                                    <td align="center" class="blod">Child-14</td>
+                                    <td align="center">34</td>
+                                    <td align="center" class="">32</td>
+                                    <td align="center">35</td>
+                                    <td align="center">52</td>
+                                    </tr>
+                                    </tbody>
+                                    </table>
+            </div>
+
+
+            <div class="tbTit"><b>Measuring Guide</b> -- For Wedding Dresses &amp; Event Dresses<em class="icon icon22 c" data-icon=""></em><em class="icon icon22 e" data-icon=""></em></div>
+            <div class="cusTog hidden">
+                <div class="pre_detail clearfix" id="guidBox">
+                    <p class="STYLE2 ft14">Please be sure not to round up or down to the next inch when taking your measurements! For example, if your measurement ends up being 23 1/8 inches, please submit 23 1/8 inches to us!</p>
+                    <span class="mHalf">
+                        <img src="/skin/frontend/base/default/images/tw_images/cust/adult-dresses-1.jpg">
+                        <em style="width:70px;left:40px;top:84px" class="mtip" data-tip="Please measure from the edge of the shoulder socket, across the back to the same point on the other shoulder."></em>
+                        <em style="width:74px;left:36px;top:146px" class="mtip" data-tip="Make your arms relaxed, down at your sides. Take the tape from the highest part of your chest directly to the part under your arms."></em>
+                        <em style="width:40px;left:70px;top:170px" class="mtip" data-tip="Don't mistake it for your bra size. This is the measurement around your chest at the fullest part of your breast. While being measured, please get your arms relaxed, down at your sides."></em>
+                        <em style="width:74px;left:36px;top:200px" class="mtip" data-tip="You should measure directly under the underneath your breast."></em>
+                        <em style="width:124px;left:36px;top:340px" class="mtip" data-tip="This is the length from your front hollow which is at the base of your neck to where you want the hem of the dress to fall. Do always stand upright with your feet keeping together. Remember the tape should be measured according to the fullness and the measurement should include the height of the shoes heel if you want the shoes to be covered by the dress."></em>
+                        <em style="width:84px;right:16px;top:156px" class="mtip" data-tip="You should measure from your shoulder point to the wrist."></em>
+                        <em style="width:84px;right:16px;top:232px" class="mtip" data-tip="Place your hands at your natural waistline. You should measure the smallest part of your waist; it is an inch or so above your belly button in general."></em>
+                        <em style="width:84px;right:16px;top:302px" class="mtip" data-tip="This is the measurement at the fullest part of your hips. It is usually approximately 7 inches below your waist. What you should do is to stand naturally with your heels together and relaxed. Find your hip bones and measure there. Pay special attention to leave a little room and not to pull the tape too tight."></em>
+                        <em style="width:84px;right:16px;top:328px" class="mtip" data-tip="Measure from the top of your leg, just bellow where your buttocks begins, all the way around your legs. Keep your feet together when taking this measurement."></em>
+                    </span>
+                    <span class="mHalf dashL">
+                        <img src="/skin/frontend/base/default/images/tw_images/cust/adult-dresses-2.jpg">
+                        <em style="width:140px;left:30px;top:160px" class="mtip" data-tip="This is the fullest part of the arm. Keep tape slightly loose to allow for space."></em>
+                        <em style="width:140px;left:30px;top:194px" class="mtip" data-tip="This measurement measures from the shoulder bone, through your nipple, and down to your natural waist."></em>
+                        <em style="width:140px;left:30px;top:344px" class="mtip" data-tip="It means your full height. Stand straight and measure from top to bottom."></em>
+                        <em style="width:140px;left:30px;top:418px" class="mtip" data-tip="This is a measurement of the circumference of your upper knees, approximately an inch above the top of your knee cap. When taking this measurement, stand straight with your feet together."></em>
+                        <em style="width:120px;right:16px;top:148px" class="mtip" data-tip="Measure from the bone where your shoulder and chest connect down to your nipple."></em>
+                        <em style="width:120px;right:16px;top:188px" class="mtip" data-tip="This is a measurement of the distance between your two nipples."></em>
+                        <em style="width:120px;right:16px;top:368px" class="mtip" data-tip="This measurement measures the distance from your natural waist to the floor. When taking this measurement, stand straight with your feet together."></em>
+                    </span>
+                </div>
+            </div>
+
+
+            <div class="tbTit"><b>Measuring Guide</b> -- For Flower Girl Dresses<em class="icon icon22 c" data-icon=""></em><em class="icon icon22 e" data-icon=""></em></div>
+            <div class="cusTog hidden">
+                <div class="pre_detail clearfix">
+                    <span class="mHalf">
+                        <img src="/skin/frontend/base/default/images/tw_images/cust/flower_girl.jpg">
+                        <em style="width:70px;left:26px;top:144px" class="mtip" data-tip="Don't mistake it for your bra size. This is the measurement around your chest at the fullest part of your breast. While being measured, please get your arms relaxed, down at your sides."></em>
+                        <em style="width:120px;left:0;top:270px" class="mtip" data-tip="This is the length from your front hollow which is at the base of your neck to where you want the hem of the dress to fall. Do always stand upright with your feet keeping together. Remember the tape should be measured according to the fullness and the measurement should include the height of the shoes heel if you want the shoes to be covered by the dress."></em>
+                        <em style="width:84px;right:66px;top:130px" class="mtip" data-tip="You should measure from your shoulder point to the wrist."></em>
+                        <em style="width:84px;right:66px;top:200px" class="mtip" data-tip="Place your hands at your natural waistline. You should measure the smallest part of your waist; it is an inch or so above your belly button in general."></em>
+                        <em style="width:84px;right:66px;top:240px" class="mtip" data-tip="This is the measurement at the fullest part of your hips. It is usually approximately 7 inches below your waist. What you should do is to stand naturally with your heels together and relaxed. Find your hip bones and measure there. Pay special attention to leave a little room and not to pull the tape too tight."></em>
+                    </span>
+                    <span class="mHalf dashL">
+                        <img src="/skin/frontend/base/default/images/tw_images/cust/junior_bridesmaid.jpg">
+                        <em style="width:70px;left:26px;top:150px" class="mtip" data-tip="Don't mistake it for your bra size. This is the measurement around your chest at the fullest part of your breast. While being measured, please get your arms relaxed, down at your sides."></em>
+                        <em style="width:120px;left:16px;top:284px" class="mtip" data-tip="This is the length from your front hollow which is at the base of your neck to where you want the hem of the dress to fall. Do always stand upright with your feet keeping together. Remember the tape should be measured according to the fullness and the measurement should include the height of the shoes heel if you want the shoes to be covered by the dress."></em>
+                        <em style="width:84px;right:66px;top:120px" class="mtip" data-tip="You should measure from your shoulder point to the wrist."></em>
+                        <em style="width:84px;right:66px;top:200px" class="mtip" data-tip="Place your hands at your natural waistline. You should measure the smallest part of your waist; it is an inch or so above your belly button in general."></em>
+                        <em style="width:84px;right:66px;top:250px" class="mtip" data-tip="This is the measurement at the fullest part of your hips. It is usually approximately 7 inches below your waist. What you should do is to stand naturally with your heels together and relaxed. Find your hip bones and measure there. Pay special attention to leave a little room and not to pull the tape too tight."></em>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="twbox-help-shadow-s">
+        <em class="i tl">&nbsp;</em> <em class="i tr">&nbsp;</em><em class="i l">&nbsp;</em> <em class="i r">&nbsp;</em>
+        <div class="pre_detail cust_other clearfix">
+            <h2 class="custTit">Successful Cases</h2>
+            <p>We've already custom made awesome dresses for our previous customers, here is just very small part:</p>
+        </div>
+        <ul class="custCase">
+            <li>
+            <span class="custCn">Style - LFLW15001</span>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15001.jpg" data-fancybox-group="gallery764" class="fancybox"><img src="/skin/frontend/base/default/images/tw_images/cust/LFDZ15001.jpg" width="470"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15001 (1).jpg" data-fancybox-group="gallery764" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15001 (2).jpg" data-fancybox-group="gallery764" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15001 (3).jpg" data-fancybox-group="gallery764" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15001 (4).jpg" data-fancybox-group="gallery764" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15001 (5).jpg" data-fancybox-group="gallery764" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15001 (6).jpg" data-fancybox-group="gallery764" class="fancybox"></a>
+            <em class="icon icon32" data-icon=""></em>
+            </li>
+            <li class="custCR">
+            <span class="custCn">Style - LFLW15002</span>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFLW15002.jpg" data-fancybox-group="gallery765" class="fancybox"><img src="/skin/frontend/base/default/images/tw_images/cust/LFLW15002.jpg" width="470"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFLW15002 (1).jpg" data-fancybox-group="gallery765" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFLW15002 (2).jpg" data-fancybox-group="gallery765" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFLW15002 (3).jpg" data-fancybox-group="gallery765" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFLW15002 (4).jpg" data-fancybox-group="gallery765" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFLW15002 (5).jpg" data-fancybox-group="gallery765" class="fancybox"></a>
+            <em class="icon icon32" data-icon=""></em>
+            </li>
+            <li>
+            <span class="custCn">Style - LFDZ15003</span>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15003.jpg" data-fancybox-group="gallery766" class="fancybox"><img src="/skin/frontend/base/default/images/tw_images/cust/LFDZ15003.jpg" width="470"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15003 (1).jpg" data-fancybox-group="gallery766" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15003 (2).jpg" data-fancybox-group="gallery766" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15003 (3).jpg" data-fancybox-group="gallery766" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15003 (4).jpg" data-fancybox-group="gallery766" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15003 (5).jpg" data-fancybox-group="gallery766" class="fancybox"></a>
+            <em class="icon icon32" data-icon=""></em>
+            </li>
+            <li class="custCR">
+            <span class="custCn">Style - LFDZ15004</span>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15004.jpg" data-fancybox-group="gallery767" class="fancybox"><img src="/skin/frontend/base/default/images/tw_images/cust/LFDZ15004.jpg" width="470"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15004 (1).jpg" data-fancybox-group="gallery767" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15004 (2).jpg" data-fancybox-group="gallery767" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15004 (3).jpg" data-fancybox-group="gallery767" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15004 (4).jpg" data-fancybox-group="gallery767" class="fancybox"></a>
+            <em class="icon icon32" data-icon=""></em>
+            </li>
+            <li>
+            <span class="custCn">Style - LFDZ15005</span>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15005.jpg" data-fancybox-group="gallery768" class="fancybox"><img src="/skin/frontend/base/default/images/tw_images/cust/LFDZ15005.jpg" width="470"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15005 (1).jpg" data-fancybox-group="gallery768" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15005 (2).jpg" data-fancybox-group="gallery768" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15005 (3).jpg" data-fancybox-group="gallery768" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15005 (4).jpg" data-fancybox-group="gallery768" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15005 (5).jpg" data-fancybox-group="gallery768" class="fancybox"></a>
+            <em class="icon icon32" data-icon=""></em>
+            </li>
+            <li class="custCR">
+            <span class="custCn">Style - LFDZ15006</span>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15006.jpg" data-fancybox-group="gallery769" class="fancybox"><img src="/skin/frontend/base/default/images/tw_images/cust/LFDZ15006.jpg" width="470"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15006 (1).jpg" data-fancybox-group="gallery769" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15006 (2).jpg" data-fancybox-group="gallery769" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15006 (3).jpg" data-fancybox-group="gallery769" class="fancybox"></a>
+            <em class="icon icon32" data-icon=""></em>
+            </li>
+            <li>
+            <span class="custCn">Style - LFDZ15007</span>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15007.jpg" data-fancybox-group="gallery770" class="fancybox"><img src="/skin/frontend/base/default/images/tw_images/cust/LFDZ15007.jpg" width="470"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15007 (1).jpg" data-fancybox-group="gallery770" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15007 (2).jpg" data-fancybox-group="gallery770" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15007 (3).jpg" data-fancybox-group="gallery770" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15007 (4).jpg" data-fancybox-group="gallery770" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15007 (5).jpg" data-fancybox-group="gallery770" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15007 (6).jpg" data-fancybox-group="gallery770" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15007 (7).jpg" data-fancybox-group="gallery770" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15007 (8).jpg" data-fancybox-group="gallery770" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15007 (9).jpg" data-fancybox-group="gallery770" class="fancybox"></a>
+            <em class="icon icon32" data-icon=""></em>
+            </li>
+            <li class="custCR">
+            <span class="custCn">Style - LFDZ15008</span>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15008.jpg" data-fancybox-group="gallery771" class="fancybox"><img src="/skin/frontend/base/default/images/tw_images/cust/LFDZ15008.jpg" width="470"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15008 (1).jpg" data-fancybox-group="gallery771" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15008 (2).jpg" data-fancybox-group="gallery771" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15008 (3).jpg" data-fancybox-group="gallery771" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15008 (4).jpg" data-fancybox-group="gallery771" class="fancybox"></a>
+            <a href="/skin/frontend/base/default/images/tw_images/cust/LFDZ15008 (5).jpg" data-fancybox-group="gallery771" class="fancybox"></a>
+            <em class="icon icon32" data-icon=""></em>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="twbox-help-shadow-s">
+        <em class="i tl">&nbsp;</em> <em class="i tr">&nbsp;</em><em class="i l">&nbsp;</em> <em class="i r">&nbsp;</em>
+        <div class="pre_detail cust_other clearfix">
+            <h2 class="custTit">Gorgeous Details</h2>
+            <p>Further check dress detail to know more about exquisite handwork. Never miss such great chance to <b>Design Your Own Dress!</b></p>
+        </div>
+        <div class="custWall">
+            <ul class="custCase waul clearfix">
+                <li>
+                <div class="custWitem">
+                <div class="custWitemin">
+                <h3>Fine Lace</h3>
+                <img src="/skin/frontend/base/default/images/tw_images/cust/wall01.jpg" class="wimg">
+                </div>
+                </div>
+                <div class="custWitem">
+                <div class="custWitemin">
+                <h3>Sheer &amp; Sexy Back</h3>
+                <img src="/skin/frontend/base/default/images/tw_images/cust/wall02.jpg" class="wimg">
+                </div>
+                </div>
+                <div class="custWitem">
+                <div class="custWitemin">
+                <h3>Sparkling Sash</h3>
+                <img src="/skin/frontend/base/default/images/tw_images/cust/wall03.jpg" class="wimg">
+                </div>
+                </div>
+                <div class="custWitem">
+                <div class="custWitemin">
+                <h3>Pure Feather Detail</h3>
+                <img src="/skin/frontend/base/default/images/tw_images/cust/wall04.jpg" class="wimg">
+                </div>
+                </div>
+                </li>
+                <li>
+                <h2 class="wallTit">To Discover Your Beauty in Every Detail</h2>
+                <div class="custWitem">
+                <div class="custWitemin">
+                <h3>Vivid Hand-made Flower</h3>
+                <img src="/skin/frontend/base/default/images/tw_images/cust/wall05.jpg" class="wimg">
+                </div>
+                </div>
+                <div class="custWitem">
+                <div class="custWitemin">
+                <h3>Adorable Pearls</h3>
+                <img src="/skin/frontend/base/default/images/tw_images/cust/wall06.jpg" class="wimg">
+                </div>
+                </div>
+                <div class="custWitem">
+                <div class="custWitemin">
+                <h3>Structured Ruching</h3>
+                <img src="/skin/frontend/base/default/images/tw_images/cust/wall07.jpg" class="wimg">
+                </div>
+                </div>
+                <div class="custWitem">
+                <div class="custWitemin">
+                <h3>Structured Ruching</h3>
+                <img src="/skin/frontend/base/default/images/tw_images/cust/wall08.jpg" class="wimg">
+                </div>
+                </div>
+                </li>
+            </ul>
+            <div class="pre_other cust_other">
+                <div class="custWitem">
+                    <div class="custWitemin">
+                        <h3>Delicate Beading Design All Handmade</h3>
+                        <img src="/skin/frontend/base/default/images/tw_images/cust/wall09.jpg">
+                    </div>
+                </div>
+                <p>All the styles listed above are Available Now.</p>
+                <p>If you feel like any of them or you want to create your own dress, feel free to contact us anytime at: <a href="mailto:cs@topwedding.com" class="undline"><b>cs@topwedding.com</b></a>.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="custom-size-box" class="custom-size-box" style="display: none;">
+<div class="p-close-box"><em>&nbsp;</em></div>
+<div class="custBoxin scrBox" id="custBoxin">
+<!--[if lte IE 6]>
+<div style="position:absolute;z-index:-1;left:-1px;top:0;width:200px;" _mce_style="position: absolute; z-index: -1; left: -1px; top: 0; width: 200px;"><iframe style="background:#F0F9FB;width:100%;height:110px;filter:alpha(opacity=0);-moz-opacity:0" _mce_style="background: #F0F9FB; width: 100%; height: 110px; filter: alpha(opacity=0);"></iframe></div>
+<![endif]-->
+<div class="tc">
+<a class="fancybox pro-measure-icon" href="/skin/frontend/base/default/images/tw_images/measure-five-large.jpg"><img src="/skin/frontend/base/default/images/tw_images/measure-five.jpg" alt="measure"><em></em></a>
+</div>
+<table id="select-custom-size-list" border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td class="tc grey6-t arial ft11" colspan="6">Please be sure not to round up or down to the next inch when taking your measurements! For example, if your measurement ends up being 23.75 inches, please submit 23.75 inches to us!</td>
+</tr>
+<tr class="dotted">
+<td class="tc" colspan="6"><span class="mr10">Choose Unit:</span>
+<select id="cs_unit" name="unit">
+<option value="inch">INCH </option>
+<option value="cm">CM </option>
+</select></td>
+</tr>
+<tr>
+<td class="tc grey6-t" colspan="6"><strong>Basic Size</strong></td>
+</tr>
+<tr>
+<td class="tr">Bust:</td>
+<td><input data-custom="basic" class="acc-inputtext acc-w4 validation-orange" name="bust" type="text">
+<em class="size-error orange-t db ft11" style="display: none;">Missing</em></td>
+<td class="tr">Waist:</td>
+<td><input data-custom="basic" class="acc-inputtext acc-w4 validation-orange" name="waist" type="text">
+<em class="size-error orange-t db ft11" style="display: none;">Missing</em></td>
+<td class="tr">Hips:</td>
+<td><input data-custom="basic" class="acc-inputtext acc-w4 validation-orange" name="hips" type="text">
+<em class="size-error orange-t db ft11" style="display: none;">Missing</em></td>
+</tr>
+<tr class="dotted">
+<td class="tr">Hollow to Floor:</td>
+<td><input data-custom="basic" class="acc-inputtext acc-w4 validation-orange" name="hollow_to_hem" type="text">
+<em class="size-error orange-t db ft11" style="display: none;">Missing</em></td>
+<td class="tr">Height:</td>
+<td><input data-custom="basic" class="acc-inputtext acc-w4 validation-orange" name="your_total_height" type="text"><em class="size-error orange-t db ft11" style="display: none;">Missing</em></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td colspan="6">
+<h3 class="tc" id="custLinkFm">Additional Size Needed for Dresses with Sleeve/Jacket or Mermaid Styles<em class="icon icon16" data-icon=""></em></h3>
+<div class="cuswrapper">
+<div id="custFms" class="hidden">
+<table id="select-custom-size-list" border="0" cellspacing="0" cellpadding="0">
+<tbody>
+<tr>
+<td colspan="6"><a class="fancybox pro-measure-icon" href="/skin/frontend/base/default/images/tw_images/measure-large-jacket.jpg"> <img src="/skin/frontend/base/default/images/tw_images/measure-jacket-2.jpg" alt="measure"><em></em> </a></td>
+</tr>
+<tr>
+<td class="tc grey6-t arial ft11" colspan="6">
+<span class="red-t">*</span> For Mermaid Style, Dresses with Jacket or Sleeves, we strongly suggest you to provide additional sizes to ensure a perfect fit. </td>
+</tr>
+<tr>
+<td class="tr">Shoulder:</td>
+<td><input data-custom="additional" class="acc-inputtext acc-w4" name="shoulder" type="text">
+<em class="size-error orange-t db ft11" style="display: none;">Missing</em></td>
+<td class="tr">Armhole:</td>
+<td><input data-custom="additional" class="acc-inputtext acc-w4" name="armhole" type="text">
+<em class="size-error orange-t db ft11" style="display: none;">Missing</em></td>
+<td class="tr">Bicep:</td>
+<td><input data-custom="additional" class="acc-inputtext acc-w4" name="bicep" type="text">
+<em class="size-error orange-t db ft11" style="display: none;">Missing</em></td>
+</tr>
+<tr>
+<td class="tr">Arm Length:</td>
+<td><input data-custom="additional" class="acc-inputtext acc-w4" name="arm_length" type="text">
+<em class="size-error orange-t db ft11" style="display: none;">Missing</em></td>
+<td class="tr">Shoulder to Bust:</td>
+<td><input data-custom="additional" class="acc-inputtext acc-w4" name="shoulder_to_bust" type="text">
+<em class="size-error orange-t db ft11" style="display: none;">Missing</em></td>
+<td class="tr">Apex to Apex:</td>
+<td><input data-custom="additional" class="acc-inputtext acc-w4" name="apex_to_apex" type="text">
+<em class="size-error orange-t db ft11" style="display: none;">Missing</em></td>
+</tr>
+<tr class="dotted">
+<td class="tr">Shoulder to Waist:</td>
+<td><input data-custom="additional" class="acc-inputtext acc-w4" name="shoulder_to_waist" type="text">
+<em class="size-error orange-t db ft11" style="display: none;">Missing</em></td>
+<td class="tr"></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td colspan="3"></td>
+<td colspan="3" class="tr">
+<input id="btn_reset_cs" class="button twbtn-grey small" type="button" value="Reset">
+<input id="btn_submit_cs" class="button cs-submit twbtn-orange small" type="button" value="Submit">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<script type="text/javascript">
+    jQuery(document).ready(function($){
+        jQuery(".tbTit").click(function(){
+            jQuery(this).next(".cusTog").toggle();
+        });
+        jQuery(".dlink").click(function(){
+            jQuery(this).siblings(".dlink").removeClass('scd');
+            if(jQuery(this).hasClass('scd')){
+            }else{
+                jQuery(this).addClass('scd');
+                if(jQuery(this).data('size')){
+                    jQuery('input[name="size"]').val(jQuery(this).data('size'));
+                }
+                if(jQuery(this).data('colorname')){
+                    jQuery('input[name="color"]').val(jQuery(this).data('colorname')+':'+jQuery(this).data('colorrgb'));
+                }
+            }
+        });
+        jQuery("#custBtn").click(function(){
+            var flag = false;
+            jQuery('input[data-rule="required"]').each(function(){
+                var dfn = $(this).siblings('dfn[data-rule="required"]');
+                if(dfn.data('warn')){
+                }else{
+                    dfn =$(this).parent().siblings('dfn[data-rule="required"]');
+                }
+                if($.trim($(this).val()) === "" || $.trim($(this).val())==='custom') { 
+                    flag = true;
+                    dfn.addClass('Verro').html( dfn.data('warn') );
+                }else{
+                    dfn.removeClass('Verro').html('');
+                }
+            });
+            if(flag){
+                return false;
+            }
+
+            jQuery("#custForm").submit();
+        });
+        jQuery("#btn_reset_cs").click(function(){
+            jQuery("#select-custom-size-list input[type='text']").val('');
+            jQuery('input[name="size"]').val('');
+        });
+        jQuery("#btn_submit_cs").click(function(){
+            var flag = false;
+            var custom_size = '';
+            jQuery("#select-custom-size-list input[type='text']").each(function(i){
+                if(jQuery(this).data('custom') == 'basic'){
+                    if($(this).val() === ''){
+                        flag = true;
+                        $(this).siblings('.size-error').show();
+                    }else{
+                        $(this).siblings('.size-error').hide();
+                        custom_size += $(this).attr('name') + ':' + $(this).val() + ' ' + $("#cs_unit").val() + ';';
+                    }
+                }
+
+                if(jQuery(this).data('custom') == 'additional'){
+                    if(jQuery("#custFms").css('display') == 'block'){
+                        if($(this).val() === ''){
+                            flag = true;
+                            $(this).siblings('.size-error').show();
+                        }else{
+                            $(this).siblings('.size-error').hide();
+                            custom_size += $(this).attr('name') + ':' + $(this).val() + $("#cs_unit").val();
+                        }
+                    }
+                }
+
+            });
+            if(flag){
+                return false;
+            }
+            jQuery('input[name="size"]').val(custom_size);
+            jQuery("#custom-size-box").hide();
+        });
+        jQuery('#custLinkFm').click(function(){
+            $(this).find('em').toggleClass('opened');
+            jQuery("#custFms").toggle();
+        });
+        jQuery(".p-close-box").click(function(){
+            jQuery("#custom-size-box").hide();
+        });
+        jQuery("#custSbtn").click(function(){
+            jQuery("#custom-size-box").show();
+        });
+    });
+</script>

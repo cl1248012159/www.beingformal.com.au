@@ -363,20 +363,23 @@ class Mage_Catalog_Model_Url
             'is_system'     => 1
         );
 
-        $this->getResource()->saveRewrite($rewriteData, $this->_rewrite);
+        if($requestPath){
+            $this->getResource()->saveRewrite($rewriteData, $this->_rewrite);
 
-        if ($this->getShouldSaveRewritesHistory($category->getStoreId())) {
-            $this->_saveRewriteHistory($rewriteData, $this->_rewrite);
-        }
+            if ($this->getShouldSaveRewritesHistory($category->getStoreId())) {
+                $this->_saveRewriteHistory($rewriteData, $this->_rewrite);
+            }
 
-        if ($updateKeys && $product->getUrlKey() != $urlKey) {
-            $product->setUrlKey($urlKey);
-            $this->getResource()->saveProductAttribute($product, 'url_key');
+            if ($updateKeys && $product->getUrlKey() != $urlKey) {
+                $product->setUrlKey($urlKey);
+                $this->getResource()->saveProductAttribute($product, 'url_key');
+            }
+            if ($updateKeys && $product->getUrlPath() != $requestPath) {
+                $product->setUrlPath($requestPath);
+                $this->getResource()->saveProductAttribute($product, 'url_path');
+            }
         }
-        if ($updateKeys && $product->getUrlPath() != $requestPath) {
-            $product->setUrlPath($requestPath);
-            $this->getResource()->saveProductAttribute($product, 'url_path');
-        }
+        
 
         return $this;
     }
@@ -720,7 +723,7 @@ class Mage_Catalog_Model_Url
         // elseif ($parentPath == '/') {
         //     $parentPath = '';
         // }
-        $parentPath = '';
+        $parentPath = 'C/';
         $parentPath = Mage::helper('catalog/category')->getCategoryUrlPath($parentPath,
                                                                            true, $category->getStoreId());
 
@@ -779,12 +782,13 @@ class Mage_Catalog_Model_Url
          */
         if ($category->getLevel() > 1) {
             // To ensure, that category has path either from attribute or generated now
-            $this->_addCategoryUrlPath($category);
-            $categoryUrl = Mage::helper('catalog/category')->getCategoryUrlPath($category->getUrlPath(),
-                false, $storeId);
-            $requestPath = $categoryUrl . '/' . $urlKey;
+            // $this->_addCategoryUrlPath($category);
+            // $categoryUrl = Mage::helper('catalog/category')->getCategoryUrlPath($category->getUrlPath(),
+            //     false, $storeId);
+            // $requestPath = $categoryUrl . '/' . $urlKey;
+            return '';
         } else {
-            $requestPath = $urlKey;
+            $requestPath = 'P/'.$urlKey;
         }
 
         if (strlen($requestPath) > self::MAX_REQUEST_PATH_LENGTH + self::ALLOWED_REQUEST_PATH_OVERFLOW) {

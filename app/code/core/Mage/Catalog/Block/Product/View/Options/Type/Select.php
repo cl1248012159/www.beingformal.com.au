@@ -154,7 +154,8 @@ class Mage_Catalog_Block_Product_View_Options_Type_Select
                         . ($this->getSkipJsReloadPrice() ? '' : ' onclick="opConfig.reloadPrice()"')
                         . ' name="options[' . $_option->getId() . ']' . $arraySign . '" id="options_' . $_option->getId()
                         . '_' . $count . '" value="' . $htmlValue . '" ' . $checked . ' price="'
-                        . $this->helper('core')->currencyByStore($_value->getPrice(true), $store, false) . '" />';
+                        . $this->helper('core')->currencyByStore($_value->getPrice(true), $store, false) . '" 
+                        title="'.strip_tags($this->escapeHtml($_value->getTitle()) . ' ' . $priceStr).'"/>';
 
                     $color_name = str_replace(array(" ","　","\t","\n","\r"),'_',strtolower( $this->escapeHtml($_value->getTitle()) ));
                     if( array_key_exists($color_name,$colors) ){

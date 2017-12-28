@@ -301,8 +301,12 @@ button.button { float: right; margin-left: 5px; overflow: visible; width: auto; 
 .products-grid { *zoom: 1; margin-left: -20px; }
 .products-grid:after { display: block; content: "clear"; height: 0; clear: both; overflow: hidden; visibility: hidden; }
 .products-grid li { float: left; width: 25%; padding-bottom: 20px; }
+.products-grid li:nth-child(4n) { clear: right; }
+.products-grid li:nth-child(4n+1) { clear: left; }
 .products-grid li .product_card { float: left; width: 100%; padding-left: 20px; }
 .products-grid li .product_card .product-price .currency-code, .products-grid li .product_card .product-price .special-price, .products-grid li .product_card .product-price .regular-price .price { color: #db2757; }
+.products-grid li .ratings { float: left; width: 100%; padding-left: 20px; }
+.products-grid li .ratings a { color: #000; }
 
 /*分类页面 end*/
 /*产品详情*/

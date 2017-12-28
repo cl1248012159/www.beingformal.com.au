@@ -163,7 +163,22 @@ class Mage_Catalog_Block_Product_View_Options_Type_Select
                                                 <div style="background:'.$colors[$color_name].'"></div>
                                         </div>';
                     }else{
-                        $selectHtml .= '<div class="color-select color-text">'.strip_tags($this->escapeHtml($_value->getTitle())).'</div>';
+                        $color_text = strip_tags($this->escapeHtml($_value->getTitle()));
+                        if($color_text == 'As Picture'){
+                            $getGalleryImages = $this->getProduct()->getMediaGalleryImages();
+                            if(count($getGalleryImages) > 0){
+                                foreach ($getGalleryImages as $_image){
+                                    $big_img_src = $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize(20,20);
+                                    break;
+                                }
+                            }
+                            $selectHtml .= '<div    class="color-select color-rgb"
+                                                title="'.strip_tags($this->escapeHtml($_value->getTitle()) . ' ' . $priceStr).'">
+                                                <div style="background-image:url('.$big_img_src.');background-size: 100%;background-repeat:no-repeat;"></div>
+                                        </div>';
+                        }else{
+                            $selectHtml .= '<div class="color-select color-text">'.strip_tags($this->escapeHtml($_value->getTitle())).'</div>';
+                        }
                     }
                     
                 }else{

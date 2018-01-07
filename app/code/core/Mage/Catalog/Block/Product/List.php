@@ -186,12 +186,20 @@ class Mage_Catalog_Block_Product_List extends Mage_Catalog_Block_Product_Abstrac
         $toolbar->setCollection($collection);
 
         $this->setChild('toolbar', $toolbar);
-        if(  $this->getRequest()->getParam('order')=='recommened'  ){
+
+        
+
+        if(  $toolbar->getCurrentOrder()=='news_from_date'  ){
             Mage::dispatchEvent('catalog_block_product_list_collection', array(
                 'collection' => $this->_getProductCollection()
                                      ->setOrder("price","ASC")
             ));
-        }elseif($this->getRequest()->getParam('order')=='discount') {
+        }elseif(  $toolbar->getCurrentOrder()=='recommened'  ){
+            Mage::dispatchEvent('catalog_block_product_list_collection', array(
+                'collection' => $this->_getProductCollection()
+                                     ->setOrder("price","ASC")
+            ));
+        }elseif(  $toolbar->getCurrentOrder()=='discount'   ) {
             $now_coll = $this->_getProductCollection();
             $sql = $now_coll->getSelectSql(true);
             if(stripos($sql,'`price_index`.`min_price` ASC') === false){

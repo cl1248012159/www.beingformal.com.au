@@ -275,6 +275,20 @@ button.button { float: right; margin-left: 5px; overflow: visible; width: auto; 
 .category-header .category-image { float: left; width: 33.33%; padding-right: 30px; }
 .category-header .category-image img { display: block; width: 100%; }
 
+.filter-nav { *zoom: 1; padding: 20px 20px 10px 20px; margin-top: 20px; background: #f7f7f7; }
+.filter-nav:after { display: block; content: "clear"; height: 0; clear: both; overflow: hidden; visibility: hidden; }
+.filter-nav .narrow-by-list { position: relative; float: left; }
+.filter-nav .narrow-by-list dt { background: #fff; margin-right: 10px; margin-bottom: 10px; padding: 0 10px; font-size: 14px; line-height: 22px; }
+.filter-nav .narrow-by-list dd { display: none; position: absolute; top: 22px; left: 0; z-index: 1; width: 200px; padding: 5px; background: #fff; border: 1px solid #000; }
+.filter-nav .narrow-by-list dd a { color: #000; line-height: 22px; }
+.filter-nav .narrow-by-list dd a:hover { /* 鼠标移动到链接上 */ color: #f00; }
+.filter-nav .narrow-by-list:hover dt { background: #000; color: #fff; }
+.filter-nav .narrow-by-list:hover dd { display: block; }
+.filter-nav .filter-state { float: left; width: 100%; clear: both; }
+.filter-nav .filter-state .actions { float: left; border: 1px solid #000; color: #000; font-size: 14px; line-height: 20px; padding: 0 10px; }
+.filter-nav .filter-state li { float: left; background: #000; color: #fff; font-size: 14px; line-height: 22px; margin-left: 10px; margin-bottom: 10px; padding: 0 10px; }
+.filter-nav .filter-state .btn-remove { display: inline-block; color: #fff; font-size: 12px; line-height: 19px; text-align: center; width: 19px; height: 19px; }
+
 .category-products-header { display: block; *zoom: 1; background: #f7f7f7; height: 40px; padding: 0 10px; margin: 20px 0 10px; }
 .category-products-header:after { display: block; content: "clear"; height: 0; clear: both; overflow: hidden; visibility: hidden; }
 .category-products-header .products-count { float: left; line-height: 40px; font-size: 12px; color: #666867; }

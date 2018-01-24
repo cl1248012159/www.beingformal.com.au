@@ -150,11 +150,12 @@ button.button { float: right; margin-left: 5px; overflow: visible; width: auto; 
 .nav-container .nav { *zoom: 1; max-width: 1088px; min-width: 1000px; margin: 0 auto; display: block; }
 .nav-container .nav:after { display: block; content: "clear"; height: 0; clear: both; overflow: hidden; visibility: hidden; }
 .nav-container ul { position: relative; float: left; }
-.nav-container li { float: left; }
+.nav-container li { float: left; position: relative; }
 .nav-container li > a { position: relative; display: block; color: #000; font-size: 13px; line-height: 37px; }
 .nav-container li.home a { font-size: 0; display: block; width: 24px; height: 37px; background: url(/skin/frontend/beingformal/default/images/home.png) no-repeat left center; -moz-background-size: 18px; -o-background-size: 18px; background-size: 18px; }
 .nav-container li .level2 { display: none; }
-.nav-container li:hover .level2 { display: block; position: absolute; top: 37px; left: 0; right: 0; z-index: 2; background: #fff; padding: 10px; border: 1px solid #000; border-top: 0; }
+.nav-container li:hover .level2 { display: block; position: absolute; top: 37px; left: 0; z-index: 2; background: rgba(255, 255, 255, 0.8); padding: 10px; border: 1px solid #000; border-top: 0; }
+.nav-container li:hover .level2 a { color: #000; }
 .nav-container li:hover:not(.home) > a:after { content: " "; position: absolute; bottom: 0; left: 50%; margin-left: -10px; border: 10px solid transparent; border-bottom: 10px solid #000; }
 
 /*头部 end*/

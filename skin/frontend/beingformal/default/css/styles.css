@@ -139,7 +139,7 @@ button.button { float: right; margin-left: 5px; overflow: visible; width: auto; 
 .header { max-width: 1088px; min-width: 1000px; margin: 0 auto; height: 100px; }
 .header h1 { float: left; height: 100px; }
 .header h1 a { display: block; height: 100px; }
-.header h1 img { display: block; }
+.header h1 img { display: block; height: 100px; }
 .header .quick-access { float: right; margin-top: 47px; }
 .header .quick-access #search_mini_form { float: left; margin-right: 20px; }
 .header .quick-access #search_mini_form .input-text { float: left; padding: 0 10px; width: 170px; height: 25px; line-height: 25px; border: 0; border-bottom: 1px solid #000; }

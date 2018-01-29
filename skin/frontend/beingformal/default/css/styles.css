@@ -205,7 +205,7 @@ button.button { float: right; margin-left: 5px; overflow: visible; width: auto; 
 .hotsales_category .home-title a { float: right; font-size: 14px; color: #0b0b0b; font-weight: normal; }
 .hotsales_category .hotsales_content { *zoom: 1; padding-top: 15px; }
 .hotsales_category .hotsales_content:after { display: block; content: "clear"; height: 0; clear: both; overflow: hidden; visibility: hidden; }
-.hotsales_category .hotsales_content .left-links { position: relative; float: left; width: 285px; }
+.hotsales_category .hotsales_content .left-links { position: relative; float: left; z-index: 2; width: 285px; }
 .hotsales_category .hotsales_content .left-links img { display: block; width: 100%; }
 .hotsales_category .hotsales_content .left-links dl { position: absolute; bottom: 20px; left: 20px; right: 20px; width: 245px; background: rgba(255, 255, 255, 0.9); text-align: center; }
 .hotsales_category .hotsales_content .left-links dl dt { line-height: 52px; border-bottom: 1px solid #dad9d7; }
@@ -331,7 +331,7 @@ button.button { float: right; margin-left: 5px; overflow: visible; width: auto; 
 .product-view .pLeft { float: left; width: 240px; background: #fff; border: 1px solid #e9e9e9; padding: 0 10px 10px; margin-top: 50px; }
 .product-view .pLeft .website_name { text-transform: uppercase; text-align: center; color: #1683ac; font-size: 13px; line-height: 50px; font-weight: bold; border-bottom: 1px solid #e4e4e4; }
 .product-view .pLeft .service { padding: 8px 0; border-bottom: 2px dotted #e4e4e4; }
-.product-view .pLeft .service a { position: relative; display: block; padding-left: 15px; font-size: 12px; line-height: 25px; color: #838383; }
+.product-view .pLeft .service a { position: relative; display: block; padding-left: 15px; font-size: 12px; line-height: 25px; color: #838383; text-transform: capitalize; }
 .product-view .pLeft .service a:before { content: ''; border-left: 6px solid #838383; border-top: 3px solid transparent; border-bottom: 3px solid transparent; border-right: 0; position: absolute; top: 50%; margin-top: -3px; left: 0; }
 .product-view .pLeft .interaction a { display: block; text-transform: capitalize; font-size: 12px; color: #838383; line-height: 40px; border-bottom: 2px dotted #e4e4e4; padding-left: 40px; background-image: url(/skin/frontend/beingformal/default/images/icon_item_page.jpg); background-repeat: no-repeat; }
 .product-view .pLeft .interaction a.write-a-review { background-position: 10px -33px; }
